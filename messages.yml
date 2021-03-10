@@ -1,0 +1,4972 @@
+#####################################################
+#Перевод предоставил: Phantom - vk.com/xxxphantomxxx#
+#Если нашли ошибку в переводе - сообщите мне ^^^^^  #
+#####################################################
+
+attributes:
+  bowpull:
+    name: Натяжение лука
+    description: |-
+      Как сильно игрок натянул тетиву лука
+      Пременимо только для заклинаний лука
+  health:
+    name: Здоровье
+    description: Здоровье игрока или моба (сердца x2)
+  health_max:
+    name: Максимальное здоровье
+    description: Максимальное здоровье игрока или моба
+  time:
+    name: Время
+    description: Время мира Майнкрафт, выраженное в тиках - от 0 до 23999
+  moon:
+    name: Фаза луны
+    description: 0 = Полнолуние, 1 = Стареющая луна, 4 = Новолуние, 7 = Растущая луна
+  location_x:
+    name: X-Координата
+    description: X-Координата, на которой находится игрок или моб
+  location_y:
+    name: Y-Координата
+    description: Высота, на которой находится игрок или моб
+  location_z:
+    name: Z-Координата
+    description: Z-Координата, на которой находится игрок или моб
+  level:
+    name: Уровень опыта
+    description: Уровень опыта игрока
+  xp:
+    name: Опыт
+    description: Общее количество опыта игрока
+  mana:
+    name: Мана
+    description: Текущее количество маны игрока
+  mana_max:
+    name: Максимальная мана
+    description: Максимальное количество маны игрока
+commands:
+  no_permission: '&cУ тебя нет права на использование этой команды.'
+  in_game: '&cЭта команда может быть использована только в игре.'
+  unknown_command: '&cНеизвестная команда: &f$command'
+  mkit:
+    usage: '&cИспользование: /mkit [игрок] <название>'
+    console_usage: '&cИспользование (консоль): mkit [игрок] <название>'
+    unknown_kit: '&cНеправильное название: &f$kit'
+    unknown_player: '&cИгрок не найден: &f$player'
+    cooldown: Подожди $time.
+    no_requirements: Тебе не разрешено использовать этот набор предметов
+  magic:
+    help_header: |-
+      &8 ----------------------------------------------------
+      &8|
+      &8|   &b&lПЛАГИН MAGIC
+      &8|
+    help_footer: |-
+      &8|
+      &8 ----------------------------------------------------
+    help: |-
+      &8| &7> &fПомощь по командам в плагине - &6/help magic
+      &8| &7> &fЧаВо: &6https://github.com/elBukkit/MagicPlugin/wiki/FAQ
+      &8| &7> &fПомощь: &6https://github.com/elBukkit/MagicPlugin/wiki/Support
+      &8| &7> &fДискорд: &6https://discord.com/invite/Vk5nK5h
+  mconfig:
+    write_failed: '&cОшибка записи $file'
+    example:
+      usage: '&cИспользование: /mconfig example [$actions]'
+      list:
+        base: '&bБазовая конфигурация: &3$example'
+        header: '&bКонфигурации:'
+        item: '  &f- &3$example'
+      unfetch:
+        usage: '&cИспользование: /mconfig example unfetch <название>'
+        success: '&bПереименовываю &2$example&b в &2$backup'
+        fail: '&cКонфигурация &2$example&c не найдена'
+      fetch:
+        usage: '&cИспользование: /mconfig example fetch <название> <ссылка>'
+        unknown: |-
+          &cНеизвестная конфигурация: &e$example
+          &cИспользуй эту команду, чтобы загрузить конфигурацию:
+          &cИспользование: /mconfig example fetch <название> <ссылка>
+        fail: '&cНеверно указана ссылка - &e$url'
+        error: '&cЧто-то пошло не так, проверь логи'
+        wait_all: '&bПодождите пока все конфигурации($count) обновятся'
+        skip: |-
+          &6Пропускаю &e$example&6, т.к конфигурация не используется
+          &6Используй команду:
+          &f /mconfig example unfetch $example
+          &6Чтобы отвязать конфигурацию
+        success_all: '&bВсе конфигурации были обновлены'
+        wait: '&bПодождите, идет скачивание &b$url...'
+        success_quiet: |-
+          &bСкачивание завершено - &2$example
+          &f   Заняло &9$time &fна скачивание &9$size MB
+        success: |-
+          &bСкачивание завершено - &2$example
+          &fИспользуй &6/mconfig example add $example
+          &f чтобы совместить конфигурацию с текущей
+          &fИспользуй &6/mconfig example set $example
+          &f чтобы установить как базовую конфиг урацию
+        backup: '&eКонфигурация найдена, &3создаю бэкап - &f$backup'
+        overwrite_backup: '&eКонфигурация и бэкап найдены, &cперезаписываю &f$backup'
+        url_write: |-
+          &bТы сможешь обновить конфигурацию в будущем, используя команду
+          &6/mconfig example fetch $example&r
+        url_write_failed: |-
+          &cЧто-то пошло не так в ходе записи файла с ссылкой
+          &cПроверь логи!
+        url_exists: |-
+          &eКонфигурация уже имеет загруженный файл с ссылкой.
+          &r&fВозможно, вышло обновление для конфигурации.
+          &r&bИспользуй команду &6/mconfig example fetch $example&b, чтобы обновить
+        outdated: |-
+          &eКонфигурация $example подходит только для Magic &6$version
+          &eОбновление приостановлено.
+          &cПожалуйста, обновите плагин!
+      add:
+        usage: '&cИспользование: /mconfig example add <example>'
+        duplicate: '&cКонфигурации &2$examples &cуже загружены'
+        success: '&bДобавлены конфигурации: &2$examples'
+      remove:
+        usage: '&cИспользование: /mconfig example remove <example>'
+        missing: '&cКонфигурация &2$example &cне загружена'
+        all: |-
+          &bУбраны все конфигурации, включая базовую.
+          &bИспользуй &f/mconfig example set survival
+          &b если ты не хотел убирать базовую конфигурацию.
+        success: '&bУбрана конфигурация &2$example'
+      set:
+        success: '&bУстановлена базовая конфигурация - &2$example'
+        multiple: |-
+          &bУстановлена базовая конфигурация - &2$example&f
+          &r&bУстановлены конфигурации - &2$examples
+        clear_added: |-
+          &bУстановлена базовая конфигурация - &2$example&f
+          &r&bУдалены добавленные конфигурации
+        clear: '&bБазовая конфигурация очищена'
+    disable:
+      usage: '&cИспользование: /mconfig disable [$types] [название]'
+      nokey: '&cНеизвестный тип: $type, возможные варианты: $options'
+      success: |-
+        Деактивирован файл $type.$key
+        Введи команду '/magic load', чтобы изменения вступили в силу
+    enable:
+      usage: '&cИспользование: /mconfig enable [$types] [название]'
+      nokey: '&cНеизвестный тип: $type, возможные варианты: $options'
+      success: |-
+        Активирован файл $type.$key
+        Введи команду '/magic load', чтобы изменения вступили в силу
+    configure:
+      usage: '&cИспользование: /mconfig configure [$types] [название] [свойство] [значение]'
+      nokey: '&cНеизвестный тип: $type, возможные варианты: $options'
+      success: |-
+        Изменен файл $type.$key
+        Введи команду '/magic load', чтобы изменения вступили в силу
+    reset:
+      usage: '&cИспользование: /mconfig reset [$options] [значение] '
+      nokey: '&cНеизвестный тип: $type, возможные варианты: $options'
+      missing: '&cФайл &f$file &cне существует, сброс настроек невозможен'
+      nothing: '&cФайл &f$file &cне существует, и &f$key &cне было найдено'
+      none: '&cНе было найдено настроек для сбрасывания'
+      removed: '&bУбрано &3$key &bиз файла настроек'
+      success: '&bУдалено &3$file'
+      backup: |-
+        &7Бэкап файл был сохранен как &f$backup
+        &7Используй его если захочешь отменить изменения
+      load_prompt: '&7Используй &f/magic load&7, чтобы изменения вступили в силу'
+    apply:
+      usage: '&cИспользование: /mconfig apply [id сессии]'
+      wait: '&bПодождите, загружаю конфигурацию...'
+      error: '&cЧто-то пошло не так, проверь логи'
+      error_saving: '&cНевозможно записать файл $file'
+      overwrote: '&eПерезаписан &bфайл &a$file'
+      created: '&bСоздан файл &a$file'
+      missing: '&cПоле $field отсустствует в ответе сервера'
+      load_prompt: '&7Используй &f/magic load&7, чтобы изменения вступили в силу'
+      invalid: '&cНайдены ошибки в твоем файле. Исправь их и попробуй снова.'
+    load:
+      usage: '&cИспользование: /mconfig load [id сессии]'
+      wait: '&bПодождите, загружаю конфигурацию...'
+      error: '&cЧто-то пошло не так, проверь логи'
+      missing: '&cПоле $field отсустствует в ответе сервера'
+      error_saving: '&cНевозможно записать файл $file'
+      overwrote: '&eПерезаписан &bфайл &a$file'
+      created: '&bСоздан файл &a$file'
+      invalid: '&cНайдены ошибки в твоем файле. Исправь их и попробуй снова.'
+    editor:
+      usage: '&cИспользование: /mconfig editor [$options]'
+      error: '&cЧто-то пошло не так, проверь логи'
+      wait: '&bПодождите, создаю новую сессию...'
+      server_error: '&cЧто-то пошло не так: &e$message'
+      new_session: |-
+        &3Открой эту ссылку: &f$url
+        &3 в своем браузере, чтобы начать редактировать
+      new_item: '&3Сюздаю &2$type.&b$item'
+      edit_item: '&3Редактирую &2$type.&b$item'
+  modifier:
+    usage: 'Использование: /mage modifier <add|remove> <модификатор> [длительность]'
+    add:
+      success: Добавлен модификатор &3$name &fдля игрока &6$player
+      success_duration: Добавлен модификатор &3$name &fдля игрока &6$player &fна $duration
+      fail: |-
+        &cНевозможно добавить модификатор &3$name
+        &f для игрока &6$player, так как он уже его имеет
+      invalid: '&cНеправильная длительность: &4$input'
+    remove:
+      success: Убран модификатор &3$name &fу игрока &6$player
+      fail: |-
+        &cНевозможно убрать модификатор &3$name
+        &f у игрока &6$player, так как он его не имеет
+  getrp:
+    auto: Теперь ты будешь получать ресурс-пак при подключении к серверу
+    manual: |-
+      При следующем входе на сервер
+       ты получишь предложение загрузить ресурс-пак.
+    turnoff: |-
+      Теперь ты больше не будешь получать ресурс-пак при подключении к серверу.
+      Введи команду &b/getrp&f если хочешь его получить.
+      Введи команду &b/getrp url&f чтобы получить ссылку на скачивание.
+    sending: |-
+      Используй &b/getrp auto&f, чтобы загружать ресурс-пак автоматически.
+      Или используй &b/getrp off&f, чтобы не получать ресурс-пак при входе.
+    preference: |-
+      Выбран ресурс-пак &3$pack&f
+      Используй команду &6/getrp default&f для выбора базового ресурспака.
+    noauto: Введи &6/getrp auto&f, чтобы получать ресурс-пак при входе
+    default: Выбран базовый ресурс-пак
+    disabled: |-
+      Эта команда недоступна, потому что владелец сервера указал ресурс-пак
+      в файле server.properties
+costs:
+  sp_amount: $amount ОЗ
+  xp_amount: $amount Опыта
+  levels_amount: $amount Уровней опыта
+  mana_amount: $amount Маны
+  mana: мана
+  xp: Опыт
+  levels: уровни
+  sp: Очки заклинаний
+  sp_short: ОЗ
+  hunger: энергия
+  health: здоровье
+  health_amount: $amount ед. Здоровья
+  hunger_amount: $amount ед. Энергии
+  heroes_mana: $amount Маны
+  currency_singular: Доллар
+  currency: Долларов
+  currency_amount: $$amount
+currency:
+  item_name: '&e$amount &6$type'
+  description: ПКМ, чтобы внести
+  limit: a:&eЛимит для &6$type &eравен &c$amount
+  deposited: 'a:&aВнесено &2$amount &6$type&a, баланс: &2$balance'
+  earned: a:&6+&e$earned
+sp:
+  name: '&e$amount &6Очков Заклинаний'
+  description: Дает тебе очки заклинаний
+  limit: a:&eЛимит для &6Очков Заклинаний &eравен &c$amount
+  deposited: 'a:&aВнесено &2$amount &6Очков Заклинаний&a, баланс: &2$balance'
+dynmap:
+  spells_markerset: Использованные Заклинания
+  wands_markerset: Палочки
+examples:
+  instructions_header: |-
+    &8 ----------------------------------------------------
+    &8|
+    &8|   &b&lИНФОРМАЦИЯ
+    &8|
+  instructions_footer: |-
+    &8|
+    &8 ----------------------------------------------------
+  survival:
+    instructions: |-
+      &8| &3&nSURVIVAL &r
+      &8|   &fПроверь свой список рецептов или введи &6/mgive wand &r
+      &8|   &fИспользуй команду &6/mgive uberwand &r
+      &8|   &f для выдачи сверхсильной палочки для тестирования заклинаний &r
+  engineering:
+    instructions: |-
+      &8| &3&nENGINEERING &r
+      &8|   &fПолучи уровень &bИнженера &fпосле освоения ранга &bВолшебник &r
+      &8|   &fИспользуй &6/mgive wolf &f
+      &8|   &f чтобы получить сверхмощный посох NathanWolf'а! &r
+      &8|   &fИспользуй &6/mnpc add conduitshop &r
+      &8|   &f если хочешь дать возможность игрокам &r
+      &8|   &f повысить свой ранг до &bМагистра &r
+  bosses:
+    instructions: |-
+      &8| &3&nEXTRA MOBS&r
+      &8|   &fНовые виды мобов теперь будут появляться по всему миру! &r
+      &8|   &fПризывай новых &cБоссов&f, чтобы одолеть их
+      &8|   &f и получить могущественные &eартефакты&f! &r
+      &8|   &fЕсли ты переименовал свой мир &r
+      &8|   &fТо тебе нужно использовать эти команды: &r
+      &8|   &f> &7/mconfig configure world overworld world [твой_мир] &r
+      &8|   &f> &7/mconfig configure world nether world [твой_незер] &r
+  extramobs:
+    instructions: |-
+      &8| &3&nEXTRA MOBS&r
+      &8|   &fНовые виды мобов теперь будут появляться по всему миру! &r
+      &8|   &fПризывай новых &cБоссов&f, чтобы одолеть их
+      &8|   &f и получить могущественные &eартефакты&f! &r
+      &8|   &fЕсли ты переименовал свой мир &r
+      &8|   &fТо тебе нужно использовать эти команды: &r
+      &8|   &f> &7/mconfig configure world overworld world [твой_мир] &r
+      &8|   &f> &7/mconfig configure world nether world [твой_незер] &r
+item:
+  duplicated: Твой предмет был скопирован
+  destroyed: Твой предмет был уничтожен
+  cleaned: Твой предмет был очищен от всей магии
+  no_item: Ты должен держать в руке предмет!
+  renamed: Твой предмет был переименован
+  rename_clear: Персональное имя предмета было стерто
+  flag_added: Добавлен $flag флаг к твоему предмету
+  flag_removed: Убран $flag флаг у твоего предмета
+  no_flags: У этого предмета нет флагов
+  no_flag: У этого предмета нет флага $flag
+  lore_added: 'Описание добавлено: $lore'
+  lore_removed: 'Описание убрано: $lore'
+  no_lore: У этого предмета нет описания
+  not_unbreakable: Этот предмет не неразрушимый
+  already_unbreakable: Этот предмет уже неразрушимый
+  add_unbreakable: Теперь этот предмет неразрушимый
+  remove_unbreakable: Теперь этот предмет разрушимый
+  not_unplaceable: Этот предмет не неставящийся
+  already_unplaceable: Этот предмет уже неставящийся
+  add_unplaceable: Этот предмет теперь неставящийся
+  remove_unplaceable: Этот предмет больше не неставящийся
+  no_enchants: Этот предмет не имеет зачарований
+  no_enchant: У этого предмета нет зачарования $enchant
+  enchant_removed: Убрано зачарование $enchant у твоего предмета
+  enchant_added: Добавлено зачарование $enchant к твоему предмету
+  enchant_not_added: Зачаровние $enchant не было добавлено к твоему предмету
+  enchant_unsafe: У тебя недосточно прав, чтобы добавить зачарование такого уровня
+  no_attribute: Этот предмет не имеет аттрибут $attribute
+  attribute_removed: Убрано свойство $attribute у твоего предмета
+  attribute_added: |-
+    Установлено свойство $attribute на твой предмет
+    со значением $value для $slot
+  attribute_not_added: Невозможно установить свойство $attribute на твой предмет
+  skull: Твоя книга превратилась в голову
+  skull_no_book: Ты должен держать книгу с записанной в ней информацией
+  skull_invalid_book: |-
+    В этой книге нет информации о текстуре!
+    Вставь в нее текст из 'Textures.Value',
+     это длинная строка символов заканчивающаяся на ==
+logs:
+  notify_errors: |-
+    &7[Magic] &bОбнаружено:
+              &b> &c$errors ошибок
+              &bЗа последние &3$time&b!
+              &bПроверь логи!
+  notify_warnings: |-
+    &7[Magic] &bОбнаружено:
+              &b> &e$warnings предупреждений
+              &bЗа последние &3$time&b
+              &bПроверь логи!
+  notify_errors_and_warnings: |-
+    &7[Magic] &bОбнаружено:
+              &b> &c$errors ошибок
+              &b> &e$warnings предупреждений
+              &bЗа последние &3$time
+              &bПроверь логи!
+  notify_instructions: |-
+    &7        Убери перм &fMagic.notify
+    &7         чтобы не видеть эти сообщения
+mage:
+  removed_property: Убрано свойство $name
+  no_property: Игрок не имеет свойства $name
+  player_reconfigured: $name был изменен
+  player_not_reconfigured: $name не был изменен
+  player_spells_levelled: Улучшено $count заклинаний игрока $name
+  player_spells_not_levelled: Никакие из заклинаний игрока $name не были улучшены
+  spells_levelled: Улучшено $count твоих заклинаний
+  spells_not_levelled: Никакие из твоих заклинаний не были улучшены
+  reconfigured: Маг был изменен
+  not_reconfigured: Маг не изменен
+  earned_sp: a:&6+&e$amount &6ОЗ
+  no_class: Ты не обучен использованию $name
+  no_spell: Ты не обучен использованию $name
+  player_spell_upgraded: '&r&6$name &r&dигрока $player &d&oбыл улучшен до &3$level'
+  spell_upgraded: '&r&6$name &d&oбыло улучшено до &3$level'
+  spell_added: Заклинание &r&6$name &d&oбыло добавлено
+  brush_added: Кисть &r&7$name &d&oбыла добавлена
+  instructions_header: |-
+    &8 ----------------------------------------------------
+    &8|
+    &8|   &b&lИНФОРМАЦИЯ
+    &8|
+  instructions_footer: |-
+    &8|
+    &8 ----------------------------------------------------
+general:
+  locked_chest: Этот сундук заперт, и ты не можешь его сломать.
+  spawn_egg_title: Яйцо призыва $entity
+books:
+  default:
+    author: NathanWolf
+    title: $category Книга Заклинаний
+  all:
+    title: Книга Заклинаний Мастера
+  spell:
+    title: Информация - $spell
+  learnspell:
+    name: '&eArcane Spellbook &7(&6$spell&7)'
+    description: Right-click to read about the spell, left-click to learn it
+material:
+  wildcard: ' (Любой тип)'
+economy:
+  missing: '&cПрости, но мой магазин закрыт!'
+  insufficient: 'Стоимость: &6$cost'
+  deducted: 'Скидка: &6$cost'
+  requires: Ты должен иметь при себе $cost
+worlds:
+  world:
+    name: Верхний Мир
+  world_nether:
+    name: Нижний Мир
+  world_the_end:
+    name: Край
+cooldown:
+  description: '&eПерезарядка: &6$time'
+  mage_description: '&cИстощение: &6$time'
+warmup:
+  description: '&7Подготовка: &6$time'
+duration:
+  lasts_seconds: Длится $seconds сек.
+  lasts_minutes: Длится $minutes мин.
+  lasts_hours: Длится $hours ч.
+  lasts_second: Длится $seconds сек.
+  lasts_minute: Длится $minutes мин.
+  lasts_hour: Длится $hours ч.
+skills:
+  inventory_title: Skills
+  inventory_title_heroes: $class Skills ($page/$pages)
+  inventory_title_heroes_secondary: $class-$class2 Skills ($page/$pages)
+  item_name: $skill
+  item_name_unavailable: '&c$skill'
+  item_description: $description
+  passive_description: '&1PASSIVE'
+  none: You have no skills!
+  none_on_page: There are no skills on page $page
+resource_pack:
+  prompt: Введи команду /getrp, чтобы скачать ресурс-пак.
+  off_prompt: a:&eВведи команду &4/getrp&e, чтобы скачать ресурс-пак.
+  sending: |-
+    t:&3Подождите
+    &bИдет установка ресурс-пака
+controls:
+  drop: Выбросить (Q)
+  right_click: ПКМ
+  left_click: ЛКМ
+  swap: Сменить руку (F)
+skillapi:
+  required_skill: '&cТребуемая способность: &4$skill'
+  required_class: '&cТребуемый класс: &4$class'
+damage_types:
+  explosion: Урон от взрыва
+  fall: Урон от падения
+  fire: Урон от огня
+  physical: Физический урон
+  projectile: Урон от снаряда
+npc:
+  dialog: '&7[$speaker&7]&8: &f$line'
+  insufficient: '&cСтоимость: $cost'
+  deducted: '&cВзято $cost'
+  no_permission: '&r&4Тебе не разрешено со мной взаимодействовать!'
+numbers: {}
+path:
+  level_up: |-
+    t:&r&b*** &r&5$path &b***
+    &5Новый уровень!
+requirements:
+  unknown: '&cНе разрешено'
+  property_requirement: '&r&cТребуется: &6$property &cравное $4$value'
+  property_max: '&r&cУровень &6$property &cслишком высок'
+  property_min: '&r&cУровень &6$property &cдолжен быть выше $4$value'
+  no_wand: '&cТы должен держать в руке палочку!'
+  no_template: '&cДля палочки $wand нет заклинаний.'
+  no_modifier: '&cТебе нужно иметь модификатор &6$modifier &cдля этого.'
+  no_region: '&cТебе не разрешено делать это здесь.'
+  no_path: '&cТебе здесь нечего изучать.'
+  no_class: '&cТвой класс должен быть $class'
+  no_required_path: '&cТы должен быть на уровне $path или выше!'
+  no_path_exact: '&cТы должен быть на уровне $path!'
+  no_path_end: '&cТы должен изучить все заклинания ранга $path!'
+  no_weather: Неподходящая погода
+  no_client_platform: Ты не на правильной версии!
+  light: Уровень освещенности
+  time: Время
+  height: Высота
+  currency: Валюта
+  no_cast: '&cТы должен сначала использовать заклинание $spell'
+shops:
+  no_wand: '&cТы должен держать палочку в руке!'
+  no_template: '&cНельзя применить это к $wand.'
+  no_path: '&cТебе нечего изучать здесь.'
+  no_class: '&cТвой класс должен быть $class'
+  no_required_path: '&cТвой ранг должен быть выше $path&r!'
+  no_path_exact: '&cТвой ранг должен быть $path&r!'
+  no_path_end: '&cТы должен изучить все заклинания ранга $path&r!'
+  insufficient: '&cСтоит $cost'
+  confirm_title: Купить $item
+  unlock_confirm_title: Разблокировать $item
+  deducted: '&d&oКуплено &r&6$item &r&d&oза &r&a$cost'
+  selected: '&d&oВыбрано &r&6$item &r&d&oза &r&a$cost'
+  sold: '&d&oТы продал &r&6$item &r&d&oза &r&a$earn'
+  unlocked: '&d&oРазблокировано &r&6$item &r&d&oза &r&a$cost'
+  selected_free: '&d&oТы выбрал &r&6$item'
+  not_applicable: У тебя уже есть $item
+  cast_fail: '&cИзвините, попробуйте позже!'
+  warp_fail: '&cИзвините, что-то пошло не так!'
+  no_items: Тебе нечего покупать здесь
+  title: Магазин ($balance)
+  sell_title: Продать ($balance&0)
+  sell_icon_name: '&6Продать предметы'
+  buy_icon_name: '&aКупить предметы'
+  extra_spell: '&aНе требуется для повышения уровня'
+  no_upgrade: Тебе больше нечего изучать здесь.
+  upgrade_name_change: '&r&4Улучшения: &r$name'
+  level_requirement: '&r&cТребования: &6$path'
+  tags_requirement: '&r&cТребования: &6$tags'
+  cast_requirement: '&r&cИспользований: &6$current&f/&e$required'
+  prerequisite_spell_level: '&6$name'
+  prerequisite_spell_progress_level: ' (Прогресс $level/$max_level)'
+  required_spells: '&r&cТребуется: $spells'
+  cast_spell: $spell
+  unlock_class: $class
+  nothing: Пустота
+  cost_lore: '&6Стоимость: &e$cost'
+  earn_lore: '&6Награда: &e$earn'
+  earn_heading: ''
+  cost_heading: ''
+  unlock_cost_lore: '&6Стоимость разблокировки: &e$cost'
+  locked: '&cНедоступно, &eразблокировать можно на сайте'
+  required_cost_lore: '&cСтоимость: &4$cost'
+  required_unlock_cost_lore: '&cСтоимость разблокировки: &4$cost'
+  has_class: Ты уже имеешь класс $class
+  at_limit: Исчерпан лимит $limit
+  unlocked_lore: '&aРазблокировано'
+  property_requirement: '&r&cТребуется: &6$property &cравное $4$value'
+  property_max: '&r&cУровень &6$property &cслишком высок'
+  property_min: '&r&cУровень &6$property &cдолжен быть выше $4$value'
+  item_amount: $name x$amount
+  attribute: '&6$attribute &f(&b$amount&f)'
+  increase_attribute: Увеличить $attribute на $amount
+  decrease_attribute: Уменьшить $attribute на $amount
+  attribute_max: Нельзя больше увеличивать $attribute
+  attribute_min: Нельзя больше уменьшать $attribute
+  full: Твой инвентарь полон!
+  nostock: Прости, но этот предмет закончился!
+  paid: '&7$owner спасибо тебе за твою работу!'
+  invalid_item: '&cПредмет неизвестен или неверно указан'
+spell:
+  category: ''
+  brush: Использует кисти
+  undoable: ''
+  not_undoable: '&4Нельзя отменить'
+  available_path: Доступно на уровне $path
+  required_path: Нужно изучить все заклинания ранга $path
+  levels_available: 'Максимальный уровень: &r&5$levels'
+  required_spell: |-
+    &d&oТы должен изучить заклинание &r&4$spell,
+    &d&oчтобы получить уровень &b$path
+  prerequisite_spell_level: '&cТы должен изучить &6$level уровень заклинания $name'
+  prerequisite_spell_progress_level: ' &6(Прогресс $level/$max_level)'
+  level_description: $level Уровня
+  progress_description: '&6Прогресс: &b$level&6/&3$max_level'
+  quick_cast: '&2Быстрое использование'
+  earns: '&2Дает до &6$earns'
+  description_lore: '&b$description'
+  level_lore: '&6$level'
+  toggle: '&aИспользуй, чтобы переключить'
+  upgrade_description_prefix: '&r&b&bull; &6'
+  passive: '&2Пассивное'
+  disabled: '&eВыключено'
+  creator: ''
+spells:
+  default:
+    fizzle: Неудача!
+    backfire: Заклинание отлетело в вас!
+    fail: Что-то пошло не так!
+    insufficient_permission: У тебя нет прав использовать это сейчас.
+    cast_player_message: a:&d&o$player &r&5использует &3&o$spell &r&5на тебя!
+    indirect_player_message: a:&d&o$player &r&5использует &3&o$spell &r&5на тебя!
+    insufficient_resources: '&cТребуется &4$cost'
+    insufficient: '&cТребуется &4$cost'
+    cooldown: 'Перезарядка: $time.'
+    cancelled: Твое заклинание было отменено
+    cancel: ''
+    cancel_selection: a:&cЗаклинание &6$spell &cотменено
+    entity_required: Требуется сущность.
+    living_entity_required: Требуется живая сущность.
+    player_required: Требуется игрок.
+    location_required: Требуется место.
+    world_required: Требуется мир.
+    invalid_world: Указанный мир недействителен.
+    cast_finish: ''
+  admission:
+    name: Вход
+    description: Открывает выбранную дверь
+    cast: Впусти меня!
+  admission|2:
+    upgrade_description: Теперь открывает железные двери
+  collapse:
+    name: Обвал
+    description: Заставляет блоки проваливаться вниз
+    cast_finish: Обрушено @blocks блоков
+    upgrade_description: Увеличен радиус, теперь ломает больше типов блоков
+  sparkle:
+    name: Искра
+    description: 'Дает случайный эффект: положительный или отрицательный'
+  secure:
+    name: Замок
+    description: Защищает контейнеры
+    usage: |-
+      Наведи мышь вверх и нажми ЛКМ, чтобы получить ключ.
+      Шифт+ЛКМ, чтобы разблокировать
+    cast: Теперь контейнер заперт - тебе нужно держать ключ, чтобы открыть его!
+    acquire: Замок изменен!
+    already_key: У тебя уже есть ключ
+    already: Уже заперто
+    alternate_up: Получен ключ
+    alternate_sneak: Контейнер разблокирован
+    key_name: '&6&k$uuid'
+    key_name_alternate: '&eКлюч &6$name'
+    key_description: |-
+      &eКлюч &6$name
+      Необходим для открытия запертых контейнеров
+    fail: Невозможно запереть это!
+    upgrade_description: Теперь защищает печки и другие контейнеры
+  lockpick:
+    name: Отмычка
+    description: Открывает запертые контейнеры
+    cast: Сезам откройся!
+    fail: Невозможно отпереть это!
+  snoop:
+    name: Заглянуть
+    description: Заглядывает в сундук
+    cast: Давай-ка поглядим что тут у нас..
+    no_target: Ты должен выбрать сундук
+  anvil:
+    name: Наковальня
+    description: Призывает наковальню
+    cast: Тяжелая!
+  silence:
+    name: Безмолвие
+    description: Запрещает вашей цели произосить заклинания
+    cast: $target обезмолвлен
+    upgrade_description: Уменьшена стоимость и перезарядка, увеличена длительность
+  curse:
+    name: Проклятие
+    description: Замедляет и ослабляет жертву
+    cast: $target проклят
+    upgrade_description: Теперь накладывает эффект тошноты
+  broom:
+    name: Метла
+    cast: Ваша метла оживает!
+    deactivate: Метла успокаивается.
+    crash: АВАРИЯ!
+    fail: Недостаточно места!
+    creative_fail: Нельзя использовать метлу в креативе!
+    cursed: Ты слишком сильно ударился, чтобы лететь!
+    upgrade_description: Увеличена продолжительность, скорость и управляемость
+    nospace: '&cНужно свободное место для того чтобы взлететь!'
+    reactivate: Метла активирована
+  superbroom:
+    name: СуперМетла
+    cast: Твоя палочка превратилась в метлу!
+    deactivate: Твоя палочка успокаивается.
+    crash: АВАРИЯ!
+    fail: Недостаточно места!
+    reactivate: Метла активирована
+  boon:
+    name: Дар
+    description: Временно наделяет тебя сверхсилами
+    cast_self: Твоя палочка наделяет тебя силой
+    cast: Твоя палочка наделяет силой $target
+  boon|2:
+    upgrade_description: Теперь дает прыгучесть
+  boon|3:
+    upgrade_description: Увеличена скорость
+  boon|4:
+    upgrade_description: Теперь дает ночное зрение
+  blessing:
+    name: Благословление
+    description: Исцеляет и накладывает эффекты в радиусе
+    cast: ''
+  holylight:
+    name: Священный свет
+    description: Лечит игроков по близости и убивает мобов
+    cast: Ты испускаешь Священный свет
+  mount:
+    name: Оседлать
+    description: Седлает твою цель
+    cast: Ты оседлал $target
+  horse:
+    name: Лошадь
+    description: Призывает лошадь
+    cast: Иго-го!
+    nospace: '&cНужно свободное место для лошади!'
+  tame:
+    name: Приручение
+    description: Приручает твою цель
+    cast: Ты приручил $target
+  platform:
+    name: Платформа
+    description: Создает платформу из блоков
+    cast_finish: Заполнено @blocks блоков, используя $material
+  platform|2:
+    upgrade_description: Увеличен размер
+  platform|4:
+    upgrade_description: Теперь строит выбранным материалом
+  reflect:
+    name: Зеркало
+    description: Отражает направленные заклинания
+    upgrade_description: Увеличен размер и отражательная способность
+  shell:
+    name: Оболочка
+    description: Создает оболочку, которая отражает заклинания
+    upgrade_description: Увеличена прочность и отражательная способность
+  tag:
+    name: Метка
+    description: Ставит табличку с твоим именем
+    usage: Требует и потребляет одну табличку!
+    fail: Не удалось установить табличку!
+    cast: Ты оставил метку
+    cast_player: Ты оставил сообщение для $target
+    cast_give: Держи немного табличек!
+    cast_player_message: |-
+      &5Ты слышишь таинственный голос...
+      &5Это был &c&o$player &r&5!
+    sign_message: был здесь
+  flashbang:
+    name: Вспышка
+    description: Бросает шар света и ярости
+    cast_player_message: a:Тебя задела вспышка игрока $player
+  singularity:
+    name: Сингулярность
+    description: Создает черную дыру
+    cast_player_message: a:Тебя засасывает в черную дыру!
+    upgrade_description: Увеличен радиус, длительность и урон
+  arrow:
+    name: Стрела
+    description: Выстрел магической стрелой
+    upgrade_description: Увеличен урон и точность
+  arrow_light:
+    name: Световая стрела
+    description: Выстрел стрелой из света
+    cast_player_message: a:$spell игрока $player задела тебя!
+  arrow_bomb:
+    name: Взрывная стрела
+    description: Выстрел взрывной стрелой
+    cast_player_message: a:$spell игрока $player задела тебя!
+  arrow_poison:
+    name: Ядовитая стрела
+    description: Выстрел стрелой, которая превращается в облако яда
+    cast_player_message: a:$spell игрока $player задела тебя!
+  arrow_regular:
+    name: Обычная стрела
+    description: Выстрел обычной стрелой
+    cast_player_message: a:$spell игрока $player задела тебя!
+  arrow_blink:
+    name: Телепорт-стрела
+    description: Телепортирует тебя в точку падения стрелы
+    cast_player_message: a:$spell игрока $player задела тебя!
+  arrow_fire:
+    name: Огненная стрела
+    description: Поджигает землю в месте падения
+    cast_player_message: a:$spell игрока $player задела тебя!
+  arrow_ice:
+    name: Ледяная стрела
+    description: Замораживает все в месте падения
+    cast_player_message: a:$spell игрока $player задела тебя!
+  arrow_shock:
+    name: Электрическая стрела
+    description: Бьет вашу цель током
+    cast_player_message: a:$spell игрока $player задела тебя!
+  arrow_grapple:
+    name: Стрела-гарпун
+    description: Выстрел стрелой, которая тянет тебя сторону цели
+    cast_player_message: a:$spell игрока $player задела тебя!
+  toss:
+    name: Бросок
+    description: Бросает блок
+    fail: Один из твоих блоков застрял
+    cast: Ты бросил блок
+  volley:
+    name: Град
+    description: Бросает несколько блоков
+    fail: Один из твоих блоков застрял
+    cast: Ты бросил несколько блоков
+  sniper:
+    name: Снайпер
+    description: Запускает сверхбыструю стрелу
+  pull:
+    name: Тяга
+    description: Тянет вещи к тебе
+    alternate: Дай-ка!
+    cast: Оп!
+  grab:
+    name: Взять
+    description: Тянет предметы к тебе
+    cast: Оп!
+  permafrost:
+    name: Вечная заморозка
+    description: Делает блоки вечно снежными!
+    cast_finish: Заморожено @blocks блоков
+  permamelt:
+    name: Вечная разморозка
+    description: Повышает температуру
+    cast_finish: Разморожено @blocks блоков
+  frost:
+    name: Заморозка
+    description: Замораживает воду и создает снег
+    cast_finish: Заморожено @blocks блоков
+    upgrade_description: Увеличен радиус и длительность замедления
+  harden:
+    name: Укрепление
+    description: Делает блоки твердыми
+    cast: Укреплено @blocks блоков
+  harden|2:
+    upgrade_description: |-
+      Увеличена длительность.
+      Теперь превращает блоки в каменный кирпич.
+  harden|3:
+    upgrade_description: |-
+      Увеличена длительность.
+      Теперь превращает блоки в гладкий камень.
+  harden|4:
+    upgrade_description: |-
+      Увеличена длительность.
+      Теперь превращает блоки в полированный чернит.
+  harden|5:
+    upgrade_description: |-
+      Увеличена длительность.
+      Теперь превращает блоки в обсидиан.
+  disarm:
+    name: Обезоружить
+    description: Обезоруживает твоего оппонента
+    cast: Ты обезоружил $target
+    cast_self: Ты обезоружил сам себя
+    upgrade_description: Уменьшен шанс неудачи
+  disarm|3:
+    upgrade_description: Убран шанс неудачи
+  heal:
+    name: Лечение
+    description: Лечит тебя или твою цель
+    usage: Лечение будет прервано при получении урона!
+    cast: Ты вылечил $target
+    cast_self: Ты вылечил себя
+    upgrade_description: Уменьшена перезарядка
+  healing:
+    name: Лечение
+    description: Лечит всех вокруг тебя
+    cast: Ты вылечил $target
+  cure:
+    name: Исцеление
+    description: Снимает негативные эффекты
+    cast: Ты вылечил $target
+    cast_self: Ты излечился
+    upgrade_description: Теперь снимает эффект Голода
+  cure|2:
+    upgrade_description: Теперь снимает эффект Иссушения и Слабости
+  cure|3:
+    upgrade_description: Теперь снимает Безмолвие
+  cure|4:
+    upgrade_description: Теперь снимает эффект Голода
+  cure|5:
+    upgrade_description: Теперь излечивает зомби-жителей
+  music:
+    name: Музыка
+    description: Воспроизведение некоторых мелодий
+    cast_player: Ты включил музыку для $name
+    cast_self: Ты включил музыку
+  airstrike:
+    name: Поддержка с воздуха
+    description: Убивает ближайшее существо
+    cast_player_message: a:&d&o$player &r&5вызвал воздушный удар на тебя
+  supergather:
+    name: СуперТелепорт
+    description: Телепортироваться к любому игроку
+    usage: Наведи вниз, чтобы выбрать цель, наведи вверх, чтобы телепортироваться
+    cast_to_player: Телепортирую тебя к $target
+    cast_entity: Телепортирую $target к цели
+    cast_player_message: a:&d&o$player &r&5разрывает пространство
+    target_selected: Ты выбрал $target
+    cancel: Цель убрана
+  icbm:
+    name: МБР
+    description: Запускает взрывающийся фаербол
+    cast: Осторожно!
+  neutron:
+    name: Нейтронная бомба
+    description: Ошеломляет и наносит урон существам по области
+    cast: Убить их всех!
+    upgrade_description: Увеличен радиус
+  shuriken:
+    name: Сюрикен
+    description: Бросает рикошетящий снаряд
+    upgrade_description: Увеличена длительность
+  wave:
+    name: Волна
+    description: Испускает ударную волну
+    upgrade_description: Увеличен размер и сила волны
+  weather:
+    name: Погода
+    description: Меняет погоду
+    cast: Ты вызвал грозу
+    alternate: Ты успокоил грозу
+  fling:
+    name: Рывок
+    description: Отправляет тебя в полет в указанном направлении
+    upgrade_description: |-
+      Увеличена скорость, уменьшена перезарядка
+       &7Используй заклинание с зажатым шифтом для маленького прыжка
+  leap:
+    name: Скачок
+    description: Большой скачок
+    cast: Уии!
+  torch:
+    name: Факел
+    description: Создает факел или светящийся камень
+    no_target: Нельзя поместить факел здесь
+    cast: Гори якро!
+    upgrade_description: Уменьшена перезарядка
+  monster:
+    name: Монстр
+    description: Призывает монстра на твою сторону
+    deactivate: Ты освободил своего монстра
+    cast: Ты призвал монстра
+    upgrade_description: |-
+      Увеличена длительность.
+      Разблокированы новые типы существ.
+  mob:
+    name: Орда
+    description: Призывает орду монстров
+    deactivate: Ты распустил орду
+    cast: Призвано несколько монстров
+    upgrade_description: |-
+      Увеличена длительность и количество монстров.
+      Разблокированы новые типы существ.
+      Уменьшена перезарядка.
+  portal:
+    name: Портал
+    description: Создает временный портал
+    no_target: Нельзя создать портал здесь
+    cast: Ты создал портал
+  phase:
+    name: Разлом
+    description: Создает разлом в другое измерение
+    cancel: Разлом закрылся!
+    cast: ''
+    teleport: Ты был перемещен в $world_name
+    teleport_failed: Нельзя переместиться в $world_name отсюда
+  superphase:
+    name: СуперРазлом
+    description: Перемещает тебя в другое измерение
+    cast: ''
+    teleport: Ты переместил $target в $world_name
+    teleport_failed: Невозможно переместить $target в $world_name здесь
+  phasebackup:
+    name: Телепорт в Бэкап
+    description: Перемещает тебя в Бэкап мир
+    cast: ''
+    teleport: Ты был перемещен в $world_name
+    teleport_failed: Нельзя переместиться в $world_name отсюда
+  invincible:
+    name: Неуязвимость
+    description: Временно делает тебя невосприимчивым к урону
+    cast: Ты чувствуешь неуязвимость!
+    deactivate: Ты чувствуешь себя как обычно
+  inferno:
+    name: Инферно
+    description: Поджигает
+    cast: Ты поджег @blocks блоков
+  bubble:
+    name: Пузырь
+    description: Создает спасательный пузырь
+    usage: Используй заклинание, чтобы безопасно упасть с высоты
+    cast: Бульк
+    upgrade_description: Увеличен размер пузыря
+  paint:
+    name: Покрасить
+    description: Заполняет один блок
+  gills:
+    name: Водолазный шлем
+    description: Позволяет свободно работать под водой
+    cast: Ты надел свой водолазный шлем
+    hat_name: Водолазный шлем
+    hat_lore: Нажми, чтобы снять
+  gasp:
+    name: Глоток воздуха
+    description: Пополняет запас воздуха под водой
+    cast: ВДОХ!
+  glide:
+    name: Планер
+    description: Карманная элитра!
+    cast: Время летать!
+    wear_name: Складной планер
+    war_lore: Нажми, чтобы снять
+  arrowrain:
+    name: Дождь из стрел
+    description: Запускает залп из стрел
+  arrowrain|2:
+    upgrade_description: Больше стрел, теперь они поджигают врагов
+  gatling:
+    name: Пулемет Гатлинга
+    description: Выстрел потоком пуль
+    upgrade_description: Увеличено время действия, уменьшено время подготовки
+  meteor:
+    name: Метеоритный дождь
+    description: Смерть свыше
+    cast: Ты призвал метеоритный дождь
+    upgrade_description: Уменьшена перезарядка, увеличено количество осколков
+  bomb:
+    name: Ковровая бомбардировка
+    description: Воздушная поддержка
+    cast: Ты вызвал поддержку с воздуха
+    upgrade_description: Больше бомб!
+  poison:
+    name: Яд
+    description: Отравляет твою жертву
+    cast: Ты отравил $target
+    upgrade_description: Увеличено время действия яда
+  light:
+    name: Свет
+    description: Изгоняет тьму
+  lightning:
+    name: Молния
+    description: Выстрел молнией по цели
+    cast: Бах!
+  lightning|2:
+    upgrade_description: Увеличена точность
+  lightning|3:
+    upgrade_description: Больше молний!
+    cast: Ба-Бах!
+  sunstrike:
+    name: Солнечный удар
+    description: Призывает сфокусированный солнечный луч
+    usage: |-
+      Работает только днем
+      Наносит максимум урона в полдень
+    cast: Ты призвал солнечный луч!
+    upgrade_description: Увеличен максимальный урон, уменьшена задержка
+  smite:
+    name: Яростный удар
+    description: Сражает вашу цель наповал
+    cast: Ты поразил $target
+    upgrade_description: Увеличен урон и радиус взрыва
+  nuke:
+    name: Ядерный Взрыв
+    description: Создает большой взрыв
+    cast: ОЙ!
+    upgrade_description: Увеличен радиус, больше разрушений!
+  day:
+    name: Солнечный день
+    description: Делает день прекрасным
+    cast: Какой хороший день!
+  night:
+    name: Гроза и Ночь
+    description: Делает день ночью и вызывает грозу
+    cast: Страаашно
+  time:
+    name: Время
+    description: Меняет время дня
+    cast: Время изменено на $newtime
+  grenade:
+    name: Граната
+    description: Бросок гранатой
+  grenade|2:
+    upgrade_description: Увеличен урон и пламя
+  cluster:
+    name: Кластерная бомба
+    description: Бросок осколочной гранатой
+    cast: Ты бросил кластерную бомбу
+    upgrade_description: Кластерная бомба разделяется на большее кол-во осколков
+  repairitem:
+    name: Починить предмет
+    description: Чинит выброшенный предмет
+    no_target: Нельзя починить это!
+    cast: Предмет починен!
+  repairequipment:
+    name: Починить экипировку
+    description: Чинит все предметы выбранного игрока
+    no_target: Нечего чинить!
+    cast: Экипировка починена!
+  blast:
+    name: Взрыв
+    description: Подрывает блоки
+    cast_finish: Взорвано @blocks блоков
+    upgrade_description: Увеличен радиус, теперь ломает более прочные блоки
+  earthquake:
+    name: Землетрясение
+    description: Создает землетрясение
+    cast_finish: Разрушено @blocks блоков
+  cloak:
+    name: Мантия
+    description: Делает тебя невидимым
+    cast: Ты сделал свою цель невидимой
+    cast_self: Ты сделал себя невидимым
+  counterspell:
+    name: Антимагия
+    description: Отражает заклинание выбранного существа
+    usage: Работает только на недавно произнесенных заклинаниях
+    cast: '&5Ты отменил заклинание &r&6$spell игрока &d&o$target'
+    cast_player_message: a:&d&o$player &r&5отменил твое заклинание &3&o$spell!
+    fail: Нечего отразить
+  counterspell|2:
+    upgrade_description: Убран шанс неудачи
+  push:
+    name: Толчок
+    description: Отталкивает сущностей
+    alternate: Убирайся!
+    upgrade_description: Толкает с большей силой
+  push|4:
+    upgrade_description: |-
+      Наведи прицел вниз и нажми ЛКМ,
+       чтобы применить альтернативную способность
+  farm:
+    name: Ферма
+    description: Призывает животных
+    deactivate: Ты освободил своих животных
+    cast: Призвано несколько животных
+  breach:
+    name: Трещина
+    description: Врменно разрушает поверхность
+    cast_finish: Разрушено @blocks блоков
+    upgrade_description: Увеличен размер трещины
+  tesseract:
+    name: Тессеракт
+    description: Телепорт на короткое расстояние
+    no_target: Нельзя переместиться сюда
+  mine:
+    name: Добыть
+    description: Добывает руду
+    cast_finish: Добыто немного руды
+    upgrade_description: Добывает больше руды
+  mine|4:
+    upgrade_description: Теперь добывает всю руду
+  mine|5:
+    upgrade_description: Дает бонусную руду
+  mine|6:
+    upgrade_description: Дает больше бонусной руды
+  chop:
+    name: Срубить
+    description: Рубит дерево
+    cast_finish: Срублено!
+    upgrade_description: Добывает больше блоков дерева
+  peek:
+    name: Окно
+    description: Временно заменяет область стеклом
+    cast_finish: Было обращено в стекло @blocks блоков
+    upgrade_description: Увеличен размер стекла
+  sandblast:
+    name: Струя песка
+    description: Призывает огромный блок песка, падающий сверху
+    cast_finish: Создано @blocks блоков падающего песка
+    upgrade_description: Больше песка
+  fire:
+    name: Пламя
+    description: Поджигает область на расстоянии
+    cast: Ты разжег огонь
+    upgrade_description: Увеличен радиус и длительность горения
+  growth:
+    name: Удобрение
+    description: Мгновенно выращивает растения
+    upgrade_description: Увеличен радиус
+  rainbow:
+    name: Радуга
+    description: Создает радугу!
+  blob:
+    name: Капля
+    description: Создает плотную каплю
+    cast_finish: Заполнено @blocks блоков, используя $material
+  blob|2:
+    upgrade_description: Теперь создает каплю из глины
+  blob|3:
+    upgrade_description: Теперь создает каплю из обсидиана
+  blob|4:
+    upgrade_description: Теперь создает каплю из выбранного материала
+  walls:
+    name: Стены
+    description: Возводит стены в выбранном направлении
+    cast_finish: Заполнено @blocks блоков, используя $material
+  tendril:
+    name: Рука тьмы
+    description: Создает зловещую руку
+  repair:
+    name: Починка
+    description: Чинит территорию
+    cast_finish: Восстановлено @blocks блоков
+  emp:
+    name: Электромагнитный импульс
+    description: Заставляет работать механизмы
+    cast_finish: Электризовано @blocks блоков
+  ghast:
+    name: Гаст
+    description: Призывает грозного гаста
+  familiar:
+    name: Питомец
+    description: Создает питомца
+    cast: Ты призвал питомца
+    deactivate: Ты отпустил своего питомца
+  disintegrate:
+    name: Расщепление
+    description: Наносит урон цели
+    usage: Уничтожает выбранный блок
+    cast_entity: ПАМ!
+    cast: ПУМ!
+  blink:
+    name: Блинк
+    description: Телепортирует в выбранном направлении
+    no_target: Нельзя использовать здесь
+    teleport_failed: Нельзя использовать здесь
+    teleport: Блинк!
+    cast: ''
+  blink|2:
+    upgrade_description: Увеличена дальность
+  blink|3:
+    upgrade_description: Увеличена дальность, может телепортировать на поверхность
+  blink|4:
+    upgrade_description: Увеличена дальность, может телепортировать сквозь землю
+  blink|5:
+    upgrade_description: Увеличена дальность, может телепортировать через стены
+  blink|6:
+    upgrade_description: Может телепортировать в воздух
+  hat:
+    name: Шляпа
+    description: Надевает выбранный блок на голову
+    cast: Ты надел $material на голову
+    removed: Ты снял свою шляпку
+    hat_name: Шляпа из блока $hat
+    hat_lore: Нажми, чтобы снять
+    upgrade_description: Увеличена длительность
+  wear:
+    name: Надеть
+    description: ПКМ чтобы надеть
+    cast: Ты надел предмет на голову
+  magichat:
+    name: Шляпа Волшебника
+    cast: ''
+    cast_nightvision: Шляпа освещает тебе путь
+    cast_absorption: Шляпа усиливает тебя
+    cast_bunny: Кролик выскочил!
+    cast_killer_bunny: Упс... БЕГИ!!!
+    alternate: Шляпа прыгает тебе на голову
+  invisiblecloak:
+    name: Мантия невидимости
+    cast: Твой силуэт расстворяется в облаке дыма!
+  stalactite:
+    name: Сталактит
+    description: Создает уменьшающийся столб
+    cast: Ты создал сталактит, используя $material
+    no_target: Невозможно создать
+  lava:
+    name: Лава
+    description: Испускает струю лавы
+    cast: Ты выпустил струю лавы
+    upgrade_description: Больше лавы
+  earth:
+    name: Земля
+    description: Создает временную линию из блоков
+    cast: Ты создал линию из земли
+  flamethrower:
+    name: Огнемет
+    description: Гори, детка, гори!
+    cast: Ты выпустил струю огня
+    upgrade_description: Увеличена длина пламени
+  stash:
+    name: Хранилище
+    description: Портативный эндер-сундук
+    cast: Ты заглянул в свой эндер-сундук
+    cast_player: Ты заглянул в эндер-сундук $target
+  pickpocket:
+    name: Украсть
+    description: Крадет вещи у игроков
+    cast_player: Ты заглянул в инвентарь $target
+    cast_player_message: ''
+  workbench:
+    name: Верстак
+    description: Крафт в пути
+    cast: Работай!
+    upgrade_description: Уменьшена перезарядка и стоимость
+  superlaser:
+    name: СуперЛазер
+    description: Навсегда разрушает блоки перед собой
+    cast_finish: Испепелено @blocks блоков
+    upgrade_description: Увеличена длительность, разрушает больше типов блоков
+  laser:
+    name: Лазер
+    description: Разрушает блоки перед собой
+    cast_finish: Испепелено @blocks блоков
+    upgrade_description: Увеличен радиус и урон
+  stream:
+    name: Струя
+    description: Испускает струю воды
+    cast: Ты выпустил струю воды
+    upgrade_description: Увеличен урон и дальность
+  wolf:
+    name: Волк
+    description: Призывает дружелюбного волка
+    cast: Ты призвал волчонка!
+    fail: Не вышло.
+  tent:
+    name: Палатка
+    description: Временный дом
+    cast: Ты создал палатку
+  cage:
+    name: Клетка
+    description: Создает клетку вокруг цели
+    cast: Ты поймал свою цель в клетку
+  cat:
+    name: Кот
+    description: Призывает дружелюбного кота
+    cast: Ты призвал кота!
+    fail: Не вышло.
+  shrink:
+    name: Сжатие
+    description: Наносит урон объектам и уменьшает их
+    usage: Если убить цель этим заклинанием, то можно получить ее голову!
+    cast: Уменьшайся!
+    cast_entity: Ты уменьшил $target
+  capture:
+    name: Поймать
+    description: Ловит выбранного моба и превращает его в яйцо призыва
+    cast: Поймай их всех!
+    cast_entity: Ты поймал $target
+  grow:
+    name: Рост
+    description: Выращивает мобов
+    cast: Расти!
+    cast_entity: Ты вырастил $target
+    no_target: Нельзя вырастить это!
+  flare:
+    name: Фейерверк
+    description: Запускает фейерверк
+    cast: Ты запустил магический фейерверк
+    upgrade_description: Больше фейерверков!
+  respawn:
+    name: Респавн
+    description: Вернуться на спавн
+    cast: Ты переместился в безопасное место
+  gather:
+    name: Телепорт
+    description: Отправляет заявку на телепорт
+    usage: |-
+      Наведи прицел вниз и используй заклинание,
+      чтобы открыть меню друзей
+    alternate_down_no_target: '&4Никого нет рядом'
+    no_target: |-
+      &4Не найдено игроков для телепортации
+      &3Наведи прицел вниз и используй заклинание для телепортации к Друзьям!
+    cast_to_player: Телепортирую тебя к $target
+    cast_entity: Телепортирую $target к цели
+    cast_player_message: a:&d&o$player &r&5разрывает пространство
+    cast_friend: Телепортирую к $name
+    no_target_friend: Невозможно телепортироваться к $name
+    title_friend: $name
+    add_friend: '&5$name &bбыл добавлен в &6Друзья!'
+    remove_friend: '&5$name &cбыл убран из &6Друзей!'
+    recall_title: 'Телепортироваться к:'
+    friend_request_title: '@tn отправил тебе запрос дружбы'
+    reject: '@pn отклонил запрос ☹️'
+    send_request_title: Отправить Запрос Дружбы
+    add_friend_name: Отправить Запрос Дружбы
+    remove_friend_name: Убрать из друзей
+    remove_friend_title: Убрать из друзей
+    cast_remove_friend: '&bТы убрал &5$name&b из друзей'
+    title_remove_friend: $name
+  recall_death:
+    name: Телепорт к точке смерти
+    description: Отправляет тебя прямиком в точку твоей последней смерти
+    cast_death: Отправляю в точку последней смерти
+    no_target_death: Точка смерти не найдена
+  recall:
+    name: Телепорт
+    cancel: Телепорт закрыт!
+    description: Телепортрует в различные места.
+    usage: Дает 5 секунд неуязвимости на время телепортации.
+    teleport: ''
+    teleport_failed: Телепортация отменена
+    no_target: Нельзя поместить маркер здесь
+    cast_marker_place: Создан маркер
+    cast_marker_move: Маркер перемещен
+    cast_marker: Перемещение к маркеру
+    cast_death: Перемещение к месту последней смерти
+    cast_spawn: Перемещение на спавн
+    cast_home: Перемещение домой
+    cast_wand: Перемещение к потеряной палочке
+    cast_soul: Перемещение к твоей потерянной душе
+    cast_warp: Перемещение к $name
+    cast_town: Перемещение в город
+    cast_regions: Перемещение в защищенную территорию
+    cast_friend: Перемещение к $name
+    no_target_death: Нету точки смерти
+    no_target_wand: Нету потерянных палочек
+    no_target_soul: Потерянная душа не найдена
+    no_target_home: Нету доступных точек дома
+    no_target_warp: Неправильный варп $name
+    no_target_marker: Нет установленных маркеров
+    no_target_spawn: Нельзя телепортироваться на спавн
+    no_target_town: Ты не находишься в городе
+    no_target_regions: У тебя нет друзей
+    no_target_friend: Невозможно телепортироваться к $name
+    title_move_marker: "Переместить маркер #$number"
+    description_move_marker: Перемещает маркер к тебе
+    title_marker: 'Маркер #$number'
+    description_marker: Наведи курсор вниз, чтобы переместить маркер
+    title_death: Последняя смерть
+    description_death: Место твоей последней смерти
+    title_friend: $name
+    title_warp: $name
+    title_spawn: Спавн
+    description_spawn: Текущая точка спавна
+    title_home: Дом
+    description_home: Место, где ты последний раз спал
+    title_wand: Потерянная палочка
+    description_wand: Твоя палочка, лежащая на земле
+    title_town: Город
+    description_town: Центр города
+    title_soul: Потерянная душа
+    description_soul: |-
+      Твоя душа из предыдущей жизни
+      &fСодержит &d$items &fпредметов и &b$xp&f опыта
+    description_regions: Защищенная территория
+    cross_world_disallowed: Нельзя телепортироваться в другое измерение
+    title: Выбрать направление
+    move_marker_title: Подвинуть маркер
+    unlock_warp: '&bТы разблокировал &5$name &bкак &6Направление &bдля Телепортации!'
+    add_friend: '&bТы добавил друга &5$name &bкак &6Направление &bдля Телепортации!'
+    remove_friend: '&cТы удалил &5$name &cкак &4Направление &cдля Телепортации!'
+    invalid_description: '&cНеправильная локация'
+    unavailable_description: '&eДоступно при повышении уровня'
+    unavailable_warp_description: '&eНайди это место, чтобы разблокировать!'
+    unavailable_name: '&c$name'
+  recall|2:
+    upgrade_description: Разблокирована точка последней смерти
+  recall|3:
+    upgrade_description: Разблокирован маркер, наведи курсор вниз, чтобы поставить.
+    usage: |-
+      Имеет пятисекундную подготовку.
+      Наведи курсор вниз и используй заклинание, чтобы поставить маркер
+  recall|4:
+    upgrade_description: Разблокирован второй маркер
+  recall|5:
+    upgrade_description: Разблокирован третий маркер
+  warpunlock:
+    name: Разблокировать варп
+    description: |-
+      Полезно для использования в командных блоках,
+      чтобы разблокировать местность
+    cooldown: ''
+  warpmenu:
+    name: Меню варпов
+    description: То же, что и Телепорт
+  levitate:
+    name: Левитация
+    description: Теперь ты можешь летать!
+    cast: Ты чувствуешь легкость
+    cancel: Ты чувствуешь тяжесть
+    upgrade_description: Увеличена скорость и высота полета, уменьшена перезарядка
+    reactivate: Реактивирую Левитацию
+  levitate|6:
+    upgrade_description: Неограниченная высота, облако исчезает для лучшей видимости
+  boom:
+    name: Бум
+    description: Создает взрыв
+    cast: Бум!
+  boom|2:
+    upgrade_description: Увеличен урон, теперь ломает блоки
+  force:
+    name: Телекинез
+    description: Просто телекинез. Ничего больше
+    usage: |-
+      Нажми ЛКМ, чтобы выбрать цель,
+      затем нажми ЛКМ еще раз,
+      чтобы запустить цель в выбранном направлении
+    cancel: Ты отпустил $target
+    target_selected: Ты поймал $target
+  dragonball:
+    name: Шар Дракона
+    description: Запускает файербол эндер-дракона
+    usage: Осторожно, не упади в дыхание дракона!
+  fireball:
+    name: Файербол
+    description: Запускает взрывной файербол
+  fireball|2:
+    upgrade_description: Увеличена точность
+  fireball|3:
+    upgrade_description: Невероятная точность и скорость
+  fireball|4:
+    upgrade_description: Теперь поджигает область взрыва
+  wither:
+    name: Иссушение
+    description: Выпускает черепа Иссушителя
+    upgrade_description: Увеличено количество черепов
+  map:
+    name: Карта
+    description: Создает карту
+    cast: А вот и карта!
+  camera:
+    name: Камера
+    description: Делает фото игроков или мобов
+    cast_target: Вы сфотографировали $target
+    fail: Ошибка загрузки фото
+    cast: ЩЕЛК!
+    cast_self: Селфи!
+    cooldown: Камера заряжается
+  tornado:
+    name: Торнадо
+    description: Призывает разрушительный воздушный вихрь
+    cast: Прячься под стол!
+    upgrade_description: Разрушает натуральные структуры
+  masterattack:
+    name: Master Blast
+    description: Дальняя атака, работающая только если у тебя полное здоровье
+    insufficient_resources: ''
+    cooldown: ''
+  missile:
+    name: Магический выстрел
+    description: Выстрел чистой энергии
+    cast_target: Твое заклинание наносит @damage_dealt урона по $target
+    cast_player_message: $caster нанес тебе @damage_dealt урона заклинанием $spell
+    cast: Ты выстрелил магическим снарядом
+    no_target: Промах
+    upgrade_description: Увеличен урон и дальность
+  railgun:
+    name: Рельсотрон
+    description: Выстрел, пронзающий блоки и мобов насквозь
+    cast: Ты выстрелил в $target
+    no_target: Ты выстрелил из рельсотрона
+    upgrade_description: |-
+      Увеличена дальность, выстрел поражает больше целей.
+      Уменьшена перезарядка и стоимость
+  testdummy:
+    name: Тестовая мишень
+    description: Призывает мишень для заклинаний
+  projectile:
+    name: С.Н.А.Р.Я.Д
+    description: Заклинание для тестирования снарядов
+    cast: Запуск снаряда
+    cast_finish: Снаряд попал в цель
+    no_target_finish: Снаряд промахнулся
+  whip:
+    name: Кнут
+    description: Магический кнут
+    cast: Щелк!
+  sticky:
+    name: Липучая бомба
+    description: Бросок липкой бомбой, она взорвется через 5 сек.
+    cast: Ты бросил липкую бомбу
+    upgrade_description: Увеличена точность и сила взрыва
+  homing:
+    name: Самонаводящийся выстрел
+    description: Выстрел сгустком энергии, который будет преследовать цель
+    cast: Ты запустил самонаводящийся снаряд
+    lock_on: '&d&o$player&r&5 нацелился на тебя!'
+    cast_player_message: a:Заклинание $spell игрока &d&o$player&r&5 попало в тебя
+    upgrade_description: Увеличена скорость и урон снаряда
+    cast_finish: Самонаводящийся выстрел попал в $target
+    no_target: Промах
+    no_action: Промах
+  fury:
+    name: Ярость
+    description: Запускает несколько самонаводящихся ракет в воздух
+    cast: Ты запустил несколько самонаводящихся снарядов
+    cast_player_message: a:Заклинание $spell игрока &d&o$player&r&5 попало в тебя
+    upgrade_description: Больше ракет
+  chainlightning:
+    name: Цепная молния
+    description: Электрический заряд, поражающий несколько целей
+    cast: Ты создал цепную молнию
+    cast_player_message: a:Заклинание $spell игрока &d&o$player&r&5 попало в тебя
+    upgrade_description: Поражает больше целей
+  blind:
+    name: Слепота
+    description: Ослепляет цель
+    cast: Ты ослепил $target
+    upgrade_description: Увеличена длительность слепоты
+  pollinate:
+    name: Опыление
+    description: Сажает разные цветы
+    cast: Цветочки!
+  paste:
+    name: Вставить
+    description: Вставляет схематик полностью
+    usage: Используй вместе с кистью-схематиком
+    cast_finish: Вставлено @blocks блоков
+    no_action: Схематик загружается, повтори снова!
+  kill:
+    name: Убийство
+    description: Наносит летальный урон цели
+    cast_player_message: ''
+    cast: УМРИ!
+    upgrade_description: |-
+      Увеличена скорость и размер снаряда,
+      уменьшено время подготовки
+  superkill:
+    name: Мгновенное убийство
+    description: Молниеносно убивает вашу цель
+    cast: УМРИ!
+  damage:
+    name: Урон
+    description: Заклинание для тестирования типов урона.
+  torture:
+    name: Пытка
+    description: Песпощадно пытает цель
+    cast: Почувствуй мой гнев!
+    upgrade_description: Увеличен урон и длительность
+  boomstown:
+    name: Билет в один конец
+    description: Отправляет цель в БОМБЕЗНОЕ путешествие
+  rubberize:
+    name: Батут
+    description: Делает выбранную область прыгучей
+    cast: Время прыгать!
+  count:
+    name: Подсчет энтити
+    description: Инструмент для админов, чтобы подсчитать энтити
+  debugger:
+    name: Отладка
+    description: Инструмент для админов, чтобы выявлять ошибки
+    cast: Отладка $target
+    deactivate: Отладка выключена для $target
+    alternate_up: Отладка выключена для всех
+    alternate_down: Отладка включена
+  superfly:
+    name: СуперПолет
+    description: Для съемок видео
+    cast: Ты чувствуешь облегченность
+    cost_free: Ты чувствуешь тяжесть
+    reactivate: Левитация активирована
+  petrify:
+    name: Застынь!
+    description: Лишает цель возможности двигаться
+    cast: Ты превратил $target в статую.
+    upgrade_description: Увеличена длительность, уменьшена стоимость
+  polymorph:
+    name: Превращение
+    description: Превращает цель в овцу
+    cast: Ты превратил $target в овцу.
+    upgrade_description: Увеличена длительность
+  entangle:
+    name: Ловушка
+    description: Связывает цель веревками
+    cast: Ты связал $target.
+  wound:
+    name: Порез
+    description: Наносит физический урон цели
+    cast: Ты порезал $target.
+    upgrade_description: Увеличен урон
+  stun:
+    name: Оглушение
+    description: Оглушает и наносит урон цели
+    cast: Ты бросил оглушающий снаряд
+    upgrade_description: Увеличен урон и длительность оглушения
+  webbing:
+    name: Атака паутиной
+    description: Паучья атака
+    cast_player_message: a:&r&5Ты попался в паутину &d&o$player
+  lift:
+    name: Ввысь!
+    description: Поднимает цель в воздух
+    cast: Ты поднял в воздух $target.
+  rocket:
+    name: Ракета
+    description: Полет на ракете
+    cast: Поехали!
+  sponge:
+    name: Губка
+    description: Впитывает воду вокруг
+    cast: Хлюп!
+  extinguish:
+    name: Огнетушитель
+    description: Убирает огонь
+    cast: Пшшш!
+  skills:
+    name: Скиллы
+    descriptions: |-
+      Показывает доступные скиллы.
+      Перетаскивай заклинания, чтобы применять их.
+  upgrades:
+    name: Прогресс заклинаний
+    description: Показывает прогресс в улучшении заклинаний твоей палочки
+    fail: Ты должен держать палочку в руке!
+    upgrade_name_change: '&r&4Улучшения: &r$name'
+    level_requirement: |-
+      &r&cТребуется уровень &6$path
+      &r&7Изучи все заклинания для повышения ранга
+    cast_requirement: '&r&cИспользований: &6$current&f из &e$required'
+    tags_requirement: '&r&cТребуется: &6$tags'
+    confirm_title: Изменить на $item
+    title: Прогресс заклинаний
+  tracking:
+    name: Тепловизор
+    description: Находит ближайшее живое существо
+    cast: Тепловизор распознал $target неподалеку
+    no_target: Тепловизор никого не нашел
+    upgrade_description: Увеличен радиус
+  tracking|4:
+    upgrade_description: Шифт+ЛКМ, чтобы искать только игроков
+  tracking|5:
+    cast: Найдено $count мобов
+    upgrade_description: |-
+      Наведи прицел вниз и используй заклинание,
+      чтобы подсветить всех мобов в радиусе 16 блоков
+  enchantwand:
+    name: Улучшение палочки
+    description: Улучшает твою палочку
+    no_wand: Ты должен держать палочку в руке!
+    fail: ''
+  addspell:
+    name: Добавить заклинание
+    description: Добавляет заклинание для палочки
+    no_upgrade: Нельзя изучить с $wand.
+    no_path: Ты должен повыситься до ранга $path&r!
+    no_path_end: Ты должен изучить все заклинания ранга $path&r!
+    no_wand: Ты должен держать палочку в руке!
+    no_target: Заклинание уже изучено
+    fail: ''
+  giveitem:
+    name: Выдать предмет
+    description: Выдает предмет игроку
+    cast: Ты получил $item
+    cast_player_message: a:Ты получил $item от игрока $player
+    fail: ''
+  fillwand:
+    name: Заполнить палочку
+    description: Заполняет твою палочку заклинаниями
+    no_wand: Ты должен держать палочку в руках!
+    fail: ''
+  spellshop:
+    name: Изучение заклинаний
+    title: '&rЗаклинания $path ($balance&0)'
+    description: |-
+      Изучай новые заклинания за Очки Заклинаний.
+      Когда ты изучишь все заклинания текущего ранга, ты будешь повышен!
+    no_items: Тебе нечего здесь покупать
+    no_path: Нечего здесь изучать.
+    no_upgrade: Больше здесь ничего нет.
+    no_required_path: Ты должен повыситься до ранга $path&r!
+    no_path_end: Ты должен изучить все заклинания ранга $path&r!
+    no_wand: Ты должен держать в руке палочку!
+    confirm_title: Изучить $item
+    selected: "t:&d&oТы изучил \n&r&6$item\na:&r&d&o-&r&a$cost"
+    fail: ''
+  engineershop:
+    name: Магазин Инженера
+    title: Откат ($balance&0)
+    description: Разблокировать уровень Инженера
+    confirm_title: Повыситься до Инженера
+    fail: ''
+  architectshop:
+    name: Магазин Архитектора
+    title: Поглощение ($balance&0)
+    description: Разблокировать уровень Архитектора
+    confirm_title: Повыситься до Архитектора
+    fail: ''
+  conduitshop:
+    name: Магазин Магистра
+    title: Бекап ($balance&0)
+    description: Разблокировать уровень Магистра
+    confirm_title: Повыситься до Магистра
+    fail: ''
+  bookshop:
+    name: Магазин книг заклинаний
+    title: Книги заклинаний
+    description: Купить книги заклинаний
+    cost_lore: Бесплатно!
+    confirm_title: Получить $item
+    deducted: '&d&oТы получил &r&6$item'
+  tweakshop:
+    name: Магазин
+    title: Магазин
+    description: Изменяет палочку
+    cost_lore: Бесплатно!
+    not_applicable: Твоя палочка уже имеет $item
+    confirm_title: Получить $item
+    deducted: '&d&oТы получил &r&6$item'
+  progressmenu:
+    name: Магия
+    title: Магия
+    selected: ''
+    selected_free: ''
+    cast_fail: ''
+    no_template: '&cНельзя кастомизировать $wand&c.'
+  wandinstructions:
+    name: Инструкция
+    description: Информация о прокачке и о том как пользоваться палочкой
+  appearanceshop:
+    name: Внешний вид
+    description: Измени палочку по своему вкусу!
+    title: Внешний вид ($balance&0)
+    selected: Выбран внешний вид - $item
+    not_applicable: Твоя палочка уже выглядит как $item
+    no_template: '&cНельзя изменить вид $wand&c.'
+  bowappearanceshop:
+    name: Внешний вид лука
+    description: Измени лук по своему вкусу!
+    title: Внешний вид лука ($balance&0)
+    selected: Выбран внешний вид - $item
+    not_applicable: Твой лук уже выглядит как $item
+    no_template: '&cНельзя изменить вид $wand&c.'
+  swordappearanceshop:
+    name: Внешний вид меча
+    description: Измени меч по своему вкусу!
+    title: Внешний вид меча ($balance&0)
+    selected: Выбран внешний вид - $item
+    not_applicable: Твой меч уже выглядит как $item
+    no_template: '&cНельзя изменить вид $wand&c.'
+  controlsmenu:
+    name: Управление
+    description: Изменить управление палочкой
+    title: Управление
+    confirm_title: Изменить на $item
+    selected: '&d&oТы выбрал &r&6$item'
+    no_template: '&cНельзя изменять настройки $wand&c.'
+  colorshop:
+    name: Цвет
+    description: Измени цвет эффекта палочки
+    title: Цвет эффекта ($balance&0)
+    selected: Изменено на $item
+  effectshop:
+    name: Эффекты
+    description: Добавляет визуальные эффекты
+    title: Эффекты ($balance&0)
+    selected: Изменено на $item
+    confirm_title: $item
+  upgradeshop:
+    name: Магазин улучшений палочки
+    title: Улучшения палочки ($balance&0)
+    description: Улучшает твою палочку
+    not_applicable: У тебя уже есть $item
+  emeraldshop:
+    name: Обмен изумрудов
+    title: Изумруды ($balance&0)
+    description: Обменивай XP на изумруды
+  withdrawals:
+    name: Вывод
+    description: Получай деньги за драгоценные камни
+    cost_lore: Вывести $cost
+    deducted: '&d&oТы вывел &r&a$cost &r&d&oза &r&6$item'
+  deposits:
+    name: Депозит
+    description: Получай драгоценные камни за деньги
+    cost_lore: Депозит $cost
+    deducted: '&d&oТы вложил &r&a$cost &r&d&oи получил &r&6$item'
+  spshop:
+    name: Магазин ОЗ
+    description: Обменяй деньги на Очки Заклинаний
+  lootshop:
+    name: Продажа лута
+    description: Получай деньги за лут с убитых мобов
+    title: Продать лут ($balance&0)
+  wandshop:
+    name: Магазин палочек
+    title: Палочки ($balance&0)
+    description: Купить волшебную палочку
+  mobshop:
+    name: Магазин мобов
+    title: Мобы ($balance&0)
+    description: Купить яйца призыва
+  spawnershop:
+    name: Магазин спавнеров
+    title: Спавнеры ($balance&0)
+    description: Купить спавнеры мобов
+  broomshop:
+    name: Магазин мётел
+    title: Мётлы ($balance&0)
+    description: Купить мётлы
+  magicitemshop:
+    name: Магазин магических предметов
+    title: Магические предметы ($balance&0)
+    description: Здесь можно приобрести магические артефакты за игровую валюту.
+  itemshop:
+    name: Магазин предметов
+    title: Магазин ($balance&0)
+    description: Купить Купить Купить!
+  buyshop:
+    name: Покупка
+    title: Магазин ($balance&0)
+    description: Купить Купить Купить!
+  sellshop:
+    name: Продажа
+    title: Продажа ($balance&0)
+    description: Продать Продать Продать!
+    insufficient: '&cТребуется &4$cost'
+    confirm_title: Продать $item
+    deducted: '&d&oТы продал &r&6$item &r&d&oза &r&a$earn'
+  fxdemo:
+    name: Демонстрация визуальных эффектов
+    description: Показывает различные эффекты
+  soundtest:
+    name: Кастомные звуки
+    description: Демонстрирует все новые звуки плагина
+  fx:
+    name: Визуальная частица
+    description: Показывает определенную частицу, введи команду /cast fx particle
+      redstone
+  randomtp:
+    name: Случайная телепортация
+    description: Телепортирует тебя в случайную точку
+  note01:
+    name: 1 Нота C Средняя
+  note02:
+    name: 2 Нота C#
+  note03:
+    name: 3 Нота D
+  note04:
+    name: 4 Нота D#
+  note05:
+    name: 5 Нота E
+  note06:
+    name: 6 Нота F
+  note07:
+    name: 7 Нота F#
+  note08:
+    name: 8 Нота G
+  note09:
+    name: 9 Нота G#
+  note10:
+    name: 10 Нота A
+  note11:
+    name: 11 Нота A#
+  note12:
+    name: 12 Нота B
+  note13:
+    name: 13 Нота C Октава
+  note14:
+    name: 14 Нота C#
+  note15:
+    name: 15 Нота D
+  note16:
+    name: 16 Нота D#
+  note17:
+    name: 17 Нота E
+  note18:
+    name: 18 Нота F
+  note19:
+    name: 19 Нота F#
+  note20:
+    name: 20 Нота G
+  note21:
+    name: 21 Нота G#
+  note22:
+    name: 22 Нота A
+  note23:
+    name: 23 Нота A#
+  note24:
+    name: 24 Нота B
+  trinketshop:
+    title: ' ($balance&0)'
+  airscooter:
+    name: Ковер-самолет
+    description: Путешествуйте на воздушной подушке
+  disposal:
+    name: Мусорка
+    description: Навсегда удаляет ненужные предметы
+  projector:
+    name: Проэктор
+    description: Это же я, Марио!
+  sweep:
+    name: Размах
+    description: Мощная атака с разворота
+  dash:
+    name: Рывок
+    description: Рывок вперед, наносящий урон всем врагам впереди
+  throwsword:
+    name: Бросок меча
+    description: Бросает меч в твоего врага
+  boomerang:
+    name: Бумеранг
+    description: Бросает бумеранг - он всегда возвращается обратно!
+  evade:
+    name: Уворот
+    description: Телепортирует в случайную ближайшую точку
+  backflip:
+    name: Обратное сальто
+    description: Быстрый кувырок, помогающий увернуться от врагов
+    fail: a:Недостаточно места!
+  equation:
+    name: Тестирование уравнений
+    description: |-
+      Отредактируй spells.yml, чтобы протестировать свое уравнение путем добавления
+      equation:
+        parameters:
+          equation: "attribute * 5
+  add_protection:
+    name: Добавить защиту
+    description: |-
+      Добавляет защиту от всех типов урона к твоей палочке.
+      Эта защита действует только тогда, когда ты держишь свою палочку.
+  add_fall_protection:
+    name: Добавить невесомость
+    description: |-
+      Добавляет зачарование Невесомость к твоей палочке.
+      Эта защита действует только тогда, когда ты держишь свою палочку.
+  add_fire_protection:
+    name: Добавить огнеупорность
+    description: |-
+      Добавляет зачарование Огнеупорность к твоей палочке.
+      Эта защита действует только тогда, когда ты держишь свою палочку.
+  add_physical_protection:
+    name: Добавить физ. защиту
+    description: |-
+      Добавляет защиту от физического урона к твоей палочке.
+      Эта защита действует только тогда, когда ты держишь свою палочку.
+  add_projectile_protection:
+    name: Добавить защиту от снарядов
+    description: |-
+      Добавляет зачарование Защита от снарядов к твоей палочке.
+      Эта защита действует только тогда, когда ты держишь свою палочку.
+  add_explosion_protection:
+    name: Добавить взрывоустойчивость
+    description: |-
+      Добавляет зачарование Взрывоустойчивость к твоей палочке.
+      Эта защита действует только тогда, когда ты держишь свою палочку.
+  add_damage:
+    name: Увеличить урон
+    description: |-
+      Увеличивает урон, наносимый при ударе при помощью оружия
+       (а не заклинания).
+  add_sharpness:
+    name: Заострить меч
+    description: Добавляет зачарование Острота к твоему мечу.
+  remove_protection:
+    name: Убрать защиту
+    description: Обменять на Очки Заклинаний
+  remove_fall_protection:
+    name: Убрать невесомость
+    description: Обменять на Очки Заклинаний
+  remove_fire_protection:
+    name: Убрать огнеупорность
+    description: Обменять на Очки Заклинаний
+  remove_physical_protection:
+    name: Убрать физ. защиту
+    description: Обменять на Очки Заклинаний
+  remove_projectile_protection:
+    name: Убрать защиту от снарядов
+    description: Обменять на Очки Заклинаний
+  remove_explosion_protection:
+    name: Убрать взрывоустойчивость
+    description: Обменять на Очки Заклинаний
+  magictorch:
+    name: Волшебный факел
+    description: Свет следует за тобой!
+  wandbuffshop:
+    name: Баффы для палочки
+    description: |-
+      Добавляет бафф к твоей палочке.
+      Они действуют только тогда, когда ты держишь свою палочку.
+    cast_fail: '&cЭтот бафф прокачан до максимального уровня!'
+    selected: '&d&oТы купил &r&6$item &r&d&oза &r&a$cost'
+    no_template: '&cТы не можешь добавить этот бафф к $wand.'
+  wanddebuffshop:
+    name: Рефанд
+    description: Снимает баффы с палочки и возвращает ОЗ
+    property_min: '&cУ тебя нет этого баффа!'
+    cast_fail: '&cУ тебя нет этого баффа!'
+    selected: '&d&oТы выбрал &r&6$item'
+    no_template: '&c$wand&c не имеет этот бафф.'
+  mute:
+    name: Мут
+    description: Запрещает писать в чат игроку
+  nobabies:
+    name: Взросление
+    description: Превращает всех маленьких мобов во взрослых
+  vanish:
+    name: Невидимость
+    description: Делает тебя полностью невидимым.
+  ledger:
+    name: Кошелек
+    title: Кошелек
+    header: '&2&lБаланс'
+    currency_prefix: '&7&l'
+    value_prefix: '&0'
+  kamikaze:
+    name: Камикадзе
+    description: Призывает моба, который взрывается после смерти
+  decoy:
+    name: Обманка
+    description: Создает фальшивого двойника
+    cancel: Обманка исчезла!
+  piggyback:
+    name: Piggyback
+    description: Who's riding what, now?
+  snap:
+    name: ЩЕЛЧОК БЕСКОНЕЧНОСТИ
+    descrition: Превращает в пепел половину живых существ Вселенной
+  powerstone:
+    name: Камень Силы
+    description: Высвобождает разрушительную волну энергии
+  reset:
+    name: Очистить данные
+    title: Очистить данные?
+    selected_free: Ты очистил свои данные
+    confirm_title: ТЫ ПРАВДА УВЕРЕН?
+  aqualung:
+    name: Акваланг
+    description: Последний глоток воздуха
+    usage: Единожды пополняет запас воздуха, когда он заканчивается
+  critical:
+    name: Крит
+    description: Шанс нанести дополнительный урон
+    upgrade_description: Увеличен шанс нанести критический урон
+  bring:
+    name: Призвать
+    description: Телепортирует выбранного игрока к тебе
+    title: 'Телепортировать:'
+  goto:
+    name: Телепорт к игроку
+    description: Телепортирует к выбранному игроку
+    title: 'Телепортироваться к:'
+  feed:
+    name: Накормить
+    description: Восстанавливает голод и немного исцеляет игрока
+    usage: Дает 16 хлеба
+    title: 'Накормить и вылечить:'
+  manageshop:
+    name: Управление магазином
+    description: Настроить свой магазин
+    moved: Выбран новый сундук
+    teleported: Обновлено имя продавца, продавец был телепортирован к тебе
+    removed: Убран Продавец
+    remove_label: Убрать продавца (НАВСЕГДА!)
+    move_label: Телепортировать Продавца Сюда
+    confirm_title: $item
+    selected_free: ''
+    title: Управление магазином
+  vengeance:
+    name: Месть
+    description: Поглощает полученный урон, затем высвобождает его в виде взрыва
+    upgrade_description: Увеличен урон
+  soulburn:
+    name: Ожог Души
+    description: Наносит урон, зависящий от количества отсутствующей маны у цели
+    usage: Наносит постоянный урон мобам
+    upgrade_description: Увеличен максимальный урон, уменьшена перезарядка
+  dailykit:
+    name: Daily Kit
+    description: Gives some items once a day
+  wolfhouse:
+    name: База
+    description: Создает самостроющуюся базу
+  wolfhouse_build:
+    name: Расширить базу
+  wolfhouse_clear:
+    name: Самоуничтожение базы
+  wolfhouse_dome:
+    name: Купол базы
+  wolfhouse_shields:
+    name: Щиты базы
+  convert:
+    name: Конвертация
+    description: Конвертирует сферическую область блоков
+    usage: Не заполняет пустые блоки
+    cast_finish: Было конвертировано @blocks блоков в $material
+    upgrade_description: Увеличен радиус
+  superconvert:
+    name: СуперКонвертация
+    description: Конвертирует большую область блоков
+    usage: Используй дважды, чтобы применить
+    target_selected: Используй еще раз, чтобы применить
+    fail: Слишком большая область!
+    cast_finish: Было конвертировано @blocks блоков в $material
+    upgrade_description: Увеличен максимальный радиус
+  supercollapse:
+    name: СуперОбвал
+    description: Обрушает большую область
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы применить
+    fail: Слишком большая область!
+    cast_finish: Обрушено @blocks блоков
+  superblob:
+    name: СуперСфера
+    description: Создает плотную сферу из блоков
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superhemisphere:
+    name: СуперПолушарие
+    description: Создает большое полушарие
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  supercylinder:
+    name: СуперЦилиндр
+    description: Создает большое кольцо
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superwalls:
+    name: СуперСтены
+    description: Создает высокие стены вокруг выбранной области
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superrepair:
+    name: СуперПочинка
+    description: Чинит выбранную территорию
+    usage: Используй дважды, чтобы починить
+    target_selected: Используй еще раз, чтобы починить
+    fail: Слишком большая область!
+    cast_finish: Починено @blocks блоков
+  iterate:
+    name: Повторить
+    description: Создает линию из блоков
+    usage: Ты должен смотреть на блок
+    cast: Заполнено @blocks блоков
+  column:
+    name: Колонна
+    description: Создает большую колонну из блоков
+    cast: Заполнено @blocks блоков
+  rollback:
+    name: Откат
+    description: Откатывает текущее заклинание
+    cast: '&5Ты отменил заклинание &r&6$spell игрока &d&o$target'
+    cast_player: '&5Ты отменил заклинание &r&6$spell игрока &d&o$target'
+    alternate_up: '&5Ты отменил свое заклинание&r&6 $spell'
+    alternate_down: '&5Ты отменил заклинание &r&6$spell игрока &d&o$target'
+    deactivate: '&5Ты отменил свое заклинание&r&6 $spell'
+    fail: Нечего отменять
+    no_target: Нечего отменять здесь
+  commit:
+    name: Сохранить
+    description: Сохраняет последствия заклинаний
+    usage: Делает текущие заклинания неотменяемыми
+    cast_player: Ты сохранил заклинания игрока $target
+    cast: Ты сохранил свои заклинания
+    fail: Нечего сохранять
+  alter:
+    name: Изменить
+    description: Изменяет определенные объекты
+    usage: Используй на шерсть, бетон, овец и т.д
+    cast_entity: Ты изменил $target
+    cast: Ты изменил свою цель
+    fail: Нельзя это сделать
+  superalter:
+    name: Изменить все
+    description: Изменяет все объекты
+    usage: Используй на шерсть, бетон, овец и т.д
+    cast: Изменено @blocks блоков
+    fail: Нельзя это сделать
+  sphere:
+    name: Сфера
+    description: Создает сферу
+    cast_finish: Ты создал сферу, используя $material
+  backup:
+    name: Бэкап
+    description: Сохраняет область для Починки
+    cast_finish: Сохранено
+    target_selected: Используй еще раз, чтобы сохранить
+  superbackup:
+    name: СуперБэкап
+    description: Сохраняет большую область для Починки
+    usage: Используй дважды, чтобы сохранить
+    fail: Слишком большая область!
+    cast_finish: Сохранена выделенная область
+    target_selected: Используй еще раз, чтобы сохранить
+  superemp:
+    name: СуперЭлектромагнитный импульс
+    description: Электризует большую область
+    usage: Используй дважды, чтобы применить
+    fail: Слишком большая область!
+    cast_finish: Электризовано @blocks блоков
+    target_selected: Используй еще раз, чтобы применить
+  supershell:
+    name: СуперОболочка
+    description: Создает большую оболочку
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superdisc:
+    name: СуперДиск
+    description: Создает большой диск
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superring:
+    name: СуперКольцо
+    description: Создает большое кольцо
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superdome:
+    name: СуперКупол
+    description: Создает большой купол
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superpyramid:
+    name: СуперПирамида
+    description: Создает большую пирамиду
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superbox:
+    name: СуперКоробка
+    description: Создает большую коробку
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  supercube:
+    name: СуперКуб
+    description: Создает куб из блоков
+    usage: Используй дважды, чтобы создать
+    target_selected: Используй еще раз, чтобы создать
+    fail: Слишком большая область!
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличен максимальный радиус
+  superblast:
+    name: СуперВзрыв
+    description: Подрывает большую территорию
+    cast_finish: Взорвано @blocks блоков
+  box:
+    name: Коробка
+    description: Создает большую коробку из блоков
+    cast_finish: Заполнено @blocks блоков, используя $material
+  pillar:
+    name: Столб
+    description: Ставит столб из блоков
+    cast: Ты создал столб, используя $material
+    no_target: Больше нельзя возвести столб
+  raise:
+    name: Возвысить
+    description: Возвышает гору
+    cast: Ты создал гору
+    upgrade_description: Увеличен радиус
+  flatten:
+    name: Разровнять
+    description: Понижает уровень блоков
+    cast: Ты разровнял горы
+    upgrade_description: Увеличен радиус
+  place:
+    name: Поставить блок
+    description: Ставит блок
+    cast: Ты поставил $material
+  transmute:
+    name: Трансмутация
+    description: Изменяет твою последнюю конструкцию
+    no_target: Нечего изменять
+    cast: Ты изменил материал своей структуры на $material
+  fill:
+    name: Заполнить
+    description: Заполняет выбранную область
+    usage: Используй дважды, чтобы заполнить
+    target_selected: Используй еще раз, чтобы заполнить, используя $material
+    fail: Нельзя заполнить столько!
+    cast_finish: Заполнено @blocks блоков, используя $material
+  superregenerate:
+    name: СуперРегенерация
+    description: Регенерирует весь чанк
+    usage: Используй дважды, чтобы регенерировать
+    fail: Нельзя регенерировать такую область!
+    cast: Регенерирую...
+    target_selected: Используй еще раз, чтобы регенерировать
+    cast_finish: Регенерировано @blocks блоков
+  regenerate:
+    name: Регенерация
+    description: Регенерирует выбранную область
+    fail: Нельзя регенерировать такую область!
+    usage: Используй дважды, чтобы регенерировать
+    cast: Регенерирую...
+    target_selected: Используй еще раз, чтобы регенерировать
+    cast_finish: Регенерировано @blocks блоков
+  recurse:
+    name: Рекурсия
+    description: Рекурсивно заполняет блоки
+    cast_finish: Заполнено @blocks блоков, используя $material
+    upgrade_description: Увеличена глубина рекурсии и скорость постройки
+  floodfill:
+    name: Заполнить водой
+    description: Заполняет водой
+    cast_finish: Заполнено @blocks блоков, используя $material
+  absorb:
+    name: Поглощение
+    description: Поглощает материал
+    usage: Добавляет материалы для твоей палочки
+    fail: Это заклинание требует палочку
+    cast: Поглощен $material
+    upgrade_description: |-
+      Используй заклинание с зажатым шифтом,
+      Чтобы поглотить все вариации этого блока
+  bridge:
+    name: Мост
+    description: Создает мост из блоков
+    usage: Может быть использовано в полете
+    no_target: Нельзя использовать здесь
+    cast: Ты создал мост, используя $material
+  brushselect:
+    name: Выбор кисти
+    descriptions: Выбрать кисть
+    usage: Кисти используются для заклинаний строительства
+    fail: Ты должен держать палочку в руке!
+    variant_name: '&b$variant &3+Варианты'
+    variant_description: Выбери тип $variant
+  tree:
+    name: Дерево
+    description: Мгновенно выращивает дерево
+    fail: Твое дерево не выросло
+    cast: Ты вырастил $tree!
+  forest:
+    name: Лес
+    description: Выращивает лес
+    fail: Нечего выращивать
+    cast: Ты создал лес из деревье!
+  supertorch:
+    name: СуперФакел
+    description: Создает вечный факел или светящийся камень
+    no_target: Нельзя поместить факел здесь
+    cast: Гори якро!
+  tunnel:
+    name: Туннель
+    description: Выкапывает туннель перед тобой
+    no_target: Ты должен стоять на чем-то!
+    cast: Выкопано @blocks блоков
+  toggleair:
+    name: Изменить модификатор
+    description: |-
+      Изменяет поведение некоторых заклинаний:
+       Заполнить, СуперСфера и т.д,
+       выбирая какой тип блоков они могут изменить
+    ignoreair: '&fВоздух &cтеперь не будет изменяться &bзаклинаниями строительства'
+    onlyair: '&fТолько воздух &aтеперь будет изменяться &bзаклинаниями строительства'
+    normal: '&fВсе типы блоков &aтеперь будут изменяться &bзаклинаниями строительства'
+  fling|5:
+    upgrade_description: |-
+      Увеличена скорость.
+      Теперь может быть использовано во премя полета на элитре
+  simulate:
+    name: Симуляция
+    description: Игра «Жизнь» Дж. Конвея
+    cast: Ты наполнил мир жизнью
+  animate:
+    name: Анимировать
+    description: Анимирует выбранный материал
+    cast: Ты создал Волшебного Голема
+    no_target: Ты должен нацелиться на два блока
+    fail: Невозможно создать Голема, используя $material
+    cast_broadcast: '&c&o$name &r&5появился на свет'
+    death_broadcast: '&c&o$name &r&5был уничтожен'
+  simulate3:
+    name: Симуляция 3D
+    description: Игра «Жизнь» Дж. Конвея ... В 3D!
+    cast: Ты наполнил мир жизнью
+  glider:
+    name: Глайдер
+    description: Создает сильного Автоматона
+    cast: Оно живое!
+  virus:
+    name: Вирус
+    description: Тебе не нужно это делать...
+    cast: Что ты наделал?
+    cast_broadcast: '&c&o$name &r&5появился на свет'
+    death_broadcast: '&c&o$name &r&5был уничтожен'
+    fail: Невозможно создать Вирус, используя $material
+  worm:
+    name: Червь
+    description: Высвобождает опасного червя
+    cast: Это не вирус!
+    cast_broadcast: '&c&o$name &r&5появился на свет'
+    death_broadcast: '&c&o$name &r&5был уничтожен'
+    fail: Невозможно создать Червя, используя $material
+  snake:
+    name: Змей
+    description: Создает смертоносное змееподобное существо
+    cast: Ссссс-с!
+    cast_broadcast: '&c&o$name &r&5появился на свет'
+    death_broadcast: '&c&o$name &r&5был уничтожен'
+    fail: Невозможно создать Змея, используя $material
+  hunter:
+    no_target: Ты должен нацелиться на два блока
+    name: Охотник
+    description: Создает смертоносного автоматона
+    fail: Невозможно создать Охотника, используя $material
+    cast: Уничтожить всех людишек!
+    cast_broadcast: '&c&o$name &r&5появился на свет'
+    death_broadcast: '&c&o$name &r&5был уничтожен'
+  defender:
+    name: Защитник
+    description: Создает защитника, который будет охотиться на автоматонов
+    cast: Я буду сражаться за тебя, человек
+    fail: Невозможно создать Защитника, используя $material
+    cast_broadcast: '&c&o$name &r&5появился на свет'
+    death_broadcast: '&c&o$name &r&5был уничтожен'
+  life:
+    name: Жизнь
+    description: Создает жизнь (Игра «Жизнь» Дж. Конвея)
+    cast: Время экспериментов!
+  life3:
+    name: Жизнь 3D
+    description: Создает жизнь 3D (Игра «Жизнь» Дж. Конвея)
+    cast: Безумная наука!
+time:
+  wait_seconds: еще $seconds сек.
+  wait_minutes: еще $minutes мин.
+  wait_hours: еще $hours ч.
+  wait_moment: мгновение
+  wait_second: секунду
+  wait_minute: минуту
+  wait_hour: еще час
+  description_hour: час
+  description_hours: $hours ч.
+  description_minute: минуту
+  description_minutes: $minutes мин.
+  description_second: секунду
+  description_seconds: $seconds сек.
+  description_moment: мгновение
+  description: '&eПерезарядка: &6$time'
+  mage_description: '&cИстощение: &6$time'
+wand:
+  default_name: Палочка
+  upgrade_default_description: Улучшит твою палочку.
+  upgrade_item_description: |-
+    &eНажми в инвентаре ЛКМ этим предметом
+    &eпо своей палочке, чтобы изменить ее
+  spell_item_description: ''
+  brush_item_description: ''
+  copy_material_name: Копия
+  copy_material_description: Заполняет выбранным материалом
+  erase_material_name: Ластик
+  erase_material_description: Заполняет воздухом
+  clone_material_name: Клонировать
+  clone_material_description: Копирует блоки
+  replicate_material_name: Репликация
+  replicate_material_description: Реплицирует клонируемую цель
+  clone_material_activated: a:Клонирование выбрано
+  replicate_material_activated: a:Репликация выбрана
+  erase_modifier_activated: a:Ластик выбран
+  map_material_name: Карта $id
+  map_material_name_scaled: Карта $id ($sizex$size)
+  map_material_description: |-
+    Создает пиксель-арт из последней карты,
+    которую ты держал в руке
+  schematic_material_description: Использует $schematic для строительства.
+  building_material_description: Использует $material
+  upgrade_uses: '&aДобавляет $count использований'
+  upgrade_uses_singular: '&aДобавляет $count использование'
+  uses_remaining_brief: '&c$count использований'
+  uses_remaining_singular: '&c$count использование'
+  uses_remaining: $count использований осталось
+  enchantment_level_1: I
+  enchantment_level_2: II
+  enchantment_level_3: III
+  enchantment_level_4: IV
+  enchantment_level_5: V
+  enchantment_level_max: X
+  spell_count: 'Изучено Заклинаний: $count'
+  material_count: Имеет $count Материалов
+  upgrade_spell_count: Добавляет $count Заклинаний
+  upgrade_material_count: Добавляет $count Материалов
+  mana_max: '&eМана: $amount'
+  mana_amount: '&eМана: $amount'
+  mana_amount_boosted: '&eМана: $amount &f(&b$mana&f)'
+  mana_regeneration: '&eВосстановление маны: $amount/сек.'
+  mana_per_damage: '&eЯрость маны: $amount/HP'
+  mana_regeneration_boosted: '&eВосстановление маны: $amount &f(&b$mana&f)/сек.'
+  mana_boost: '&eУвеличение маны: $percent%'
+  mana_regeneration_boost: '&eУвеличение восстановления маны: $percent%'
+  earn_multiplier: '&6Увеличение полученных ОЗ: $percent%'
+  block_chance: '&bШанс блока $roman'
+  reflect_chance: '&bШанс отразить $roman'
+  cost_reduction: '&6Снижение стоимости $roman'
+  consume_reduction: '&6Снижение потребления'
+  cooldown_reduction: '&6Снижение перезарядки $roman'
+  power: '&6Сила $roman'
+  attributes: '&d$attribute $value'
+  property_stack: +$property
+  property_stack_negative: '&c$property'
+  property_value: $property
+  property_value_negative: '&c$property'
+  upgrade_slot: '&6Вставляется в слот&7: &3$slot'
+  slots_header: '&6Слоты&7:'
+  empty_slot: ' &8- &7(&2Пустой &2слот: &6$slot&7)'
+  slotted: ' &8- &7$slotted'
+  item_attributes:
+    GENERIC_ATTACK_DAMAGE: Урон от атаки
+  prefixes:
+    protection: '&3'
+    strength: '&2'
+    weakness: '&4'
+    enchantment: '&7'
+  protection:
+    overall: Защита $roman
+    physical: Физ. защита $roman
+    projectile: Защита от снарядов $roman
+    fall: Защита от падения $roman
+    fire: Защита от огня $roman
+    explosion: Защита от взрывов $roman
+    magic: Защита от магии $roman
+    unknown: Защита от $type $roman
+    drowning: Защита от утопления $roman
+    lightning: Зашита от молний $roman
+    hot_floor: Защита от магмы $roman
+    suffocation: Защита от удушья $roman
+    cramming: Защита от сдавливания $roman
+    thorns: Защита от шипов $roman
+    poison: Защита от яда $roman
+    wither: Защита от иссушения $roman
+  strength:
+    overall: Урон $roman
+    physical: Физ. урон $roman
+    projectile: Урон от снарядов $roman
+    fall: Урон от падения $roman
+    fire: Урон от огня $roman
+    explosion: Урон от взрывов $roman
+    magic: Магический урон $roman
+    unknown: $type урон $roman
+    drowning: Урон от утопления $roman
+    lightning: Урон от молний $roman
+    hot_floor: Урон от магмы $roman
+    suffocation: Урон от удушья $roman
+    cramming: Урон от сдавливания $roman
+    thorns: Урон от шипов $roman
+    poison: Урон от яда $roman
+    wither: Урон от иссушения $roman
+  weakness:
+    overall: Уязвимость $roman
+    physical: Физ. уязвимость $roman
+    projectile: Уязвимость к снарядам $roman
+    fall: Уязвимость к падению $roman
+    fire: Уязвимость к огню $roman
+    explosion: Уязвимость к взрывам $roman
+    magic: Уязвимость к магии $roman
+    unknown: $type Уязвимость $roman
+    drowning: Уязвимость к утоплению $roman
+    lightning: Уязвимость к молниям $roman
+    hot_floor: Уязвимость к магме $roman
+    suffocation: Уязвимость к удушью $roman
+    cramming: Уязвимость к сдавливанию $roman
+    thorns: Уязвимость к шипам $roman
+    poison: Уязвимость к яду $roman
+    wither: Уязвимость к иссушени $roman
+  enchantment:
+    arrow_damage: Урон стрел $roman
+    arrow_fire: Горящая стрела
+    arrow_infinite: Бесконечные стрелы
+    arrow_knockback: Откидывание $roman
+    binding_curse: Проклятие несъемности
+    channeling: Громовержец
+    damage_all: Острота $roman
+    damage_arthropods: Бич членистоногих $roman
+    damage_undead: Небесная кара $roman
+    depth_strider: Ходьба под водой $roman
+    dig_speed: Эффективность $roman
+    durability: Прочность $roman
+    fire_aspect: Заговор огня
+    frost_walker: Ледоход $roman
+    impaling: Пронзание
+    knockback: Отдача $roman
+    loot_bonus_blocks: Удача $roman
+    loot_bonus_mobs: Добыча $roman
+    loyalty: Верность
+    luck: Везучий рыбак $roman
+    lure: Приманка $roman
+    mending: Починка
+    multishot: Тройной выстрел
+    oxygen: Подводное дыхание $roman
+    protection_environmental: Защита $roman
+    protection_explosions: Взрывоустойчивость $roman
+    protection_fall: Невесомость $roman
+    protection_fire: Огнестойкость $roman
+    protection_projectile: Защита от снарядов $roman
+    riptide: Тягун
+    silk_touch: Шелковое касание
+    sweeping_edge: Разящий клинок $roman
+    thorns: Шипы $roman
+    vanishing_curse: Проклятие утраты
+    water_worker: Подводник
+  potion_effect: '&b$effect $roman'
+  super_powered: '&3Сверхмощный'
+  super_protected: '&3Неуязвимость'
+  spell_aura: '&bАура: &6$spell'
+  costs_description: Потребляет $description
+  active_costs_description: Потребляет $description в секунду
+  range_description: '&9Дальность: &6$range &9м.'
+  owner_description: '&2&oПалочка $name'
+  bound_description: '&3&oВладелец: $name'
+  unmodifiable: Эта палочка не может быть модифицирована
+  player_unmodifiable: Палочка игрока $name не может быть модифицирована
+  bound_to_other: Эта палочка тебе не принадлежит
+  bound: Эта палочка принадлежит игроку $name
+  spell_added: '&d&oТы изучил заклинание &r&6$name'
+  brush_added: '&d&oТы изучил кисть &r&7$name'
+  player_spell_upgraded: |-
+    &d&oЗаклинание &r&6$name &d&oигрока $player
+    &d&oбыло улучшено до &3$level
+  spell_upgraded: '&r&6$name &d&oбыло улучшено до &3$level'
+  spell_override_upgraded: '&r&6$name &d&oбыло улучшено'
+  upgraded_property: '&r&dТы получил улучшение &r&b$name'
+  spell_progression: '&r&6$name &d&oуровня &3$level&d&o/&3$max_level'
+  mana_added: '&r&dДобавлено $value маны'
+  hotbar_count: $amount хотбар(а)
+  player_upgraded: Палочка игрока $name была улучшена
+  player_not_upgraded: Палочка игрока $name не была улучшена
+  player_spells_levelled: Улучшено $count заклинаний игрока $name
+  player_spells_not_levelled: Улучшено 0 заклинаний игрока $name
+  spells_levelled: Улучшено $count твоих заклинаний
+  spells_not_levelled: Улучшено 0 твоих заклинаний
+  no_wand: Ты должен держать палочку в руке
+  player_no_wand: $name не держит в руке палочку
+  no_item: Ты должен держать предмет в руке
+  player_no_item: $name не держит в руке предмет
+  reorganized: $wand &bбыла переорганизирована
+  player_reorganized: Палочка игрока $name была переорганизирована
+  alphabetized: $wand &bбыла отсортирована по алфавиту
+  player_alphabetized: Палочка игрока $name была отсортирована по алфавиту
+  already_enchanted: Предмет $item уже является палочкой
+  enchanted: Предмет $item превратился в палочку
+  player_enchanted: Предмет $item игрока $name превратился в палочку
+  unenchanted: Твоя палочка превратилась в обычный предмет
+  player_unenchanted: Палочка игрока $name превратилась в обычный предмет
+  no_path: '&r&4$wand &4не может быть улучшена'
+  max_enchanted: '&r&4$wand &4больше не может быть улучшена'
+  duplicated: Твоя палочка была скопирована
+  player_duplicated: Палочка игрока $name была скопирована
+  restored: Твои палочки были восстановлены
+  player_restored: Палочки игрока $name были восстановлены
+  not_restored: У тебя нечего восстанавливать
+  player_not_restored: У игрока $name нечего восстанавливать
+  setbound: Твоя палочка теперь привязана к тебе
+  player_setbound: Палочка игрока $name теперь привязана к нему
+  unbound: Твоя палочка больше не привязана к тебе
+  player_unbound: Палочка игрока $name больше не привязана к нему
+  unboundall: Все твои палочки больше не привязаны к тебе
+  player_unboundall: |-
+    Все палочки игрока $name больше не привязаны к нему.
+    Их инвентарь не был очищен!
+  notunbound: У тебя нет привязанных палочек '$wand'
+  player_notunbound: Игрок $name не имеет привязанных палочек '$wand'
+  unlocked: Твоя палочка была разблокирована
+  player_unlocked: Палочка игрока $name была разблокирована
+  unknown_template: Неизвестное название $name
+  reconfigured: Палочка изменена
+  not_reconfigured: Палочка не изменена
+  removed_property: Убрано свойство $name
+  no_property: $wand не имеет свойства $name
+  player_reconfigured: Палочка игрока $name была изменена
+  player_not_reconfigured: Палочка игрока $name не была изменена
+  filled: '&b$wand &bтеперь содержит все твои заклинания'
+  player_filled: Палочка игрока $name была заполнена заклинаниями
+  renamed: Твоя палочка была переименована
+  player_renamed: Палочка игрока $name была переименована
+  self_destruct: Древний артефакт рассыпается в твоих руках
+  no_permission: '&r&4Тебе не разрешено использовать ''$wand'' &r&4здесь.'
+  single_spell: Палочка с заклинанием $spell
+  fully_enchanted: '&cБольше нечего изучать &4(на данный момент)'
+  need_more_levels: Нужно хотя бы &r&4$levels &d&oуровней для зачарования
+  require_more_levels: You must enchant at a higher level
+  randomized_lore: Какая палочка достанется тебе?
+  randomized_name: Коробочка с Палочкой
+  upgrade_name: Улучшение - $name
+  randomized_description: '&o&2$description'
+  description_lore: '&o&a$description'
+  path_lore: ''
+  wand_instructions_header: |-
+    &8 ----------------------------------------------------
+    &8|
+    &8|   &b&lИНФОРМАЦИЯ
+    &8|
+  wand_instructions_footer: |-
+    &8|
+    &8 ----------------------------------------------------
+  sp_instructions: |-
+    &8| &7> &fТы заработал немного &6Очков Заклинаний!
+    &8| &7> &fТвои &6Очки Заклинаний &fотображены над шкалой маны
+    &8| &7> &6ОЗ &fможно потратить в &eстоле зачарования
+    &8| &7> &f для изучения новых заклинаний
+    &8| &7> &fПовторное использование заклинания дает меньше &6ОЗ&f
+    &8| &7> &fПопробуй &dкомбинировать заклинания!
+  currency_instructions: |-
+    &8| &7> &fТы заработал немного &6$currency!
+    &8| &7> &fТвои &6$currency &fотображены над шкалой маны
+    &8| &7> &6$currency &fможно потратить в &eстоле зачарования
+    &8| &7> &f для изучения новых заклинаний
+    &8| &7> &fПовторное использование заклинания дает меньше &6$currency
+    &8| &7> &fПопробуй &dкомбинировать заклинания!
+  bound_instructions: |-
+    &8| &7> &a$wand &9привязан(а) &fк тебе, и его(ее) &9нельзя выбросить
+  spell_instructions: |-
+    &8| &7> &6Взмахни &fсвоей &aпалочкой &fдля
+    &8| &7> &f использования заклинания &d$spell
+  mana_instructions: |-
+    &8| &7> &fЗаклинания требуют &6ману
+    &8| &7> &fОна отображается над хотбаром в виде &5полосы опыта
+  enchant_instructions: |-
+    &8| &7> &fЗарабатывай &6Очки Заклинаний, &fиспользуя заклинания
+    &8| &7> &fИзучай новые заклинания на &eстоле зачарования &fиспользуя &6ОЗ
+  path_instructions: |-
+    &8| &7> &fИзучи все заклиинания ранга &a$path,
+    &8| &7> &fЧтобы получить ранг &a$nextpath&f и увеличить свой запас &6маны
+  page_instructions: |-
+    &8| &7> &a$wand&8 &fтеперь имеет несколько страниц заклинаний!
+    &8| &7> &6Нажми &fза пределами рамки инвентаря, чтобы листать страницы
+  hotbar_count_usage: |-
+    &8| &7> &eУ тебя появился дополнительный хотбар!
+    &8| &7> &fНажми &6$cycle_hotbar, &fчтобы менять хотбары
+  inventory_instructions: |-
+    &8| &7> &fНажми &6$toggle, &fчтобы открыть/закрыть &eинвентарь заклинаний
+    &8| &7> &6Открой свой инвентарь (E)&f, чтобы перетаскивать заклинания
+    &8| &7> &fИспользуй &6цифры на клавиатуре &fдля выбора нужного заклинания
+  chest_instructions: |-
+    &8| &7> &fНажми &6$toggle, &fчтобы открыть/закрыть &eинвентарь заклинаний
+    &8| &7> &6Нажми &fна заклинание для его активации
+  skills_instructions: |-
+    &8| &7> &fНажми &6$toggle, &fчтобы открыть/закрыть &eинвентарь заклинаний
+    &8| &7> &6Перетаскивай &fзаклинания в хотбар, чтобы их активировать
+    &8| &7> &fИспользуй &6цифры на клавиатуре &fдля выбора нужного заклинания
+  cycle_instructions: |-
+    &8| &7> &fНажми &6$cycle&f, чтобы поменять активное заклинание
+  brush_instructions: |-
+    &8| &7> &6Кисти материи &fбыли добавлены к &a$wand
+    &8| &7> &6Шифт+$toggle&f, чтобы выбрать кисть.
+  hotbar_changed: ''
+  spell_activated: $spell
+  upgrade_prefix: '&6'
+  single_use_prefix: '&4'
+  bound_prefix: '&3'
+  unbound_prefix: '&b'
+  has_path_prefix: '&d'
+  unmodifiable_prefix: '&6'
+  spell_prefix: '&6'
+  brush_prefix: '&7'
+  chest_inventory_title: Заклинания
+wands:
+  testwand:
+    name: Тестовая палочка
+    description: Пустая палочка для тестирования заклинаний.
+  default:
+    name: Палочка
+    description: Палочка ранга $path
+  wand:
+    name: Палочка
+    description: Палочка ранга $path
+  starter:
+    name: Начальная палочка
+    description: Палочка с ограниченным потенциалом
+  beginner:
+    name: (Устарело) Палочка Новичка
+    description: Больше не используй это... Используй 'wand' вместо этого.
+  master:
+    name: Палочка Волшебника
+    description: Для демонстрационных целей
+  student:
+    name: Палочка студента
+    description: Для демонстрационных целей
+  apprentice:
+    name: Палочка подмастерья
+    description: Для демонстрационных целей
+  rage:
+    name: Меч Ярости
+    description: Получает энергию во время удара по врагу
+    spell_instructions: |-
+      &8| &7> &fИспользуй &6цифры на клавиатуре&f, чтобы применить заклинание
+      &8| &7> &fЗаклинания требуют &6ману
+      &8| &7> &fОна отображается над хотбаром в виде &5полосы опыта
+    inventory_instructions: |-
+      &8| &7> &fНажми &6$toggle, &fчтобы открыть/закрыть &eинвентарь заклинаний
+  base_sword:
+    wand_instructions_header: |-
+      &8 ----------------------------------------------------
+      &8|
+      &8|   &b&lКАК ПОЛЬЗОВАТЬСЯ МЕЧОМ
+      &8|
+    spell_instructions: |-
+      &8| &7> &fИспользуй &6цифры на клавиатуре&f,
+      &8| &7> &f чтобы применить заклинание &d$spell
+  magicsword:
+    name: Магический меч
+    description: Меч ранга $path
+  base_bow:
+    wand_instructions_header: |-
+      &8 ----------------------------------------------------
+      &8|
+      &8|   &b&lИНФОРМАЦИЯ
+      &8|
+    spell_instructions: |-
+      &8| &7> &6Выпусти стрелу&f, чтобы применить заклинание &d$spell
+  broom_glider:
+    name: Глайдер для метлы
+    upgrade_slot: '&3$slot'
+    upgrade_item_description: |-
+      Нажми в инвентаре ЛКМ этим предметом по своей метле,
+       чтобы улучшить ее
+    description: Позволяет метле лететь бесконечно долго
+  broom_booster:
+    name: Ускоритель для метлы
+    upgrade_slot: '&3$slot'
+    upgrade_item_description: |-
+      Нажми в инвентаре ЛКМ этим предметом по своей метле,
+       чтобы улучшить ее
+    description: Позволяет метле лететь быстрее
+  broomstick:
+    name: Метла
+    description: |-
+      &r&bИспользуй метлу, чтобы быстро перемещаться.
+      &bПикируй вниз, чтобы набрать скорость. Не летай слишком долго!
+    enchant_instructions: ''
+    wand_instructions_header: |-
+      &8 ----------------------------------------------------
+      &8|
+      &8|   &b&lИНФОРМАЦИЯ
+      &8|
+    spell_instructions: |-
+      &8| &7> &fИспользуй метлу, чтобы быстро перемещаться!
+      &8| &7> &fПикируй вниз, чтобы набрать скорость. Не летай слишком долго!
+      &8| &7> &fТвои способности летать на &6метле &fможно улучшить. Практикуйся!
+    bound_instructions: |-
+      &8| &7> &a$wand &9привязан(а) &fк тебе
+  spellbook:
+    name: Книга заклинаний
+    description: Книга заклинаний ранга $path
+    wand_instructions_header: |-
+      &8 ----------------------------------------------------
+      &8|
+      &8|   &b&lИНФОРМАЦИЯ
+      &8|
+    spell_instructions: |-
+      &8| &7> &fИспользуй &6цифры на клавиатуре&f, чтобы применить
+      &8| &7> &f заклинание &d$spell
+    inventory_instructions: |-
+      &8| &7> &fНажми &6$toggle, &fчтобы открыть/закрыть &eинвентарь заклинаний
+      &8| &7> &6Открой свой инвентарь (E)&f, чтобы перетаскивать заклинания
+      &8| &7> &fИспользуй &6цифры на клавиатуре &fдля выбора нужного заклинания
+  skillbook:
+    name: Книга заклинаний
+    description: |-
+      ПКМ, чтобы открыть меню способностей.
+      Перетаскивай их в хотбар, чтобы использовать.
+  magicbow:
+    name: Магический лук
+    description: Лук ранга $path
+  magiccrossbow:
+    name: Магический Арбалет
+    description: '&rАрбалет ранга $path'
+  mastersword:
+    name: Меч мастера
+    description: Легендарный меч борца с тьмой
+  staff:
+    name: Посох
+    description: Используй с умом!
+  admin:
+    name: Админ
+    description: Только для админов
+  developer:
+    name: Кодер
+    description: Узри Матрицу
+  camera:
+    name: Камера
+    description: Делает фотографии мобов и игроков
+  magichat:
+    name: Магическая шляпа
+    description: |-
+      Настоящая шляпа волшебника!
+      Наведи курсор вверх и нажми ПКМ, чтобы надеть ее.
+  wizardhelmet:
+    name: Шарф Волшебника
+    description: Не ломается и не пропадает при смерти!
+  wizardchestplate:
+    name: Роба Волшебника
+    description: Не ломается и не пропадает при смерти!
+  wizardleggings:
+    name: Штаны Волшебника
+    description: Не ломается и не пропадает при смерти!
+  wizardboots:
+    name: Ботинки Волшебника
+    description: Не ломается и не пропадает при смерти!
+  apprenticehelmet:
+    name: Шарф Подмастерья
+    description: Для начинающих магов
+  apprenticechestplate:
+    name: Роба Подмастерья
+    description: Для начинающих магов
+  apprenticeleggings:
+    name: Штаны Подмастерья
+    description: Для начинающих магов
+  apprenticeboots:
+    name: Ботинки Подмастерья
+    description: Для начинающих магов
+  clericchestplate:
+    name: Роба клирика
+    description: Лечит ближайших игроков
+  magneticleggings:
+    name: Магнитные штаны
+    description: Притягивает предметы и опыт
+  rabbitboots:
+    name: Ботинки кролика
+    description: Теплые!
+  flashboots:
+    name: Ботинки Флеша
+    description: Зууууууууууум!
+  rocketboots:
+    name: Реактивные сапоги
+    description: Почувствуй себя космонавтом!
+  hulkboots:
+    name: Ботинки Халка
+    description: Халк ПРЫГАТЬ!
+  goggles:
+    name: Очки Ночного Зрения
+    description: Узри незримое
+  invisiblecloak:
+    name: Мантия Невидимости
+    description: Одна из забытых реликвий
+  minister:
+    name: Министр
+    description: Во имя Магии!
+  miniwolf:
+    name: Мини-Волк
+    description: Посох/палочка NathanWolf
+  borealis:
+    name: Сияние
+    description: Полярное сияние
+  redeffects:
+    name: Красный
+    description: Подбирай цвет с умом!
+  greeneffects:
+    name: Зеленый
+    description: Подбирай цвет с умом!
+  blueeffects:
+    name: Синий
+    description: Подбирай цвет с умом!
+  whiteeffects:
+    name: Белый
+    description: Подбирай цвет с умом!
+  blackeffects:
+    name: Черный
+    description: Подбирай цвет с умом!
+  purpleeffects:
+    name: Фиолетовый
+    description: Подбирай цвет с умом!
+  yelloweffects:
+    name: Желтый
+    description: Подбирай цвет с умом!
+  aquaeffects:
+    name: Аква
+    description: Подбирай цвет с умом!
+  orangeeffects:
+    name: Оранжевый
+    description: Подбирай цвет с умом!
+  magentaeffects:
+    name: Пурпурный
+    description: Подбирай цвет с умом!
+  grayeffects:
+    name: Серый
+    description: Подбирай цвет с умом!
+  lightgrayeffects:
+    name: Светло-серый
+    description: Подбирай цвет с умом!
+  lightblueeffects:
+    name: Голубой
+    description: Подбирай цвет с умом!
+  pinkeffects:
+    name: Розовый
+    description: Подбирай цвет с умом!
+  browneffects:
+    name: Коричневый
+    description: Подбирай цвет с умом!
+  darkgreeneffects:
+    name: Темно-зеленый
+    description: Подбирай цвет с умом!
+  randomeffects:
+    name: Случайный цвет
+    description: Чувствуешь удачу? Тогда надели свою палочку случайным цветом!
+  bubbleeffects:
+    name: Пузыри
+    description: Вокруг вас начинают летать пузырики
+  rainboweffects:
+    name: Радуга
+    description: Вокруг вас появляются эффекты, меняющие цвет
+  cleareffects:
+    name: Убрать эффекты
+    description: Полностью удаляет визуальные эффекты с палочки
+  haloeffects:
+    name: Нимб
+    description: У вас над головой появляется нимб цвета вашей палочки
+  butterflyeffects:
+    name: Крылья бабочки
+    description: Анимированный эффект крыльев бабочки
+  taileffects:
+    name: Хвост Демона
+    description: Остренький!
+  crowneffects:
+    name: Корона
+    description: Каждому королю нужна корона
+  student_upgrade:
+    name: Улучшение - Студент
+    description: Повышение до Студента
+  apprentice_upgrade:
+    name: Улучшение - Подмастерье
+    description: Повышение до Подмастерья
+  master_upgrade:
+    name: Улучшение - Волшебник
+    description: Повышение до Волшебника
+  hotbar1:
+    name: Сбросить хотбары
+    description: Сбрасывает все хотбары, оставляя только один
+  hotbar2:
+    name: Хотбар 2 ур.
+    description: Добавляет 1 дополнительный хотбар!
+  hotbar3:
+    name: Хотбар 3 ур.
+    description: Три хотбара лучше двух
+  antihunger:
+    name: Улучшение - Анти-Голод
+    description: Больше не проголодаешься!
+  undroppable:
+    name: Улучшение - невыбрасываемость
+    description: Делает палочку невыбрасываемой
+  chestmode:
+    name: Режим сундука
+    description: Простая механика палочки
+  cyclemode:
+    name: Режим цикла
+    description: Самая простая механика палочки
+  inventorymode:
+    name: Режим инвентаря
+    description: Для экспертов Магии
+  quickcast_enable:
+    name: Быстрое применение (Включить)
+    description: Включить быстрое применение для всех заклинаний
+  quickcast_disable:
+    name: Быстрое применение (Выключить)
+    description: Выключить быстрое применение для всех заклинаний
+  quickcast_normal:
+    name: Быстрое применение (Некоторые заклинания)
+    description: Быстрое применение только для некоторых заклинаний
+  quickcast_manual:
+    name: Быстрое применение (Вручную)
+    description: Быстрое применение только при нажатии Q в инвентаре
+  mode_drop:
+    name: Режим выброса предмета (Q)
+    description: |-
+      Используй клавишу выброса предмета (Q), чтобы открыть инвентарь заклинаний,
+      клавишу смены руки (F), чтобы листать хотбары
+      и ЛКМ, чтобы использовать заклинание
+  mode_rightclick:
+    name: Режим ПКМ
+    description: |-
+      Используй ПКМ, чтобы открыть инвентарь заклинаний,
+      клавишу выброса предмета (Q), чтобы листать хотбары
+      и ЛКМ, чтобы использовать заклинание
+  mode_sword:
+    name: Режим меча
+    description: |-
+      Используй клавишу выброса предмета (Q), чтобы открыть инвентарь заклинаний,
+      клавиши хотбара (1-9), чтобы применить заклинание и клавишу (F) чтобы листать хотбары
+  mode_swap:
+    name: Режим смены руки (F)
+    description: |-
+      Используй клавишу для смены руки (F), чтобы открыть инвентарь заклинаний,
+      клавишу выброса предмета (Q), чтобы листать хотбары,
+      ЛКМ для применения заклинания
+  loud:
+    name: Все сообщения
+    description: Включает все сообщения палочки в чате
+  quiet:
+    name: Убрать сообщения каста
+    description: Выключает только сообщения каста
+  silent:
+    name: Заглушить
+    description: Выключает все сообщения палочки в чате
+  organizer:
+    name: Организировать
+    description: Переорганизует инвентарь
+  alphabetizer:
+    name: Отсортировать по алфавиту
+    description: Располагает заклинания в алфавитном порядке
+  recalltoken:
+    name: Жетон телепортации
+    description: Используй, чтобы телепортироваться
+  respawntoken:
+    name: Жетон респавна
+    description: Используй, чтобы вернуться на спавн
+  cursedmeat:
+    name: Зараженное мясо
+    description: Даже не трогай это!
+  crackedbroomstick:
+    name: Поломанная метла
+    description: Хороша, пока целая!
+  spleef:
+    name: Сплиф
+    description: Для игры в магический сплиф
+  divinghelmet:
+    name: Водолазный Шлем
+    description: Свободно работай под водой
+  heroes:
+    name: Палочка
+    description: Нажми Q, чтобы открыть инвентарь способностей
+  ledger:
+    name: Кошелёк
+    description: ПКМ - открыть
+  questscompass:
+    name: Компас
+    description: Говорит тебе что делать дальше
+  ocarina:
+    name: Окарина
+    description: ПКМ чтобы открыть меню, нажимай кнопки (1-9), чтобы сыграть мелодию
+    spell_count: Имеет $count нот
+  mirrorshield:
+    name: Зеркальный щит
+    description: Может блокировать и отражать заклинания
+  empty:
+    name: Пустота
+    description: Для создания палочек
+  talisman:
+    name: Талисман маны
+    description: Дает тебе бонус, когда держишь его в руке
+  magicheart:
+    name: Сердце Магии
+    description: Нужно для крафта магических предметов
+  appearance_beginner:
+    name: Палочка новичка
+    description: Хорошая начальная палочка
+  appearance_student:
+    name: Палочка студента
+    description: Ее магия растет!
+  appearance_apprentice:
+    name: Палочка подмастерья
+    description: Палочка продвинутого мага!
+  appearance_master:
+    name: Палочка волшебника
+    description: Мощный магический инструмент
+  appearance_magicka:
+    name: Посох "Магика"
+    description: Большой посох с полумесяцем, обладающий мощной магической энергией
+  appearance_moon:
+    name: Палочка "Луна"
+    description: Палочка, которой, возможно, пользовалась Сейлор Мун
+  appearance_book:
+    name: Книга
+    description: Палочка, хитро замаскированная под книгу
+  appearance_green:
+    name: Зеленая палочка
+    description: Палочка ядовитого цвета
+  appearance_bow1:
+    name: Египетский лук
+  appearance_bow2:
+    name: Тонкий лук
+  appearance_longbow:
+    name: Длинный лук
+  appearance_spire:
+    name: Посох "Шпиль"
+    description: Волшебная башня, которую ты можешь держать в руке
+  appearance_claw:
+    name: Посох "Коготь"
+    description: Устрашающий темный коготь, держащий мощные магические сферы
+  appearance_orb:
+    name: Посох "Сфера"
+    description: Посох с магической сферой на конце
+  appearance_magma:
+    name: Магмовый посох
+    description: Посох, содержащий эссенцию чистой магмы
+  appearance_valk:
+    name: Меч Валькирии
+  appearance_whitedagger:
+    name: Кинжал
+  appearance_demon:
+    name: Демонический меч
+  appearance_felm:
+    name: Огненный меч
+  appearance_riven:
+    name: Расколотый меч
+  appearance_silver:
+    name: Серебрянный молот
+  appearance_lava:
+    name: Лавовый меч
+  glow_upgrade:
+    name: Включить свечение
+    description: Делает палочку блестящей
+  noglow_upgrade:
+    name: Выключить свечение
+    description: Делает палочку не блестящей
+  uberwand:
+    name: Uberwand
+    description: Величайшая палочка
+  extinguisher:
+    name: Огнетушитель
+    description: Убирает огонь
+  science:
+    name: Во имя науки!
+    description: Для тестирования автоматонов
+  potion_sp100:
+    name: Зелье ОЗ
+    description: Выпей, чтобы получить 100 ОЗ
+  purger:
+    name: Очиститель
+    description: Для битвы с автоматонами
+  magictorch:
+    name: Волшебный факел
+    description: Излучает свет, когда находится в руке
+  gauntlet:
+    name: Перчатка Бесконечности
+    description: В ней сосредоточена вся мощь Вселенной
+  rainbowhelmet:
+    name: Радужный шлем
+    spell_aura: ''
+  rainbowchestplate:
+    name: Радужный нагрудник
+    spell_aura: ''
+  rainbowleggings:
+    name: Радужные штаны
+    spell_aura: ''
+  rainbowboots:
+    name: Радужные ботинки
+    spell_aura: ''
+  iceskates:
+    name: Коньки
+  admintool:
+    name: Инструмент Админа
+    description: Имеет множество полезных функций для модераторов и админов
+    lore:
+    - $description
+  shoptoken:
+    name: Магазин
+    description: Создает магазин, которым ты можешь управлять
+  shoptool:
+    name: $npc_name
+    lore:
+    - 'Управление магазином:'
+    - '&7Нажми правой кнопкой мыши на сундук,'
+    - '&7Чтобы продавать вещи из него'
+    - '&8Нажми на пустое место,'
+    - '&3Чтобы обновить название магазина и'
+    - '&3Телепортировать продавца к тебе'
+    - '&8Используй наковальню для изменения названия'
+  foxhelmet:
+    name: Шапка из Лисы
+  wolf:
+    name: Волк
+    description: Посох/палочка NathanWolf
+  engineer:
+    name: Посох инженера
+    description: Посох ранга $path
+  architect:
+    name: Посох архитектора
+    description: Посох ранга $path
+  conduit:
+    name: Посох магистра
+    description: Посох ранга $path
+  architectstaff:
+    name: Архитектор
+    description: С великой силой приходит великая ответственность
+  appearance_engineer:
+    name: Посох инженера
+    description: Мощный посох, пропитанный древней магией
+  appearance_architect:
+    name: Посох архитектора
+    description: Магический посох, используемый для строительства
+  appearance_conduit:
+    name: Посох магистра
+    description: Посох, которым пользовались маги много веков назад
+  engineer_upgrade:
+    name: Улучшение - Инженер
+    description: Повышение до Инженера
+  architect_upgrade:
+    name: Улучшение - Архитектор
+    description: Повышение до Архитектора
+  conduit_upgrade:
+    name: Улучшение - Магистр
+    description: Повышение до Магистра
+  wolfhouse:
+    name: База
+    description: Самостроящаяся база в коробке
+  conway:
+    name: Палочка Конвея
+    description: Игра "Жизнь"
+  defenderheart:
+    name: Сердце Защитника
+    description: Оно пульсирует своей мощью
+  virusheart:
+    name: Сердце Вируса
+    description: Эта вещь должна быть уничтожена
+  hunterheart:
+    name: Сердце Охотника
+    description: Он хочет быть живым снова
+  snakeheart:
+    name: Сердце Змея
+    description: Сссссспаси меня
+  golemheart:
+    name: Сердце Голема
+    description: Он станет твоим новым другом
+  wormheart:
+    name: Сердце Червя
+    description: Оно пожрет этот мир
+automata:
+  awaken: '&c&o$name &r&5пробудился'
+  default_name: Автоматон
+  level: Ур. $roman
+  good:
+    prefixes:
+    - Святой
+    - Светлый
+    - Блестящий
+    - Мерцающий
+    - Стойкий
+    - Яркий
+    - Спаситель
+    - Благословенный
+    - Магический
+    - Очарованный
+    - Просвещенный
+    - Великолепный
+    - Великодушный
+    - Храбрый
+    - Верный
+    - Славный
+    suffixes:
+    - Святейшества
+    - Чести
+    - Света
+    - Легкости
+    - Зашиты
+    - Солнца
+    - Магии
+    - Благословения
+    - Прощения
+    - Верности
+    - Возмездия
+    - Стойкости
+    - Надежды
+    - Славы
+    - Прощения
+  evil:
+    prefixes:
+    - Злобный
+    - Темный
+    - Скользкий
+    - Ужасающий
+    - Мерзкий
+    - Проклятый
+    - Магический
+    - Зачарованный
+    - Предвещающий
+    - Адский
+    - Нечестивый
+    - Гнусный
+    - Гибельный
+    - Сверхъестественный
+    - Отвратительный
+    - Извергнутый
+    - Отвратительный
+    - Ужасающий
+    - Вредный
+    - Пагубный
+    - Потусторонний
+    - Скверный
+    - Апокалиптичный
+    - Подлый
+    - Гнусный
+    - Жалкий
+    - Отвратительный
+    - Чудовищный
+    - Ужасный
+    suffixes:
+    - Тьмы
+    - Зла
+    - Ночи
+    - Смерти
+    - Обречения
+    - Ада
+    - Магии
+    - Разрушения
+    - Опустошения
+    - Мерзости
+    - Страха
+    - из Тьмы
+    - Конца
+    - Господства
+    - Апокалипсиса
+    - Разорения
+    - Дикой природы
+    - Террора
+    - Порчи
+    - Заразы
+tags:
+  noduel:
+    name: Не для PvP
+    description: Заклинания, неразрешенные для битвы 1 на 1
+  nojail:
+    name: Не для тюрьмы
+    description: Заклинания, неразрешенные для использования в тюрьме
+categories:
+  combat:
+    name: Боевая магия
+    description: Заклинания для ведения боя
+  automata:
+    name: Автоматоны
+    description: Создавай жизнь!
+    color: FFA500
+  electrical:
+    name: Электричество
+    description: ''
+    color: '888800'
+  master:
+    name: Высшая магия
+    description: Самые опасные заклинания
+    color: 00AACC
+  utility:
+    name: Вспомогательная магия
+    description: Очень полезные заклинания
+  demolition:
+    name: Разрушение
+    description: Самые разрушительные заклинания
+    color: FF0000
+  dark:
+    name: Темная магия
+    description: ''
+    color: '010101'
+  light:
+    name: Светлая магия
+    description: ''
+    color: DDDDDD
+  engineering:
+    name: Инженерия
+    description: Заклинания для строительства
+    color: 00FFFF
+  elemental:
+    name: Элементы
+    description: Сила природы
+  mining:
+    name: Добыча
+    description: Заклинания, которые помогут тебе в добыче ресурсов
+  skills:
+    name: Heroes Skills
+    descriptions: Skills being used from Heroes
+  staff:
+    name: Админ
+    description: Заклинания для админов
+  specialty:
+    name: Специальное
+    description: Заклинания для предметов или NPC
+  music:
+    name: Музыка
+    description: Для проигрывания музыки
+classes:
+  battle_mage:
+    name: Боевой маг
+    description: Воин с магическим мечом
+  mage:
+    name: Маг
+    description: Величайший заклинатель
+  archer_mage:
+    name: Лучник-маг
+    description: Умеет обращаться с магическим луком
+items:
+  emerald_sword:
+    name: Изумрудный меч
+kits:
+  admin:
+    name: Набор Админа
+  welcome:
+    name: Первая палочка
+    give: Держи!
+  starter:
+    name: Набор новичка
+  food:
+    name: Набор еды
+    give: Кушать подано!
+  loyalty:
+    name: Подарочный набор
+    give: |-
+      &6Поздравляю!
+      &3Ты уже неделю играешь на нашем сервере.
+      &aДержи за это &3Талисман Маны!
+  daily:
+    name: Ежедневный набор
+    give: Следующий набор будет доступен через сутки!
+mobs:
+  archer:
+    name: Лучник
+  bigbluedragon:
+    name: '&1Большой Синий Дракон'
+  biggreendragon:
+    name: '&2Большой Зеленый Дракон'
+  biggreydragon:
+    name: '&7Большой Серый Дракон'
+  bigpurpledragon:
+    name: '&dБольшой Фиолетовый Дракон'
+  bigreddragon:
+    name: '&4Большой Красный Дракон'
+  boomer:
+    name: Взрывной слизень
+  cube:
+    name: Желатиновый куб
+  dark_spider:
+    name: Темный Паук
+  dark_wizard:
+    name: Темный Волшебник
+  bluedragon:
+    name: '&1Синий Дракон'
+  cyandragon:
+    name: '&bБирюзовый Дракон'
+  lightbluedragon:
+    name: '&9Голубой Дракон'
+  greendragon:
+    name: '&2Зеленый Дракон'
+  limedragon:
+    name: '&aЛаймовый Дракон'
+  greydragon:
+    name: '&8Серый Дракон'
+  whitedragon:
+    name: '&fБелый Дракон'
+  lightgreydragon:
+    name: '&7Светло-серый Дракон'
+  purpledragon:
+    name: '&dФиолетовый Дракон'
+  blackdragon:
+    name: '&0Черный Дракон'
+  reddragon:
+    name: '&4Красный Дракон'
+  lightreddragon:
+    name: '&cСветло-красный Дракон'
+  magentadragon:
+    name: '&5Пурпурный Дракон'
+  pinkdragon:
+    name: '&cРозовый Дракон'
+  orangedragon:
+    name: '&6Оранжевый Дракон'
+  yellowdragon:
+    name: '&eЖелтый Дракон'
+  browndragon:
+    name: '&cКоричневый Дракон'
+  rainbowdragon:
+    name: '&cРа&6ду&eжн&aый&b Дра&dКон'
+  dummy:
+    name: Мишень
+  dummynoai:
+    name: Глупая Мишень
+  extraspellshop:
+    name: Дополнительные заклинания
+  fairy:
+    name: Фея
+  fire_elemental:
+    name: Огненный Элементаль
+  healer:
+    name: Лекарь
+  ironman:
+    name: Железный Человек
+  killer_bunny:
+    name: Кролик-убийца
+  kingslime:
+    name: Королевский Слизень
+  madscientist:
+    name: Безумный Ученый
+  magicitemshop:
+    name: Магические предметы
+  mega_phantom:
+    name: '&cМега &4Фантом'
+  mega_spider:
+    name: Мега Паук
+  mutant:
+    name: Мутант
+  mutant_captain:
+    name: Мутант-Капитан
+  mutant_spider:
+    name: Паук-мутант
+  mutant_villager:
+    name: Житель-мутант
+  playershop:
+    name: Магазин
+  polterghast:
+    name: ПолтерГаст
+  skater:
+    name: Продавец коньков
+  spellshop:
+    name: Великий Маг
+  totem:
+    name: Тотем
+  undead_minion:
+    name: Нежить
+  undead_overlord:
+    name: Король Нежити
+  warlock:
+    name: Чернокнижник
+  werewolf:
+    name: Оборотень
+  ghost:
+    name: Призрак
+  dailykit:
+    name: Ежедневный Бонус!
+modifiers:
+  antiknockback:
+    name: Анти-отбрасывание
+    description: Предотвращает отбрасывание
+paths:
+  beginner:
+    name: Новичок
+    description: Начинающий маг
+  student:
+    name: Студент
+    description: Базовый багаж заклинаний
+  apprentice:
+    name: Подмастерье
+    description: Большой багаж заклинаний
+  master:
+    name: Волшебник
+    description: Могучий заклинатель
+    required_spell: |-
+      &cСейчас нечего больше изучать!
+      &4Кто знает, какие тайны ждут тебя впереди?
+  battle:
+    name: Рекрут
+    description: Слабые боевые заклинания
+  squire:
+    name: Солдат
+    description: Средние боевые заклинания
+  soldier:
+    name: Воин
+    description: Хорошие боевые заклинания
+  knight:
+    name: Рыцарь
+    description: Лучшие боевые заклинания
+  broom:
+    name: Метла
+    description: Улучшения для метлы
+  blaster:
+    name: Бластер
+    description: Улучшения для бластера
+  staff:
+    name: Админ
+    description: Админ-заклинания
+  archer:
+    name: Лучник
+    description: Заклинания лучника
+  engineer:
+    name: Инженер
+    description: Инженерные заклинания
+  architect:
+    name: Архитектор
+    description: Бесконечное могущество
+    required_spell: |-
+      &d&oCледующий ранг - &b$path&d&o...
+      &d&oНо как его получить?'
+  conduit:
+    name: Магистр
+    description: Создает материю из чистой энергии
+slots:
+  broom_upgrade:
+    name: Улучшение метлы
+
+# Materials and entities taken from Minecraft language files
+materials:
+  "wildcard": "(Любой подтип)"
+  "acacia_button": "Акациевая кнопка"
+  "acacia_door": "Акациевая дверь"
+  "acacia_fence": "Акациевый забор"
+  "acacia_fence_gate": "Акациевая калитка"
+  "acacia_leaves": "Листья акации"
+  "acacia_log": "Акациевое бревно"
+  "acacia_planks": "Акациевые доски"
+  "acacia_pressure_plate": "Акациевая нажимная плита"
+  "acacia_sapling": "Саженец акации"
+  "acacia_sign": "Акациевая табличка"
+  "acacia_slab": "Акациевая плита"
+  "acacia_stairs": "Акациевые ступеньки"
+  "acacia_trapdoor": "Акациевый люк"
+  "acacia_wall_sign": "Акациевая настенная табличка"
+  "acacia_wood": "Акация"
+  "activator_rail": "Активирующие рельсы"
+  "air": "Воздух"
+  "allium": "Лук-батун"
+  "ancient_debris": "Древние обломки"
+  "andesite": "Андезит"
+  "andesite_slab": "Андезитовая плита"
+  "andesite_stairs": "Андезитовые ступеньки"
+  "andesite_wall": "Андезитовая ограда"
+  "anvil": "Наковальня"
+  "attached_melon_stem": "Прикреплённый стебель арбуза"
+  "attached_pumpkin_stem": "Прикреплённый стебель тыквы"
+  "azure_bluet": "Хаустония серая"
+  "bamboo": "Бамбук"
+  "bamboo_sapling": "Побег бамбука"
+  "barrel": "Бочка"
+  "barrier": "Барьер"
+  "basalt": "Базальт"
+  "beacon": "Маяк"
+  "beacon.primary": "Основной эффект"
+  "beacon.secondary": "Вторичный эффект"
+  "bedrock": "Бедрок"
+  "bee_nest": "Пчелиное гнездо"
+  "beehive": "Улей"
+  "beetroots": "Свёкла"
+  "bell": "Колокол"
+  "birch_button": "Берёзовая кнопка"
+  "birch_door": "Берёзовая дверь"
+  "birch_fence": "Берёзовый забор"
+  "birch_fence_gate": "Берёзовая калитка"
+  "birch_leaves": "Берёзовые листья"
+  "birch_log": "Берёзовое бревно"
+  "birch_planks": "Берёзовые доски"
+  "birch_pressure_plate": "Берёзовая нажимная плита"
+  "birch_sapling": "Саженец берёзы"
+  "birch_sign": "Берёзовая табличка"
+  "birch_slab": "Берёзовая плита"
+  "birch_stairs": "Берёзовые ступеньки"
+  "birch_trapdoor": "Берёзовый люк"
+  "birch_wall_sign": "Берёзовая настенная табличка"
+  "birch_wood": "Берёза"
+  "black_banner": "Чёрный флаг"
+  "black_bed": "Чёрная кровать"
+  "black_carpet": "Чёрный ковёр"
+  "black_concrete": "Чёрный бетон"
+  "black_concrete_powder": "Чёрный сухой бетон"
+  "black_glazed_terracotta": "Чёрная глазурованная керамика"
+  "black_shulker_box": "Чёрный шалкеровый ящик"
+  "black_stained_glass": "Чёрное стекло"
+  "black_stained_glass_pane": "Чёрная стеклянная панель"
+  "black_terracotta": "Чёрная керамика"
+  "black_wool": "Чёрная шерсть"
+  "blackstone": "Чернит"
+  "blackstone_slab": "Чернитная плита"
+  "blackstone_stairs": "Чернитные ступеньки"
+  "blackstone_wall": "Чернитная ограда"
+  "blast_furnace": "Плавильная печь"
+  "blue_banner": "Синий флаг"
+  "blue_bed": "Синяя кровать"
+  "blue_carpet": "Синий ковёр"
+  "blue_concrete": "Синий бетон"
+  "blue_concrete_powder": "Синий сухой бетон"
+  "blue_glazed_terracotta": "Синяя глазурованная керамика"
+  "blue_ice": "Синий лёд"
+  "blue_orchid": "Синяя орхидея"
+  "blue_shulker_box": "Синий шалкеровый ящик"
+  "blue_stained_glass": "Синее стекло"
+  "blue_stained_glass_pane": "Синяя стеклянная панель"
+  "blue_terracotta": "Синяя керамика"
+  "blue_wool": "Синяя шерсть"
+  "bone_block": "Костный блок"
+  "bookshelf": "Книжная полка"
+  "brain_coral": "Коралл-мозговик"
+  "brain_coral_block": "Блок коралла-мозговика"
+  "brain_coral_fan": "Веерный коралл-мозговик"
+  "brain_coral_wall_fan": "Горизонтальный веерный коралл-мозговик"
+  "brewing_stand": "Зельеварка"
+  "brick_slab": "Кирпичная плита"
+  "brick_stairs": "Кирпичные ступеньки"
+  "brick_wall": "Кирпичная ограда"
+  "bricks": "Кирпичи"
+  "brown_banner": "Коричневый флаг"
+  "brown_bed": "Коричневая кровать"
+  "brown_carpet": "Коричневый ковёр"
+  "brown_concrete": "Коричневый бетон"
+  "brown_concrete_powder": "Коричневый сухой бетон"
+  "brown_glazed_terracotta": "Коричневая глазурованная керамика"
+  "brown_mushroom": "Коричневый гриб"
+  "brown_mushroom_block": "Блок коричневого гриба"
+  "brown_shulker_box": "Коричневый шалкеровый ящик"
+  "brown_stained_glass": "Коричневое стекло"
+  "brown_stained_glass_pane": "Коричневая стеклянная панель"
+  "brown_terracotta": "Коричневая керамика"
+  "brown_wool": "Коричневая шерсть"
+  "bubble_column": "Колонна пузырей"
+  "bubble_coral": "Пузырчатый коралл"
+  "bubble_coral_block": "Блок пузырчатого коралла"
+  "bubble_coral_fan": "Веерный пузырчатый коралл"
+  "bubble_coral_wall_fan": "Горизонтальный веерный пузырчатый коралл"
+  "cactus": "Кактус"
+  "cake": "Торт"
+  "campfire": "Костёр"
+  "carrots": "Морковь"
+  "cartography_table": "Стол картографа"
+  "carved_pumpkin": "Вырезанная тыква"
+  "cauldron": "Котёл"
+  "cave_air": "Пещерный воздух"
+  "chain": "Цепь"
+  "chain_command_block": "Последовательный командный блок"
+  "chest": "Сундук"
+  "chipped_anvil": "Повреждённая наковальня"
+  "chiseled_nether_bricks": "Резные незерские кирпичи"
+  "chiseled_polished_blackstone": "Резной полированный чернит"
+  "chiseled_quartz_block": "Резной кварцевый блок"
+  "chiseled_red_sandstone": "Резной красный песчаник"
+  "chiseled_sandstone": "Резной песчаник"
+  "chiseled_stone_bricks": "Резные каменные кирпичи"
+  "chorus_flower": "Цветок хоруса"
+  "chorus_plant": "Хорус"
+  "clay": "Глина"
+  "coal_block": "Угольный блок"
+  "coal_ore": "Каменный уголь"
+  "coarse_dirt": "Каменистая земля"
+  "cobblestone": "Булыжник"
+  "cobblestone_slab": "Булыжная плита"
+  "cobblestone_stairs": "Булыжные ступеньки"
+  "cobblestone_wall": "Булыжная ограда"
+  "cobweb": "Паутина"
+  "cocoa": "Какао"
+  "command_block": "Командный блок"
+  "comparator": "Редстоуновый компаратор"
+  "composter": "Компостница"
+  "conduit": "Морской источник"
+  "cornflower": "Синий василёк"
+  "cracked_nether_bricks": "Потрескавшиеся незерские кирпичи"
+  "cracked_polished_blackstone_bricks": "Потрескавшиеся полированно-чернитные кирпичи"
+  "cracked_stone_bricks": "Потрескавшиеся каменные кирпичи"
+  "crafting_table": "Верстак"
+  "creeper_head": "Голова крипера"
+  "creeper_wall_head": "Настенная голова крипера"
+  "crimson_button": "Багровая кнопка"
+  "crimson_door": "Багровая дверь"
+  "crimson_fence": "Багровый забор"
+  "crimson_fence_gate": "Багровая калитка"
+  "crimson_fungus": "Багровый гриб"
+  "crimson_hyphae": "Багровые гифы"
+  "crimson_nylium": "Багровый нилий"
+  "crimson_planks": "Багровые доски"
+  "crimson_pressure_plate": "Багровая нажимная плита"
+  "crimson_roots": "Багровые корни"
+  "crimson_sign": "Багровая табличка"
+  "crimson_slab": "Багровая плита"
+  "crimson_stairs": "Багровые ступеньки"
+  "crimson_stem": "Багровый стебель"
+  "crimson_trapdoor": "Багровый люк"
+  "crimson_wall_sign": "Багровая настенная табличка"
+  "crying_obsidian": "Плачущий обсидиан"
+  "cut_red_sandstone": "Пиленый красный песчаник"
+  "cut_red_sandstone_slab": "Плита из пиленого красного песчаника"
+  "cut_sandstone": "Пиленый песчаник"
+  "cut_sandstone_slab": "Плита из пиленого песчаника"
+  "cyan_banner": "Бирюзовый флаг"
+  "cyan_bed": "Бирюзовая кровать"
+  "cyan_carpet": "Бирюзовый ковёр"
+  "cyan_concrete": "Бирюзовый бетон"
+  "cyan_concrete_powder": "Бирюзовый сухой бетон"
+  "cyan_glazed_terracotta": "Бирюзовая глазурованная керамика"
+  "cyan_shulker_box": "Бирюзовый шалкеровый ящик"
+  "cyan_stained_glass": "Бирюзовое стекло"
+  "cyan_stained_glass_pane": "Бирюзовая стеклянная панель"
+  "cyan_terracotta": "Бирюзовая керамика"
+  "cyan_wool": "Бирюзовая шерсть"
+  "damaged_anvil": "Разбитая наковальня"
+  "dandelion": "Одуванчик"
+  "dark_oak_button": "Кнопка из тёмного дуба"
+  "dark_oak_door": "Дверь из тёмного дуба"
+  "dark_oak_fence": "Забор из тёмного дуба"
+  "dark_oak_fence_gate": "Калитка из тёмного дуба"
+  "dark_oak_leaves": "Листья тёмного дуба"
+  "dark_oak_log": "Бревно тёмного дуба"
+  "dark_oak_planks": "Доски из тёмного дуба"
+  "dark_oak_pressure_plate": "Нажимная плита из тёмного дуба"
+  "dark_oak_sapling": "Саженец тёмного дуба"
+  "dark_oak_sign": "Табличка из тёмного дуба"
+  "dark_oak_slab": "Плита из тёмного дуба"
+  "dark_oak_stairs": "Ступеньки из тёмного дуба"
+  "dark_oak_trapdoor": "Люк из тёмного дуба"
+  "dark_oak_wall_sign": "Настенная табличка из тёмного дуба"
+  "dark_oak_wood": "Тёмный дуб"
+  "dark_prismarine": "Тёмный призмарин"
+  "dark_prismarine_slab": "Плита из тёмного призмарина"
+  "dark_prismarine_stairs": "Ступеньки из тёмного призмарина"
+  "daylight_detector": "Датчик дневного света"
+  "dead_brain_coral": "Мёртвый коралл-мозговик"
+  "dead_brain_coral_block": "Блок мёртвого коралла-мозговика"
+  "dead_brain_coral_fan": "Мёртвый веерный коралл-мозговик"
+  "dead_brain_coral_wall_fan": "Мёртвый горизонтальный веерный коралл-мозговик"
+  "dead_bubble_coral": "Мёртвый пузырчатый коралл"
+  "dead_bubble_coral_block": "Блок мёртвого пузырчатого коралла"
+  "dead_bubble_coral_fan": "Мёртвый веерный пузырчатый коралл"
+  "dead_bubble_coral_wall_fan": "Мёртвый горизонтальный веерный пузырчатый коралл"
+  "dead_bush": "Мёртвый куст"
+  "dead_fire_coral": "Мёртвый огненный коралл"
+  "dead_fire_coral_block": "Блок мёртвого огненного коралла"
+  "dead_fire_coral_fan": "Мёртвый веерный огненный коралл"
+  "dead_fire_coral_wall_fan": "Мёртвый горизонтальный веерный огненный коралл"
+  "dead_horn_coral": "Мёртвый роговый коралл"
+  "dead_horn_coral_block": "Блок мёртвого рогового коралла"
+  "dead_horn_coral_fan": "Мёртвый веерный роговый коралл"
+  "dead_horn_coral_wall_fan": "Мёртвый горизонтальный веерный роговый коралл"
+  "dead_tube_coral": "Мёртвый трубчатый коралл"
+  "dead_tube_coral_block": "Блок мёртвого трубчатого коралла"
+  "dead_tube_coral_fan": "Мёртвый веерный трубчатый коралл"
+  "dead_tube_coral_wall_fan": "Мёртвый горизонтальный веерный трубчатый коралл"
+  "detector_rail": "Рельсы с датчиком"
+  "diamond_block": "Алмазный блок"
+  "diamond_ore": "Алмазная руда"
+  "diorite": "Диорит"
+  "diorite_slab": "Диоритовая плита"
+  "diorite_stairs": "Диоритовые ступеньки"
+  "diorite_wall": "Диоритовая ограда"
+  "dirt": "Земля"
+  "dispenser": "Раздатчик"
+  "dragon_egg": "Яйцо дракона"
+  "dragon_head": "Голова дракона"
+  "dragon_wall_head": "Настенная голова дракона"
+  "dried_kelp_block": "Блок сушёной ламинарии"
+  "dropper": "Выбрасыватель"
+  "emerald_block": "Изумрудный блок"
+  "emerald_ore": "Изумрудная руда"
+  "enchanting_table": "Чародейский стол"
+  "end_gateway": "Врата Энда"
+  "end_portal": "Портал в Энд"
+  "end_portal_frame": "Рамка портала в Энд"
+  "end_rod": "Стержень Энда"
+  "end_stone": "Эндерняк"
+  "end_stone_brick_slab": "Плита из эндернякового кирпича"
+  "end_stone_brick_stairs": "Ступеньки из эндернякового кирпича"
+  "end_stone_brick_wall": "Ограда из эндернякового кирпича"
+  "end_stone_bricks": "Эндерняковые кирпичи"
+  "ender_chest": "Эндер-сундук"
+  "farmland": "Пашня"
+  "fern": "Папоротник"
+  "fire": "Огонь"
+  "fire_coral": "Огненный коралл"
+  "fire_coral_block": "Блок огненного коралла"
+  "fire_coral_fan": "Веерный огненный коралл"
+  "fire_coral_wall_fan": "Горизонтальный веерный огненный коралл"
+  "fletching_table": "Стол лучника"
+  "flower_pot": "Цветочный горшок"
+  "frosted_ice": "Талый лёд"
+  "furnace": "Печь"
+  "gilded_blackstone": "Золочёный чернит"
+  "glass": "Стекло"
+  "glass_pane": "Стеклянная панель"
+  "glowstone": "Светокамень"
+  "gold_block": "Золотой блок"
+  "gold_ore": "Золотая руда"
+  "granite": "Гранит"
+  "granite_slab": "Гранитная плита"
+  "granite_stairs": "Гранитные ступеньки"
+  "granite_wall": "Гранитная ограда"
+  "grass": "Трава"
+  "grass_block": "Дёрн"
+  "grass_path": "Тропа"
+  "gravel": "Гравий"
+  "gray_banner": "Серый флаг"
+  "gray_bed": "Серая кровать"
+  "gray_carpet": "Серый ковёр"
+  "gray_concrete": "Серый бетон"
+  "gray_concrete_powder": "Серый сухой бетон"
+  "gray_glazed_terracotta": "Серая глазурованная керамика"
+  "gray_shulker_box": "Серый шалкеровый ящик"
+  "gray_stained_glass": "Серое стекло"
+  "gray_stained_glass_pane": "Серая стеклянная панель"
+  "gray_terracotta": "Серая керамика"
+  "gray_wool": "Серая шерсть"
+  "green_banner": "Зелёный флаг"
+  "green_bed": "Зелёная кровать"
+  "green_carpet": "Зелёный ковёр"
+  "green_concrete": "Зелёный бетон"
+  "green_concrete_powder": "Зелёный сухой бетон"
+  "green_glazed_terracotta": "Зелёная глазурованная керамика"
+  "green_shulker_box": "Зелёный шалкеровый ящик"
+  "green_stained_glass": "Зелёное стекло"
+  "green_stained_glass_pane": "Зелёная стеклянная панель"
+  "green_terracotta": "Зелёная керамика"
+  "green_wool": "Зелёная шерсть"
+  "grindstone": "Точило"
+  "hay_block": "Сноп сена"
+  "heavy_weighted_pressure_plate": "Большегрузная весовая пластина"
+  "honey_block": "Блок мёда"
+  "honeycomb_block": "Блок пчелиных сот"
+  "hopper": "Воронка"
+  "horn_coral": "Роговой коралл"
+  "horn_coral_block": "Блок рогового коралла"
+  "horn_coral_fan": "Веерный роговый коралл"
+  "horn_coral_wall_fan": "Горизонтальный веерный роговый коралл"
+  "ice": "Лёд"
+  "infested_chiseled_stone_bricks": "Заражённые резные каменные кирпичи"
+  "infested_cobblestone": "Заражённый булыжник"
+  "infested_cracked_stone_bricks": "Заражённые потрескавшиеся каменные кирпичи"
+  "infested_mossy_stone_bricks": "Заражённые замшелые каменные кирпичи"
+  "infested_stone": "Заражённый камень"
+  "infested_stone_bricks": "Заражённые каменные кирпичи"
+  "iron_bars": "Железные прутья"
+  "iron_block": "Железный блок"
+  "iron_door": "Железная дверь"
+  "iron_ore": "Железная руда"
+  "iron_trapdoor": "Железный люк"
+  "jack_o_lantern": "Светильник Джека"
+  "jigsaw": "Пазл"
+  "jukebox": "Проигрыватель"
+  "jungle_button": "Кнопка из тропического дерева"
+  "jungle_door": "Дверь из тропического дерева"
+  "jungle_fence": "Забор из тропического дерева"
+  "jungle_fence_gate": "Калитка из тропического дерева"
+  "jungle_leaves": "Листья тропического дерева"
+  "jungle_log": "Бревно тропического дерева"
+  "jungle_planks": "Доски из тропического дерева"
+  "jungle_pressure_plate": "Нажимная плита из тропического дерева"
+  "jungle_sapling": "Саженец тропического дерева"
+  "jungle_sign": "Табличка из тропического дерева"
+  "jungle_slab": "Плита из тропического дерева"
+  "jungle_stairs": "Ступеньки из тропического дерева"
+  "jungle_trapdoor": "Люк из тропического дерева"
+  "jungle_wall_sign": "Настенная табличка из тропического дерева"
+  "jungle_wood": "Тропическое дерево"
+  "kelp": "Ламинария"
+  "kelp_plant": "Стебель ламинарии"
+  "ladder": "Лестница"
+  "lantern": "Фонарь"
+  "lapis_block": "Лазуритовый блок"
+  "lapis_ore": "Лазуритовая руда"
+  "large_fern": "Раскидистый папоротник"
+  "lava": "Лава"
+  "lectern": "Кафедра"
+  "lever": "Рычаг"
+  "light_blue_banner": "Голубой флаг"
+  "light_blue_bed": "Голубая кровать"
+  "light_blue_carpet": "Голубой ковёр"
+  "light_blue_concrete": "Голубой бетон"
+  "light_blue_concrete_powder": "Голубой сухой бетон"
+  "light_blue_glazed_terracotta": "Голубая глазурованная керамика"
+  "light_blue_shulker_box": "Голубой шалкеровый ящик"
+  "light_blue_stained_glass": "Голубое стекло"
+  "light_blue_stained_glass_pane": "Голубая стеклянная панель"
+  "light_blue_terracotta": "Голубая керамика"
+  "light_blue_wool": "Голубая шерсть"
+  "light_gray_banner": "Светло-серый флаг"
+  "light_gray_bed": "Светло-серая кровать"
+  "light_gray_carpet": "Светло-серый ковёр"
+  "light_gray_concrete": "Светло-серый бетон"
+  "light_gray_concrete_powder": "Светло-серый сухой бетон"
+  "light_gray_glazed_terracotta": "Светло-серая глазурованная керамика"
+  "light_gray_shulker_box": "Светло-серый шалкеровый ящик"
+  "light_gray_stained_glass": "Светло-серое стекло"
+  "light_gray_stained_glass_pane": "Светло-серая стеклянная панель"
+  "light_gray_terracotta": "Светло-серая керамика"
+  "light_gray_wool": "Светло-серая шерсть"
+  "light_weighted_pressure_plate": "Весовая пластина"
+  "lilac": "Сирень"
+  "lily_of_the_valley": "Ландыш"
+  "lily_pad": "Кувшинка"
+  "lime_banner": "Лаймовый флаг"
+  "lime_bed": "Лаймовая кровать"
+  "lime_carpet": "Лаймовый ковёр"
+  "lime_concrete": "Лаймовый бетон"
+  "lime_concrete_powder": "Лаймовый сухой бетон"
+  "lime_glazed_terracotta": "Лаймовая глазурованная керамика"
+  "lime_shulker_box": "Лаймовый шалкеровый ящик"
+  "lime_stained_glass": "Лаймовое стекло"
+  "lime_stained_glass_pane": "Лаймовая стеклянная панель"
+  "lime_terracotta": "Лаймовая керамика"
+  "lime_wool": "Лаймовая шерсть"
+  "lodestone": "Магнетит"
+  "loom": "Ткацкий станок"
+  "magenta_banner": "Пурпурный флаг"
+  "magenta_bed": "Пурпурная кровать"
+  "magenta_carpet": "Пурпурный ковёр"
+  "magenta_concrete": "Пурпурный бетон"
+  "magenta_concrete_powder": "Пурпурный сухой бетон"
+  "magenta_glazed_terracotta": "Пурпурная глазурованная керамика"
+  "magenta_shulker_box": "Пурпурный шалкеровый ящик"
+  "magenta_stained_glass": "Пурпурное стекло"
+  "magenta_stained_glass_pane": "Пурпурная стеклянная панель"
+  "magenta_terracotta": "Пурпурная керамика"
+  "magenta_wool": "Пурпурная шерсть"
+  "magma_block": "Магма"
+  "melon": "Арбуз"
+  "melon_stem": "Стебель арбуза"
+  "mossy_cobblestone": "Замшелый булыжник"
+  "mossy_cobblestone_slab": "Замшелая булыжная плита"
+  "mossy_cobblestone_stairs": "Замшелые булыжные ступеньки"
+  "mossy_cobblestone_wall": "Замшелая булыжная ограда"
+  "mossy_stone_brick_slab": "Плита из замшелого каменного кирпича"
+  "mossy_stone_brick_stairs": "Ступеньки из замшелого каменного кирпича"
+  "mossy_stone_brick_wall": "Ограда из замшелого каменного кирпича"
+  "mossy_stone_bricks": "Замшелые каменные кирпичи"
+  "moving_piston": "Движущийся поршень"
+  "mushroom_stem": "Ножка гриба"
+  "mycelium": "Мицелий"
+  "nether_brick_fence": "Незерский забор"
+  "nether_brick_slab": "Незерская плита"
+  "nether_brick_stairs": "Незерские ступеньки"
+  "nether_brick_wall": "Ограда из незерского кирпича"
+  "nether_bricks": "Незерские кирпичи"
+  "nether_gold_ore": "Незерская золотая руда"
+  "nether_portal": "Портал в Незер"
+  "nether_quartz_ore": "Незер-кварцевая руда"
+  "nether_sprouts": "Незерские ростки"
+  "nether_wart": "Незерский нарост"
+  "nether_wart_block": "Блок незерского нароста"
+  "netherite_block": "Незеритовый блок"
+  "netherrack": "Незерак"
+  "note_block": "Нотный блок"
+  "oak_button": "Дубовая кнопка"
+  "oak_door": "Дубовая дверь"
+  "oak_fence": "Дубовый забор"
+  "oak_fence_gate": "Дубовая калитка"
+  "oak_leaves": "Дубовые листья"
+  "oak_log": "Дубовое бревно"
+  "oak_planks": "Дубовые доски"
+  "oak_pressure_plate": "Дубовая нажимная плита"
+  "oak_sapling": "Саженец дуба"
+  "oak_sign": "Дубовая табличка"
+  "oak_slab": "Дубовая плита"
+  "oak_stairs": "Дубовые ступеньки"
+  "oak_trapdoor": "Дубовый люк"
+  "oak_wall_sign": "Дубовая настенная табличка"
+  "oak_wood": "Дуб"
+  "observer": "Наблюдатель"
+  "obsidian": "Обсидиан"
+  "ominous_banner": "Зловещий флаг"
+  "orange_banner": "Оранжевый флаг"
+  "orange_bed": "Оранжевая кровать"
+  "orange_carpet": "Оранжевый ковёр"
+  "orange_concrete": "Оранжевый бетон"
+  "orange_concrete_powder": "Оранжевый сухой бетон"
+  "orange_glazed_terracotta": "Оранжевая глазурованная керамика"
+  "orange_shulker_box": "Оранжевый шалкеровый ящик"
+  "orange_stained_glass": "Оранжевое стекло"
+  "orange_stained_glass_pane": "Оранжевая стеклянная панель"
+  "orange_terracotta": "Оранжевая керамика"
+  "orange_tulip": "Оранжевый тюльпан"
+  "orange_wool": "Оранжевая шерсть"
+  "oxeye_daisy": "Ромашка"
+  "packed_ice": "Плотный лёд"
+  "peony": "Пион"
+  "petrified_oak_slab": "Окаменевшая дубовая плита"
+  "pink_banner": "Розовый флаг"
+  "pink_bed": "Розовая кровать"
+  "pink_carpet": "Розовый ковёр"
+  "pink_concrete": "Розовый бетон"
+  "pink_concrete_powder": "Розовый сухой бетон"
+  "pink_glazed_terracotta": "Розовая глазурованная керамика"
+  "pink_shulker_box": "Розовый шалкеровый ящик"
+  "pink_stained_glass": "Розовое стекло"
+  "pink_stained_glass_pane": "Розовая стеклянная панель"
+  "pink_terracotta": "Розовая керамика"
+  "pink_tulip": "Розовый тюльпан"
+  "pink_wool": "Розовая шерсть"
+  "piston": "Поршень"
+  "piston_head": "Головка поршня"
+  "player_head": "Голова игрока"
+  "player_head.named": "Голова %s"
+  "player_wall_head": "Настенная голова игрока"
+  "podzol": "Подзол"
+  "polished_andesite": "Полированный андезит"
+  "polished_andesite_slab": "Плита из полированного андезита"
+  "polished_andesite_stairs": "Ступеньки из полированного андезита"
+  "polished_basalt": "Полированный базальт"
+  "polished_blackstone": "Полированный чернит"
+  "polished_blackstone_brick_slab": "Плита из полированно-чернитного кирпича"
+  "polished_blackstone_brick_stairs": "Ступеньки из полированно-чернитного кирпича"
+  "polished_blackstone_brick_wall": "Ограда из полированно-чернитного кирпича"
+  "polished_blackstone_bricks": "Полированно-чернитные кирпичи"
+  "polished_blackstone_button": "Кнопка из полированного чернита"
+  "polished_blackstone_pressure_plate": "Нажимная плита из полированного чернита"
+  "polished_blackstone_slab": "Плита из полированного чернита"
+  "polished_blackstone_stairs": "Ступеньки из полированного чернита"
+  "polished_blackstone_wall": "Ограда из полированного чернита"
+  "polished_diorite": "Полированный диорит"
+  "polished_diorite_slab": "Плита из полированного диорита"
+  "polished_diorite_stairs": "Ступеньки из полированного диорита"
+  "polished_granite": "Полированный гранит"
+  "polished_granite_slab": "Плита из полированного гранита"
+  "polished_granite_stairs": "Ступеньки из полированного гранита"
+  "poppy": "Мак"
+  "potatoes": "Картофель"
+  "potted_acacia_sapling": "Саженец акации в горшке"
+  "potted_allium": "Лук-батун в горшке"
+  "potted_azure_bluet": "Хаустония серая в горшке"
+  "potted_bamboo": "Бамбук в горшке"
+  "potted_birch_sapling": "Саженец берёзы в горшке"
+  "potted_blue_orchid": "Синяя орхидея в горшке"
+  "potted_brown_mushroom": "Коричневый гриб в горшке"
+  "potted_cactus": "Кактус в горшке"
+  "potted_cornflower": "Синий василёк в горшке"
+  "potted_crimson_fungus": "Багровый гриб в горшке"
+  "potted_crimson_roots": "Багровые корни в горшке"
+  "potted_dandelion": "Одуванчик в горшке"
+  "potted_dark_oak_sapling": "Саженец тёмного дуба в горшке"
+  "potted_dead_bush": "Мёртвый куст в горшке"
+  "potted_fern": "Папортник в горшке"
+  "potted_jungle_sapling": "Саженец тропического дерева в горшке"
+  "potted_lily_of_the_valley": "Ландыш в горшке"
+  "potted_oak_sapling": "Саженец дуба в горшке"
+  "potted_orange_tulip": "Оранжевый тюльпан в горшке"
+  "potted_oxeye_daisy": "Ромашка в горшке"
+  "potted_pink_tulip": "Розовый тюльпан в горшке"
+  "potted_poppy": "Мак в горшке"
+  "potted_red_mushroom": "Красный гриб в горшке"
+  "potted_red_tulip": "Красный тюльпан в горшке"
+  "potted_spruce_sapling": "Саженец ели в горшке"
+  "potted_warped_fungus": "Искажённый гриб в горшке"
+  "potted_warped_roots": "Искажённые корни в горшке"
+  "potted_white_tulip": "Белый тюльпан в горшке"
+  "potted_wither_rose": "Роза визера в горшке"
+  "powered_rail": "Энергорельсы"
+  "prismarine": "Призмарин"
+  "prismarine_brick_slab": "Плита из призмаринового кирпича"
+  "prismarine_brick_stairs": "Ступеньки из призмариновых кирпичей"
+  "prismarine_bricks": "Призмариновые кирпичи"
+  "prismarine_slab": "Призмариновая плита"
+  "prismarine_stairs": "Призмариновые ступеньки"
+  "prismarine_wall": "Призмариновая ограда"
+  "pumpkin": "Тыква"
+  "pumpkin_stem": "Стебель тыквы"
+  "purple_banner": "Фиолетовый флаг"
+  "purple_bed": "Фиолетовая кровать"
+  "purple_carpet": "Фиолетовый ковёр"
+  "purple_concrete": "Фиолетовый бетон"
+  "purple_concrete_powder": "Фиолетовый сухой бетон"
+  "purple_glazed_terracotta": "Фиолетовая глазурованная керамика"
+  "purple_shulker_box": "Фиолетовый шалкеровый ящик"
+  "purple_stained_glass": "Фиолетовое стекло"
+  "purple_stained_glass_pane": "Фиолетовая стеклянная панель"
+  "purple_terracotta": "Фиолетовая керамика"
+  "purple_wool": "Фиолетовая шерсть"
+  "purpur_block": "Пурпур"
+  "purpur_pillar": "Пурпуровый пилон"
+  "purpur_slab": "Пурпуровая плита"
+  "purpur_stairs": "Пурпуровые ступеньки"
+  "quartz_block": "Кварцевый блок"
+  "quartz_bricks": "Кварцевые кирпичи"
+  "quartz_pillar": "Кварцевая колонна"
+  "quartz_slab": "Кварцевая плита"
+  "quartz_stairs": "Кварцевые ступеньки"
+  "rail": "Рельсы"
+  "red_banner": "Красный флаг"
+  "red_bed": "Красная кровать"
+  "red_carpet": "Красный ковёр"
+  "red_concrete": "Красный бетон"
+  "red_concrete_powder": "Красный сухой бетон"
+  "red_glazed_terracotta": "Красная глазурованная керамика"
+  "red_mushroom": "Красный гриб"
+  "red_mushroom_block": "Блок красного гриба"
+  "red_nether_brick_slab": "Плита из красного незерского кирпича"
+  "red_nether_brick_stairs": "Ступеньки из красного незерского кирпича"
+  "red_nether_brick_wall": "Ограда из красного незерского кирпича"
+  "red_nether_bricks": "Красные незерские кирпичи"
+  "red_sand": "Красный песок"
+  "red_sandstone": "Красный песчаник"
+  "red_sandstone_slab": "Плита из красного песчаника"
+  "red_sandstone_stairs": "Ступеньки из красного песчаника"
+  "red_sandstone_wall": "Ограда из красного песчаника"
+  "red_shulker_box": "Красный шалкеровый ящик"
+  "red_stained_glass": "Красное стекло"
+  "red_stained_glass_pane": "Красная стеклянная панель"
+  "red_terracotta": "Красная керамика"
+  "red_tulip": "Красный тюльпан"
+  "red_wool": "Красная шерсть"
+  "redstone_block": "Редстоуновый блок"
+  "redstone_lamp": "Редстоуновый фонарь"
+  "redstone_ore": "Редстоуновая руда"
+  "redstone_torch": "Редстоуновый факел"
+  "redstone_wall_torch": "Настенный редстоуновый факел"
+  "redstone_wire": "Редстоуновый провод"
+  "repeater": "Редстоуновый повторитель"
+  "repeating_command_block": "Повторяющий командный блок"
+  "respawn_anchor": "Якорь возрождения"
+  "rose_bush": "Розовый куст"
+  "sand": "Песок"
+  "sandstone": "Песчаник"
+  "sandstone_slab": "Песчаниковая плита"
+  "sandstone_stairs": "Песчаниковые ступеньки"
+  "sandstone_wall": "Песчаниковая ограда"
+  "scaffolding": "Подмостки"
+  "sea_lantern": "Морской фонарь"
+  "sea_pickle": "Морской огурец"
+  "seagrass": "Морская трава"
+  "set_spawn": "Точка возрождения установлена"
+  "shroomlight": "Грибосвет"
+  "shulker_box": "Шалкеровый ящик"
+  "skeleton_skull": "Череп"
+  "skeleton_wall_skull": "Настенный череп скелета"
+  "slime_block": "Блок слизи"
+  "smithing_table": "Стол кузнеца"
+  "smoker": "Коптильня"
+  "smooth_quartz": "Гладкий кварц"
+  "smooth_quartz_slab": "Плита из гладкого кварца"
+  "smooth_quartz_stairs": "Ступеньки из гладкого кварца"
+  "smooth_red_sandstone": "Гладкий красный песчаник"
+  "smooth_red_sandstone_slab": "Плита из гладкого красного песчаника"
+  "smooth_red_sandstone_stairs": "Ступеньки из гладкого красного песчаника"
+  "smooth_sandstone": "Гладкий песчаник"
+  "smooth_sandstone_slab": "Плита из гладкого песчаника"
+  "smooth_sandstone_stairs": "Ступеньки из гладкого песчаника"
+  "smooth_stone": "Гладкий камень"
+  "smooth_stone_slab": "Плита из гладкого камня"
+  "snow": "Снег"
+  "snow_block": "Блок снега"
+  "soul_campfire": "Костёр душ"
+  "soul_fire": "Огонь душ"
+  "soul_lantern": "Фонарь душ"
+  "soul_sand": "Песок душ"
+  "soul_soil": "Почва душ"
+  "soul_torch": "Факел душ"
+  "soul_wall_torch": "Настенный факел душ"
+  "spawner": "Рассадник"
+  "sponge": "Губка"
+  "spruce_button": "Еловая кнопка"
+  "spruce_door": "Еловая дверь"
+  "spruce_fence": "Еловый забор"
+  "spruce_fence_gate": "Еловая калитка"
+  "spruce_leaves": "Хвоя"
+  "spruce_log": "Еловое бревно"
+  "spruce_planks": "Еловые доски"
+  "spruce_pressure_plate": "Еловая нажимная плита"
+  "spruce_sapling": "Еловый саженец"
+  "spruce_sign": "Еловая табличка"
+  "spruce_slab": "Еловая плита"
+  "spruce_stairs": "Еловые ступеньки"
+  "spruce_trapdoor": "Еловый люк"
+  "spruce_wall_sign": "Еловая настенная табличка"
+  "spruce_wood": "Ель"
+  "sticky_piston": "Липкий поршень"
+  "stone": "Камень"
+  "stone_brick_slab": "Плита из каменного кирпича"
+  "stone_brick_stairs": "Ступеньки из каменного кирпича"
+  "stone_brick_wall": "Ограда из каменного кирпича"
+  "stone_bricks": "Каменные кирпичи"
+  "stone_button": "Каменная кнопка"
+  "stone_pressure_plate": "Каменная нажимная плита"
+  "stone_slab": "Каменная плита"
+  "stone_stairs": "Каменные ступеньки"
+  "stonecutter": "Камнерез"
+  "stripped_acacia_log": "Обтёсанное акациевое бревно"
+  "stripped_acacia_wood": "Обтёсанная акациевая древесина"
+  "stripped_birch_log": "Обтёсанное берёзовое бревно"
+  "stripped_birch_wood": "Обтёсанная берёзовая древесина"
+  "stripped_crimson_hyphae": "Очищенные багровые гифы"
+  "stripped_crimson_stem": "Очищенный багровый стебель"
+  "stripped_dark_oak_log": "Обтёсанное бревно тёмного дуба"
+  "stripped_dark_oak_wood": "Обтёсанная древесина тёмного дуба"
+  "stripped_jungle_log": "Обтёсанное бревно тропического дерева"
+  "stripped_jungle_wood": "Обтёсанная тропическая древесина"
+  "stripped_oak_log": "Обтёсанное дубовое бревно"
+  "stripped_oak_wood": "Обтёсанная дубовая древесина"
+  "stripped_spruce_log": "Обтёсанное еловое бревно"
+  "stripped_spruce_wood": "Обтёсанная еловая древесина"
+  "stripped_warped_hyphae": "Очищенные искажённые гифы"
+  "stripped_warped_stem": "Очищенный искажённый стебель"
+  "structure_block": "Блок-конструктор"
+  "structure_void": "Пустой блок"
+  "sugar_cane": "Сахарный тростник"
+  "sunflower": "Подсолнух"
+  "sweet_berry_bush": "Куст сладких ягод"
+  "tall_grass": "Высокая трава"
+  "tall_seagrass": "Высокая морская трава"
+  "target": "Мишень"
+  "terracotta": "Терракота"
+  "tnt": "Динамит"
+  "torch": "Факел"
+  "trapped_chest": "Сундук-ловушка"
+  "tripwire": "Растяжка"
+  "tripwire_hook": "Крюк"
+  "tube_coral": "Трубчатый коралл"
+  "tube_coral_block": "Блок трубчатого коралла"
+  "tube_coral_fan": "Веерный трубчатый коралл"
+  "tube_coral_wall_fan": "Горизонтальный веерный трубчатый коралл"
+  "turtle_egg": "Черепашье яйцо"
+  "twisting_vines": "Вьющаяся лоза"
+  "twisting_vines_plant": "Стебель вьющейся лозы"
+  "vine": "Лианы"
+  "void_air": "Вакуум"
+  "wall_torch": "Настенный факел"
+  "warped_button": "Искажённая кнопка"
+  "warped_door": "Искажённая дверь"
+  "warped_fence": "Искажённый забор"
+  "warped_fence_gate": "Искажённая калитка"
+  "warped_fungus": "Искажённый гриб"
+  "warped_hyphae": "Искажённые гифы"
+  "warped_nylium": "Искажённый нилий"
+  "warped_planks": "Искажённые доски"
+  "warped_pressure_plate": "Искажённая нажимная плита"
+  "warped_roots": "Искажённые корни"
+  "warped_sign": "Искажённая табличка"
+  "warped_slab": "Искажённая плита"
+  "warped_stairs": "Искажённые ступеньки"
+  "warped_stem": "Искажённый стебель"
+  "warped_trapdoor": "Искажённый люк"
+  "warped_wall_sign": "Искажённая настенная табличка"
+  "warped_wart_block": "Блок искажённого нароста"
+  "water": "Вода"
+  "weeping_vines": "Плакучая лоза"
+  "weeping_vines_plant": "Стебель плачущей лозы"
+  "wet_sponge": "Мокрая губка"
+  "wheat": "Ростки пшеницы"
+  "white_banner": "Белый флаг"
+  "white_bed": "Белая кровать"
+  "white_carpet": "Белый ковёр"
+  "white_concrete": "Белый бетон"
+  "white_concrete_powder": "Белый сухой бетон"
+  "white_glazed_terracotta": "Белая глазурованная керамика"
+  "white_shulker_box": "Белый шалкеровый ящик"
+  "white_stained_glass": "Белое стекло"
+  "white_stained_glass_pane": "Белая стеклянная панель"
+  "white_terracotta": "Белая керамика"
+  "white_tulip": "Белый тюльпан"
+  "white_wool": "Белая шерсть"
+  "wither_rose": "Роза визера"
+  "wither_skeleton_skull": "Череп визер-скелета"
+  "wither_skeleton_wall_skull": "Настенный череп визер-скелета"
+  "yellow_banner": "Жёлтый флаг"
+  "yellow_bed": "Жёлтая кровать"
+  "yellow_carpet": "Жёлтый ковёр"
+  "yellow_concrete": "Жёлтый бетон"
+  "yellow_concrete_powder": "Жёлтый сухой бетон"
+  "yellow_glazed_terracotta": "Жёлтая глазурованная керамика"
+  "yellow_shulker_box": "Жёлтый шалкеровый ящик"
+  "yellow_stained_glass": "Жёлтое стекло"
+  "yellow_stained_glass_pane": "Жёлтая стеклянная панель"
+  "yellow_terracotta": "Жёлтая керамика"
+  "yellow_wool": "Жёлтая шерсть"
+  "zombie_head": "Голова зомби"
+  "zombie_wall_head": "Настенная голова зомби"
+
+  # Start of items- duplicates removed, preferring block name from above
+  "acacia_boat": "Акациевая лодка"
+  "apple": "Яблоко"
+  "armor_stand": "Стойка для брони"
+  "arrow": "Стрела"
+  "baked_potato": "Печёный картофель"
+  "bat_spawn_egg": "Яйцо призыва летучей мыши"
+  "bee_spawn_egg": "Яйцо призыва пчелы"
+  "beef": "Сырая говядина"
+  "beetroot": "Свёкла"
+  "beetroot_seeds": "Семена свёклы"
+  "beetroot_soup": "Свекольный суп"
+  "birch_boat": "Берёзовая лодка"
+  "black_dye": "Чёрный краситель"
+  "blaze_powder": "Огненный порошок"
+  "blaze_rod": "Огненный стержень"
+  "blaze_spawn_egg": "Яйцо призыва всполоха"
+  "blue_dye": "Синий краситель"
+  "bone": "Кость"
+  "bone_meal": "Костная мука"
+  "book": "Книга"
+  "bow": "Лук"
+  "bowl": "Миска"
+  "bread": "Хлеб"
+  "brick": "Кирпич"
+  "brown_dye": "Коричневый краситель"
+  "bucket": "Ведро"
+  "carrot": "Морковь"
+  "carrot_on_a_stick": "Удочка с морковкой"
+  "cat_spawn_egg": "Яйцо призыва кошки"
+  "cave_spider_spawn_egg": "Яйцо призыва пещерного паука"
+  "chainmail_boots": "Кольчужные ботинки"
+  "chainmail_chestplate": "Кольчуга"
+  "chainmail_helmet": "Койф"
+  "chainmail_leggings": "Кольчужные поножи"
+  "charcoal": "Древесный уголь"
+  "chest_minecart": "Грузовая вагонетка"
+  "chicken": "Курятина"
+  "chicken_spawn_egg": "Яйцо призыва курицы"
+  "chorus_fruit": "Плод хоруса"
+  "clay_ball": "Комок глины"
+  "clock": "Часы"
+  "coal": "Уголь"
+  "cocoa_beans": "Какао-бобы"
+  "cod": "Сырая треска"
+  "cod_bucket": "Треска в ведре"
+  "cod_spawn_egg": "Яйцо призыва трески"
+  "command_block_minecart": "Вагонетка с командным блоком"
+  "compass": "Компас"
+  "cooked_beef": "Стейк"
+  "cooked_chicken": "Жареная курица"
+  "cooked_cod": "Жареная треска"
+  "cooked_mutton": "Жареная баранина"
+  "cooked_porkchop": "Жареная свинина"
+  "cooked_rabbit": "Жареная крольчатина"
+  "cooked_salmon": "Жареный лосось"
+  "cookie": "Печенье"
+  "cow_spawn_egg": "Яйцо призыва коровы"
+  "creeper_banner_pattern": "Узор флага"
+  "creeper_banner_pattern.desc": "Крипер"
+  "creeper_spawn_egg": "Яйцо призыва крипера"
+  "crossbow": "Арбалет"
+  "crossbow.projectile": "Снаряд:"
+  "cyan_dye": "Бирюзовый краситель"
+  "dark_oak_boat": "Лодка из тёмного дуба"
+  "debug_stick": "Палочка отладки"
+  "debug_stick.empty": "Свойства объекта %s не заданы"
+  "debug_stick.select": "выбрано «%s» (%s)"
+  "debug_stick.update": "«%s»: %s"
+  "diamond": "Алмаз"
+  "diamond_axe": "Алмазный топор"
+  "diamond_boots": "Алмазные ботинки"
+  "diamond_chestplate": "Алмазный нагрудник"
+  "diamond_helmet": "Алмазный шлем"
+  "diamond_hoe": "Алмазная мотыга"
+  "diamond_horse_armor": "Алмазная конская броня"
+  "diamond_leggings": "Алмазные поножи"
+  "diamond_pickaxe": "Алмазная кирка"
+  "diamond_shovel": "Алмазная лопата"
+  "diamond_sword": "Алмазный меч"
+  "dolphin_spawn_egg": "Яйцо призыва дельфина"
+  "donkey_spawn_egg": "Яйцо призыва осла"
+  "dragon_breath": "Драконье дыхание"
+  "dried_kelp": "Сушёная ламинария"
+  "drowned_spawn_egg": "Яйцо призыва утопленника"
+  "egg": "Яйцо"
+  "elder_guardian_spawn_egg": "Яйцо призыва древнего стража"
+  "elytra": "Элитры"
+  "emerald": "Изумруд"
+  "enchanted_book": "Чародейская книга"
+  "enchanted_golden_apple": "Зачарованное золотое яблоко"
+  "end_crystal": "Кристалл Энда"
+  "ender_eye": "Око Эндера"
+  "ender_pearl": "Эндер-жемчуг"
+  "enderman_spawn_egg": "Яйцо призыва эндермена"
+  "endermite_spawn_egg": "Яйцо призыва эндермита"
+  "evoker_spawn_egg": "Яйцо призыва заклинателя"
+  "experience_bottle": "Пузырёк опыта"
+  "feather": "Перо"
+  "fermented_spider_eye": "Маринованный паучий глаз"
+  "filled_map": "Карта"
+  "fire_charge": "Огненный заряд"
+  "firework_rocket": "Фейерверк"
+  "firework_star": "Пиротехническая звезда"
+  "fishing_rod": "Удочка"
+  "flint": "Кремень"
+  "flint_and_steel": "Огниво"
+  "flower_banner_pattern": "Узор флага"
+  "flower_banner_pattern.desc": "Цветок"
+  "fox_spawn_egg": "Яйцо призыва лисицы"
+  "furnace_minecart": "Самоходная вагонетка"
+  "ghast_spawn_egg": "Яйцо призыва гаста"
+  "ghast_tear": "Слеза гаста"
+  "glass_bottle": "Бутылочка"
+  "glistering_melon_slice": "Сверкающий ломтик арбуза"
+  "globe_banner_pattern": "Узор флага"
+  "globe_banner_pattern.desc": "Глобус"
+  "glowstone_dust": "Светокаменная пыль"
+  "gold_ingot": "Золотой слиток"
+  "gold_nugget": "Кусочек золота"
+  "golden_apple": "Золотое яблоко"
+  "golden_axe": "Золотой топор"
+  "golden_boots": "Золотые ботинки"
+  "golden_carrot": "Золотая морковь"
+  "golden_chestplate": "Золотой нагрудник"
+  "golden_helmet": "Золотой шлем"
+  "golden_hoe": "Золотая мотыга"
+  "golden_horse_armor": "Золотая конская броня"
+  "golden_leggings": "Золотые поножи"
+  "golden_pickaxe": "Золотая кирка"
+  "golden_shovel": "Золотая лопата"
+  "golden_sword": "Золотой меч"
+  "gray_dye": "Серый краситель"
+  "green_dye": "Зелёный краситель"
+  "guardian_spawn_egg": "Яйцо призыва стража"
+  "gunpowder": "Порох"
+  "heart_of_the_sea": "Сердце моря"
+  "hoglin_spawn_egg": "Яйцо призыва хоглина"
+  "honey_bottle": "Бутылочка мёда"
+  "honeycomb": "Пчелиные соты"
+  "hopper_minecart": "Загрузочная вагонетка"
+  "horse_spawn_egg": "Яйцо призыва лошади"
+  "husk_spawn_egg": "Яйцо призыва кадавра"
+  "ink_sac": "Чернильный мешок"
+  "iron_axe": "Железный топор"
+  "iron_boots": "Железные ботинки"
+  "iron_chestplate": "Железный нагрудник"
+  "iron_helmet": "Железный шлем"
+  "iron_hoe": "Железная мотыга"
+  "iron_horse_armor": "Железная конская броня"
+  "iron_ingot": "Железный слиток"
+  "iron_leggings": "Железные поножи"
+  "iron_nugget": "Кусочек железа"
+  "iron_pickaxe": "Железная кирка"
+  "iron_shovel": "Железная лопата"
+  "iron_sword": "Железный меч"
+  "item_frame": "Рамка"
+  "jungle_boat": "Лодка из тропического дерева"
+  "knowledge_book": "Книга знаний"
+  "lapis_lazuli": "Лазурит"
+  "lava_bucket": "Ведро лавы"
+  "lead": "Поводок"
+  "leather": "Кожа"
+  "leather_boots": "Кожаные ботинки"
+  "leather_chestplate": "Кожаная куртка"
+  "leather_helmet": "Кожаный шлем"
+  "leather_horse_armor": "Кожаная конская броня"
+  "leather_leggings": "Кожаные штаны"
+  "light_blue_dye": "Голубой краситель"
+  "light_gray_dye": "Светло-серый краситель"
+  "lime_dye": "Лаймовый краситель"
+  "lingering_potion": "Туманное зелье"
+  "llama_spawn_egg": "Яйцо призыва ламы"
+  "lodestone_compass": "Намагниченный компас"
+  "magenta_dye": "Пурпурный краситель"
+  "magma_cream": "Сгусток магмы"
+  "magma_cube_spawn_egg": "Яйцо призыва магмового куба"
+  "map": "Чистая карта"
+  "melon_seeds": "Семена арбуза"
+  "melon_slice": "Ломтик арбуза"
+  "milk_bucket": "Ведро молока"
+  "minecart": "Вагонетка"
+  "mojang_banner_pattern": "Узор флага"
+  "mojang_banner_pattern.desc": "Нечто"
+  "mooshroom_spawn_egg": "Яйцо призыва муухомора"
+  "mule_spawn_egg": "Яйцо призыва мула"
+  "mushroom_stew": "Тушёные грибы"
+  "music_disc_11": "Пластинка"
+  "music_disc_11.desc": "C418 — 11"
+  "music_disc_13": "Пластинка"
+  "music_disc_13.desc": "C418 — 13"
+  "music_disc_blocks": "Пластинка"
+  "music_disc_blocks.desc": "C418 — blocks"
+  "music_disc_cat": "Пластинка"
+  "music_disc_cat.desc": "C418 — cat"
+  "music_disc_chirp": "Пластинка"
+  "music_disc_chirp.desc": "C418 — chirp"
+  "music_disc_far": "Пластинка"
+  "music_disc_far.desc": "C418 — far"
+  "music_disc_mall": "Пластинка"
+  "music_disc_mall.desc": "C418 — mall"
+  "music_disc_mellohi": "Пластинка"
+  "music_disc_mellohi.desc": "C418 — mellohi"
+  "music_disc_pigstep": "Пластинка"
+  "music_disc_pigstep.desc": "Лина Рейн — Pigstep"
+  "music_disc_stal": "Пластинка"
+  "music_disc_stal.desc": "C418 — stal"
+  "music_disc_strad": "Пластинка"
+  "music_disc_strad.desc": "C418 — strad"
+  "music_disc_wait": "Пластинка"
+  "music_disc_wait.desc": "C418 — wait"
+  "music_disc_ward": "Пластинка"
+  "music_disc_ward.desc": "C418 — ward"
+  "mutton": "Сырая баранина"
+  "name_tag": "Бирка"
+  "nautilus_shell": "Раковина наутилуса"
+  "nether_brick": "Незерский кирпич"
+  "nether_star": "Звезда Незера"
+  "netherite_axe": "Незеритовый топор"
+  "netherite_boots": "Незеритовые ботинки"
+  "netherite_chestplate": "Незеритовый нагрудник"
+  "netherite_helmet": "Незеритовый шлем"
+  "netherite_hoe": "Незеритовая мотыга"
+  "netherite_ingot": "Незеритовый слиток"
+  "netherite_leggings": "Незеритовые поножи"
+  "netherite_pickaxe": "Незеритовая кирка"
+  "netherite_scrap": "Незеритовый лом"
+  "netherite_shovel": "Незеритовая лопата"
+  "netherite_sword": "Незеритовый меч"
+  "oak_boat": "Дубовая лодка"
+  "ocelot_spawn_egg": "Яйцо призыва оцелота"
+  "orange_dye": "Оранжевый краситель"
+  "painting": "Картина"
+  "panda_spawn_egg": "Яйцо призыва панды"
+  "paper": "Бумага"
+  "parrot_spawn_egg": "Яйцо призыва попугая"
+  "phantom_membrane": "Мембрана фантома"
+  "phantom_spawn_egg": "Яйцо призыва фантома"
+  "pig_spawn_egg": "Яйцо призыва свиньи"
+  "piglin_brute_spawn_egg": "Яйцо призыва брутального пиглина"
+  "piglin_spawn_egg": "Яйцо призыва пиглина"
+  "pillager_spawn_egg": "Яйцо призыва разбойника"
+  "pink_dye": "Розовый краситель"
+  "poisonous_potato": "Ядовитый картофель"
+  "polar_bear_spawn_egg": "Яйцо призыва белого медведя"
+  "popped_chorus_fruit": "Прожаренный плод хоруса"
+  "porkchop": "Сырая свинина"
+  "potato": "Картофель"
+  "potion": "Зелье"
+  "prismarine_crystals": "Кристалл призмарина"
+  "prismarine_shard": "Осколок призмарина"
+  "pufferfish": "Иглобрюх"
+  "pufferfish_bucket": "Иглобрюх в ведре"
+  "pufferfish_spawn_egg": "Яйцо призыва иглобрюха"
+  "pumpkin_pie": "Тыквенный пирог"
+  "pumpkin_seeds": "Семена тыквы"
+  "purple_dye": "Фиолетовый краситель"
+  "quartz": "Незер-кварц"
+  "rabbit": "Сырая крольчатина"
+  "rabbit_foot": "Кроличья лапка"
+  "rabbit_hide": "Кроличья шкурка"
+  "rabbit_spawn_egg": "Яйцо призыва кролика"
+  "rabbit_stew": "Тушёный кролик"
+  "ravager_spawn_egg": "Яйцо призыва разорителя"
+  "red_dye": "Красный краситель"
+  "redstone": "Редстоун"
+  "rotten_flesh": "Гнилая плоть"
+  "saddle": "Седло"
+  "salmon": "Сырой лосось"
+  "salmon_bucket": "Лосось в ведре"
+  "salmon_spawn_egg": "Яйцо призыва лосося"
+  "scute": "Щиток"
+  "shears": "Ножницы"
+  "sheep_spawn_egg": "Яйцо призыва овцы"
+  "shield": "Щит"
+  "shulker_shell": "Панцирь шалкера"
+  "shulker_spawn_egg": "Яйцо призыва шалкера"
+  "sign": "Табличка"
+  "silverfish_spawn_egg": "Яйцо призыва чешуйницы"
+  "skeleton_horse_spawn_egg": "Яйцо призыва лошади-скелета"
+  "skeleton_spawn_egg": "Яйцо призыва скелета"
+  "skull_banner_pattern": "Узор флага"
+  "skull_banner_pattern.desc": "Череп"
+  "slime_ball": "Сгусток слизи"
+  "slime_spawn_egg": "Яйцо призыва слизня"
+  "snowball": "Снежок"
+  "spectral_arrow": "Спектральная стрела"
+  "spider_eye": "Паучий глаз"
+  "spider_spawn_egg": "Яйцо призыва паука"
+  "splash_potion": "Взрывное зелье"
+  "spruce_boat": "Еловая лодка"
+  "squid_spawn_egg": "Яйцо призыва спрута"
+  "stick": "Палка"
+  "stone_axe": "Каменный топор"
+  "stone_hoe": "Каменная мотыга"
+  "stone_pickaxe": "Каменная кирка"
+  "stone_shovel": "Каменная лопата"
+  "stone_sword": "Каменный меч"
+  "stray_spawn_egg": "Яйцо призыва зимогора"
+  "strider_spawn_egg": "Яйцо призыва лавомерки"
+  "string": "Нить"
+  "sugar": "Сахар"
+  "suspicious_stew": "Загадочное рагу"
+  "sweet_berries": "Сладкие ягоды"
+  "tipped_arrow": "Обработанная стрела"
+  "tnt_minecart": "Вагонетка с динамитом"
+  "totem_of_undying": "Тотем бессмертия"
+  "trader_llama_spawn_egg": "Яйцо призыва ламы торговца"
+  "trident": "Трезубец"
+  "tropical_fish": "Тропическая рыба"
+  "tropical_fish_bucket": "Тропическая рыба в ведре"
+  "tropical_fish_spawn_egg": "Яйцо призыва тропической рыбы"
+  "turtle_helmet": "Черепаший панцирь"
+  "turtle_spawn_egg": "Яйцо призыва черепахи"
+  "vex_spawn_egg": "Яйцо призыва вредины"
+  "villager_spawn_egg": "Яйцо призыва крестьянина"
+  "vindicator_spawn_egg": "Яйцо призыва поборника"
+  "wandering_trader_spawn_egg": "Яйцо призыва странствующего торговца"
+  "warped_fungus_on_a_stick": "Удочка с искажённым грибом"
+  "water_bucket": "Ведро воды"
+  "wheat_seeds": "Семена пшеницы"
+  "white_dye": "Белый краситель"
+  "witch_spawn_egg": "Яйцо призыва ведьмы"
+  "wither_skeleton_spawn_egg": "Яйцо призыва визер-скелета"
+  "wolf_spawn_egg": "Яйцо призыва волка"
+  "wooden_axe": "Деревянный топор"
+  "wooden_hoe": "Деревянная мотыга"
+  "wooden_pickaxe": "Деревянная кирка"
+  "wooden_shovel": "Деревянная лопата"
+  "wooden_sword": "Деревянный меч"
+  "writable_book": "Книга и перо"
+  "written_book": "Завершённая книга"
+  "yellow_dye": "Жёлтый краситель"
+  "zoglin_spawn_egg": "Яйцо призыва зоглина"
+  "zombie_horse_spawn_egg": "Яйцо призыва лошади-зомби"
+  "zombie_spawn_egg": "Яйцо призыва зомби"
+  "zombie_villager_spawn_egg": "Яйцо призыва зомби-крестьянина"
+  "zombified_piglin_spawn_egg": "Яйцо призыва зомбифицированного пиглина"
+
+entities:
+  "area_effect_cloud": "Облако эффекта"
+  "armor_stand": "Стойка для брони"
+  "arrow": "Стрела"
+  "bat": "Летучая мышь"
+  "bee": "Пчела"
+  "blaze": "Всполох"
+  "boat": "Лодка"
+  "cat": "Кошка"
+  "cave_spider": "Пещерный паук"
+  "chest_minecart": "Грузовая вагонетка"
+  "chicken": "Курица"
+  "cod": "Треска"
+  "command_block_minecart": "Вагонетка с командным блоком"
+  "cow": "Корова"
+  "creeper": "Крипер"
+  "dolphin": "Дельфин"
+  "donkey": "Осёл"
+  "dragon_fireball": "Файербол дракона"
+  "drowned": "Утопленник"
+  "egg": "Брошенное яйцо"
+  "elder_guardian": "Древний страж"
+  "end_crystal": "Кристалл Энда"
+  "ender_dragon": "Эндер-дракон"
+  "ender_pearl": "Брошенный эндер-жемчуг"
+  "enderman": "Эндермен"
+  "endermite": "Эндермит"
+  "evoker": "Заклинатель"
+  "evoker_fangs": "Клыки заклинателя"
+  "experience_bottle": "Брошенный пузырёк опыта"
+  "experience_orb": "Сфера опыта"
+  "eye_of_ender": "Око Эндера"
+  "falling_block": "Падающий блок"
+  "fireball": "Файербол"
+  "firework_rocket": "Фейерверк"
+  "fishing_bobber": "Поплавок"
+  "fox": "Лисица"
+  "furnace_minecart": "Самоходная вагонетка"
+  "ghast": "Гаст"
+  "giant": "Гигант"
+  "guardian": "Страж"
+  "hoglin": "Хоглин"
+  "hopper_minecart": "Загрузочная вагонетка"
+  "horse": "Лошадь"
+  "husk": "Кадавр"
+  "illusioner": "Иллюзор"
+  "iron_golem": "Железный голем"
+  "item": "Предмет"
+  "item_frame": "Рамка"
+  "killer_bunny": "Кролик-убийца"
+  "leash_knot": "Узел поводка"
+  "lightning_bolt": "Молния"
+  "llama": "Лама"
+  "llama_spit": "Плевок ламы"
+  "magma_cube": "Магмовый куб"
+  "minecart": "Вагонетка"
+  "mooshroom": "Муухомор"
+  "mule": "Мул"
+  "ocelot": "Оцелот"
+  "painting": "Картина"
+  "panda": "Панда"
+  "parrot": "Попугай"
+  "phantom": "Фантом"
+  "pig": "Свинья"
+  "piglin": "Пиглин"
+  "piglin_brute": "Брутальный пиглин"
+  "pillager": "Разбойник"
+  "player": "Игрок"
+  "polar_bear": "Белый медведь"
+  "potion": "Зелье"
+  "pufferfish": "Иглобрюх"
+  "rabbit": "Кролик"
+  "ravager": "Разоритель"
+  "salmon": "Лосось"
+  "sheep": "Овца"
+  "shulker": "Шалкер"
+  "shulker_bullet": "Снаряд шалкера"
+  "silverfish": "Чешуйница"
+  "skeleton": "Скелет"
+  "skeleton_horse": "Лошадь-скелет"
+  "slime": "Слизень"
+  "small_fireball": "Малый файербол"
+  "snow_golem": "Снеговик"
+  "snowball": "Снежок"
+  "spawner_minecart": "Вагонетка с рассадником"
+  "spectral_arrow": "Спектральная стрела"
+  "spider": "Паук"
+  "squid": "Спрут"
+  "stray": "Зимогор"
+  "strider": "Лавомерка"
+  "tnt": "Активированный динамит"
+  "tnt_minecart": "Вагонетка с динамитом"
+  "trader_llama": "Лама торговца"
+  "trident": "Трезубец"
+  "tropical_fish": "Тропическая рыба"
+  "turtle": "Черепаха"
+  "vex": "Вредина"
+  "villager": "Крестьянин"
+  "vindicator": "Поборник"
+  "wandering_trader": "Странствующий торговец"
+  "witch": "Ведьма"
+  "wither": "Визер"
+  "wither_skeleton": "Визер-скелет"
+  "wither_skull": "Череп визера"
+  "wolf": "Волк"
+  "zoglin": "Зоглин"
+  "zombie": "Зомби"
+  "zombie_horse": "Лошадь-зомби"
+  "zombie_villager": "Зомби-крестьянин"
+  "zombified_piglin": "Зомбифицированный пиглин"
